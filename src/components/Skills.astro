@@ -1,0 +1,74 @@
+---
+import "animate.css";
+
+interface Props {
+  img: string;
+  color: string;
+  name: string;
+}
+
+const { img, color, name } = Astro.props;
+
+function getColorWithOpacity(color: string, opacity: number) {
+  if (color.startsWith("#")) {
+    const bigint = parseInt(color.slice(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  }
+  return color;
+}
+
+function getGlowColor(color: string, opacity: number = 0.6) {
+  if (color.startsWith("#")) {
+    const bigint = parseInt(color.slice(1), 16);
+    const r = (bigint >> 16) & 255;
+    const g = (bigint >> 8) & 255;
+    const b = bigint & 255;
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+  }
+  return `rgba(255, 255, 255, ${opacity})`;
+}
+
+const glowColor = getGlowColor(color);
+const backgroundColor = getColorWithOpacity(color, 0.6);
+---
+
+<li
+  class="w-[70px] h-[70px] rounded-xl relative group flex items-center justify-center pulsate-bck"
+  style={`background-color: ${backgroundColor}; --glow-color: ${glowColor}; --glow-color-stronger: ${getGlowColor(color, 0.8)};`}
+>
+  <span
+    class={`tooltip absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-transparent text-xs p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 border`}
+    style={`color: ${color}; border-color: ${color};`}
+  >
+    {name}
+  </span>
+  <img src={img} alt={name} class="w-10 h-10 object-contain" />
+</li>
+
+<style>
+  .pulsate-bck {
+    animation: pulsate-bck 2s ease-in-out infinite both;
+  }
+
+  @keyframes pulsate-bck {
+    0% {
+      transform: scale(1);
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+    50% {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px var(--glow-color-stronger);
+    }
+    100% {
+      transform: scale(1);
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+  }
+
+  .tooltip {
+    transition: opacity 0.3s ease;
+  }
+</style>

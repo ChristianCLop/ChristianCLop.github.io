@@ -1,0 +1,82 @@
+---
+interface Props {
+  img: string;
+  title: string;
+  body: string;
+  date: string;
+  link: string;
+}
+
+const { img, title, body, date, link } = Astro.props;
+---
+
+<li data-aos="zoom-out-up" data-aos-duration="2000" class="link-card p-4 border rounded-lg bg-gray-800 h-[450px] w-[550px] border-animate">
+  <div class="flex flex-col justify-between h-full w-full">
+    <div class="relative flex justify-center items-center h-[75%] w-full overflow-hidden">
+      <img src={img} alt={title} class="w-full h-full object-cover rounded-t-lg transition-transform duration-300 ease-in-out transform hover:scale-110" />
+      <a href={link} target="_blank" rel="noopener noreferrer">
+        <button class="absolute left-1/2 transform -translate-x-1/2 transition hidden view-cert-button p-2 rounded-xl border border-[#3a8f49] text-[#3a8f49] bg-[#0d1e1b] items-center justify-center">
+          View Certificate
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--heroicons w-5 h-5 ml-2" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"></path>
+          </svg>
+        </button>
+      </a>
+    </div>
+    <div class="flex flex-col text-lg font-semibold text-white text-center border-t rounded-b-lg p-4">
+      <h2 class="text-xl text-white font-mono font-semibold mt-2 uppercase">{title}</h2>
+      <h3 class="text-lg font-mono">{body}</h3>
+      <p class="mt-2">{date}</p>
+    </div>
+  </div>
+</li>
+
+<style>
+  .link-card {
+    list-style: none;
+    background-color: #23262d;
+    border-radius: 7px;
+    overflow: hidden;
+  }
+
+  @keyframes borderGlow {
+    0% {
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+    50% {
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+    100% {
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .link-card:hover {
+    animation: borderGlow 1.5s linear infinite;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  .absolute {
+    position: absolute;
+  }
+
+  .view-cert-button {
+    display: none;
+  }
+
+  .link-card:hover .view-cert-button {
+    display: flex;
+  }
+
+  .link-card:hover img {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+
+  img {
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  }
+</style>

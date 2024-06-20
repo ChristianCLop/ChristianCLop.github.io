@@ -1,0 +1,379 @@
+---
+import Layout from "../layouts/Layout.astro";
+import "animate.css";
+import "../css/styles.css";
+import Skills from "../components/Skills.astro";
+import Experience from "../components/Experience.astro";
+import Archivements from "../components/Archivements.astro";
+import Projects from "../components/Projects.astro";
+---
+
+<Layout title="Christian Chico.">
+  <main>
+    <div
+      id="particles-js"
+      class="fixed w-screen h-screen hover:pointer-events-auto opacity-70 bg-transparent"
+    >
+    </div>
+
+    <section id="home" class="overflow-hidden">
+      <script src="/scripts/particles.min.js" is:inline></script>
+
+      <script>
+        document.addEventListener("DOMContentLoaded", async (event) => {
+          const response = await fetch("/particlesjs-config.json");
+          const particlesConfig = await response.json();
+          particlesJS("particles-js", particlesConfig);
+        });
+      </script>
+
+      <div class="content h-screen flex flex-col items-center justify-center">
+        <div class="text flex flex-col items-start justify-center">
+          <div data-aos="fade-down-right" class="flex items-center">
+            <p
+              class="text-[30px] text-[#d8d8d8] font-normal animate__animated animate__bounce animate__infinite animate__slower"
+            >
+              Hi 👋, I'm
+            </p>
+          </div>
+
+          <h1>Christian Chico</h1>
+
+          <div class="social-links">
+            <a
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              class="in"
+              target="_blank"
+              href="https://www.linkedin.com/in/christianchicolópez"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                height="20"
+                width="20"
+                class=""
+              >
+                <path
+                  stroke="#fff"
+                  stroke-linejoin="round"
+                  d="M1.5 3.5a2 2 0 1 0 4 0 2 2 0 1 0 -4 0"
+                  stroke-width="1"></path>
+                <path
+                  stroke="#fff"
+                  stroke-linejoin="round"
+                  d="M1.5 22.5v-14h4v14h-4Z"
+                  clip-rule="evenodd"
+                  stroke-width="1"></path>
+                <path
+                  stroke="#fff"
+                  stroke-linejoin="round"
+                  d="M8 8.5v14h4v-6.908c0 -1.092 1 -3.092 3.895 -3.092 1.643 0 2.605 0.845 2.605 2.5v7.5h4V15c0 -1.309 -0.312 -2.937 -1.394 -4.277 -1.144 -1.417 -2.913 -2.223 -5.21 -2.223 -1.513 0 -2.835 0.615 -3.896 1.366V8.5H8Z"
+                  clip-rule="evenodd"
+                  stroke-width="1"></path>
+              </svg>
+            </a>
+
+            <a
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              class="git"
+              target="_blank"
+              href="https://github.com/ChristianCLop"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                height="24"
+                width="24"
+              >
+                <path
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11.996 1.771a10.486 10.486 0 0 0 -3.314 20.438c0.523 0.092 0.69 -0.216 0.69 -0.493 0 -0.25 0.005 -0.945 0 -1.824 -2.919 0.633 -3.522 -1.381 -3.522 -1.381a2.775 2.775 0 0 0 -1.163 -1.534c-0.952 -0.65 0.071 -0.638 0.071 -0.638a2.201 2.201 0 0 1 1.607 1.08 2.232 2.232 0 0 0 3.05 0.871c0.05 -0.53 0.285 -1.025 0.666 -1.397 -2.328 -0.266 -4.776 -1.165 -4.776 -5.184a4.055 4.055 0 0 1 1.08 -2.815 3.762 3.762 0 0 1 0.103 -2.774s0.882 -0.282 2.883 1.076a9.924 9.924 0 0 1 5.252 0c2.007 -1.357 2.881 -1.076 2.881 -1.076 0.387 0.878 0.424 1.87 0.104 2.774a4.05 4.05 0 0 1 1.079 2.816c0 4.03 -2.452 4.916 -4.789 5.174a2.487 2.487 0 0 1 0.718 1.933v2.904c0 0.28 0.17 0.59 0.702 0.488a10.487 10.487 0 0 0 -3.322 -20.438v0Z"
+                  stroke-width="1"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="overflow-hidden">
+      <div class="flex flex-col items-center justify-start mx-36 my-36">
+        <h1 class="text-7xl font-black text-transparent">About Me</h1>
+        <div class="flex flex-row mt-20 justify-center items-center space-x-8">
+          <div>
+            <div
+              class="border rounded-full pulsate-border"
+              style="border-color: #ffrgb(255, 255, 255)-border-glow-color: rgba(129, 14, 20, 0.6); --border-glow-color-stronger: rgba(224, 251, 252, 0.8);"
+            >
+              <img
+                class="object-cover rounded-[50%] w-full"
+                src="https://avatars.githubusercontent.com/u/93953404?v=4"
+                alt="Foto de Christian Chico"
+              />
+            </div>
+            <div class="justify-center text-center">
+              <p
+                class="p-2 rounded-xl border border-[#3a8f49] text-[#3a8f49] bg-[#0d1e1b] mt-5"
+              >
+                Open to work
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col justify-center items-start text-left px-8">
+            <p class="text-lg font-semibold">
+              I'm, an software engineer, I am a passionate Full-Stack developer
+              with experience in different technologies for backend, frontend
+              and database development, from Ecuador, currently searching for a
+              job. I've been working on many projects developing movil and web
+              applications throw all my studies. Currently, I am expanding my
+              knowledge in Next.js.
+            </p>
+            <br />
+            <p class="text-lg font-semibold">
+              My goal is to course a Master's degree in Cybersecurity.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="mt-28">
+        <div class="flex flex-col items-center justify-start mx-36 my-10">
+          <header>
+            <h1 class="mb-14 text-4xl font-black text-transparent">My Stack</h1>
+          </header>
+          <div class="mx-[20%]">
+            <div class="grid grid-rows-2 items-center gap-16">
+              <div class="grid grid-cols-7 gap-16">
+                <div class="col-start-1">
+                  <Skills
+                    img="/icons/javascript.svg"
+                    color="#FFDA3F"
+                    name="JAVASCRIPT"
+                  />
+                </div>
+                <div>
+                  <Skills img="/icons/php.svg" color="#105FC2" name="PHP" />
+                </div>
+                <div>
+                  <Skills
+                    img="/icons/typescript.svg"
+                    color="#115FC1"
+                    name="TYPESCRIPT"
+                  />
+                </div>
+                <div>
+                  <Skills
+                    img="/icons/expressjs.svg"
+                    color="#747783"
+                    name="EXPRESS"
+                  />
+                </div>
+                <div>
+                  <Skills img="/icons/nodejs.svg" color="#8cc84b" name="NODE" />
+                </div>
+                <div>
+                  <Skills img="/icons/nestjs.svg" color="#ea2845" name="NEST" />
+                </div>
+                <div>
+                  <Skills img="/icons/html5.svg" color="#E44D26" name="HTML" />
+                </div>
+              </div>
+              <div class="grid grid-cols-7 gap-16">
+                <div class="col-start-1">
+                  <Skills img="/icons/css.svg" color="#264de4 " name="CSS" />
+                </div>
+                <div>
+                  <Skills
+                    img="/icons/tailwindcss.svg"
+                    color="#46a8b1"
+                    name="TAILWINDCSS"
+                  />
+                </div>
+                <div>
+                  <Skills
+                    img="/icons/reactjs.svg"
+                    color="#00d8ff"
+                    name="REACT"
+                  />
+                </div>
+                <div>
+                  <Skills img="/icons/nextjs.svg" color="#747783" name="NEXT" />
+                </div>
+                <div>
+                  <Skills img="/icons/figma.svg" color="#9856ec" name="FIGMA" />
+                </div>
+                <div>
+                  <Skills
+                    img="/icons/postman.svg"
+                    color="#E44D26"
+                    name="POSTMAN"
+                  />
+                </div>
+                <div>
+                  <Skills img="/icons/vsc.svg" color="#007acc" name="VSC" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="overflow-hidden">
+      <div class="flex flex-col items-center justify-start my-36">
+        <h1 class="text-7xl font-black text-transparent mb-12">Experience</h1>
+        <div class="pulsate-border">
+          <Experience
+            img="/img/experience/UTA.webp"
+            img2="/img/experience/FISEI.png"
+            title="- Laboratory Intern "
+            date="February 2024 - June 2024"
+            item1="Development of a web application to manage laboratory, subject and teacher schedules. (In Progress 🛠)"
+            item2="Development of a mobile application for ID card validator."
+            item3="Maintenance of a web application for document management."
+            item4="Machine maintenance and support."
+            item5="Maintenance and restructuring of classrooms."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements" class="overflow-hidden">
+      <div class="flex flex-col justify-center items-center mb-36">
+        <h1 class="text-7xl font-black text-transparent mb-12">Archivements</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+          <Archivements
+            img="/img/archivements/java.jpg"
+            title="JAVA Programming degree"
+            body="Java Basics"
+            date="March 30, 2024"
+            link="https://drive.google.com/file/d/1AJMvviNfzwzL0hZ7eOiSsyGKMjD--q_i/view?usp=drive_link"
+          />
+          <Archivements
+            img="/img/archivements/php.jpg"
+            title="PHP Programming degree"
+            body="PHP Basics"
+            date="April 13, 2024"
+            link="https://drive.google.com/file/d/1gSxeQOg0VHJW0eScWqIuftrP86sp96ac/view?usp=drive_link"
+          />
+          <Archivements
+            img="/img/archivements/CSEI23.jpg"
+            title="Emerging Research Frintiers in Computer Science, Electronics and Industrial Engineering"
+            body="CSEI 23"
+            date="November 10, 2023"
+            link="https://drive.google.com/file/d/1Mh1JAn7KFGfiwbGHLMGcQyz4SevOSK8g/view?usp=drive_link"
+          />
+          <Archivements
+            img="/img/archivements/CSEI23Participation.jpg"
+            title="V Conferenceon Computer Science, Electronics and Industrial Engineering (CSEI 23)"
+            body="CSEI 23 Participation"
+            date="November 10, 2023"
+            link="https://drive.google.com/file/d/1Ixrg2B-guq8KUR7fSzm_M_hQO5-ekKbj/view?usp=drive_link"
+          />
+          <Archivements
+            img="/img/archivements/CSEI22.jpg"
+            title="The Research and its Future Trends in Computer Science, Electronics and Industrial Engineering"
+            body="CSEI 22"
+            date="November 7, 2022"
+            link="https://drive.google.com/file/d/1lUI-zu6I4ndb7P4Md3bqWhmolun4cFHi/view?usp=drive_link"
+          />
+          <Archivements
+            img="/img/archivements/CSEI22Participacion.jpg"
+            title="IV Conference on Computer Science, Electronics and Industrial Engineering (CSEI 22)"
+            body="CSEI 22 Participation"
+            date="November 7, 2022"
+            link="https://drive.google.com/file/d/1lUI-zu6I4ndb7P4Md3bqWhmolun4cFHi/view?usp=drive_link"
+          />
+          <Archivements
+            img="/img/archivements/EthicalHacking.jpg"
+            title="Ethical Hacking | Red Team 2da edición"
+            body="Hacker Mentor"
+            date="October 10, 2022"
+            link="https://drive.google.com/file/d/1lUI-zu6I4ndb7P4Md3bqWhmolun4cFHi/view?usp=drive_link"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="overflow-hidden">
+      <div class="flex flex-col justify-center items-center mb-36">
+        <h1 class="text-7xl font-black text-transparent mb-12">Projects</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
+          <Projects
+            img1="https://github.com/ChristianCLop/simdrive-frontend/raw/main/app/favicon.ico"
+            img2="https://github.com/ChristianCLop/simdrive-frontend/raw/main/public/screenshots/SimDriveOS.jpeg"
+            title="SimDrive"
+            tool1="Next.js"
+            tool2="HTML"
+            tool3="TailwindCSS"
+            tool4="CSS"
+            toolImg1="/icons/nextjs.svg"
+            toolImg2="/icons/html5.svg"
+            toolImg3="/icons/tailwindcss.svg"
+            toolImg4="/icons/css.svg"
+            body="SimDrive is a didactic immersive learning experience with traffic rules in virtual worlds."
+            link="1"
+            github="https://github.com/ChristianCLop/simdrive-frontend"
+          />
+          <Projects
+            img1="https://github.com/ChristianCLop/DealDash-Ecommerce-Backend/raw/main/img/logo.png"
+            img2="https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend/raw/main/Images/3.Principal.jpeg"
+            title="DealDash"
+            tool1="React Native"
+            tool2="Tailwindcss"
+            tool3="Express"
+            tool4="PostgreSQL"
+            toolImg1="/icons/reactjs.svg"
+            toolImg2="/icons/tailwindcss.svg"
+            toolImg3="/icons/expressjs.svg"
+            toolImg4="/icons/postgresql.svg"
+            body="This project involves creating an E-Commerce aplication . It includes functionalities and design elements to recreate a full functional E-Commerce application."
+            link="1"
+            github="https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend"
+          />
+          <Projects
+            img1="https://github.com/ChristianCLop/frontend-simulador/raw/main/public/img/logoApp.png"
+            img2="https://github.com/ChristianCLop/frontend-simulador/raw/main/public/imgs/investment.png"
+            title="CrediPlan"
+            tool1="Next.js"
+            tool2="TailwindCSS"
+            tool3="Nest.js"
+            tool4="PostgreSQL"
+            toolImg1="/icons/nextjs.svg"
+            toolImg2="/icons/tailwindcss.svg"
+            toolImg3="/icons/nestjs.svg"
+            toolImg4="/icons/postgresql.svg"
+            body="This project consist of creating an Student Managment that makes the basic CRUD of students of an institucion, also it has fingerprint login."
+            link="1"
+            github="https://github.com/ChristianCLop/frontend-simulador"
+          />
+          <Projects
+            img1="https://github.com/Eduardlink/RegistroEstudiantes2023/raw/main/src/imagenesFrames/Loguin_Admin.png"
+            img2="/img/transparente.png"
+            title="Student Management Application"
+            tool1="Java"
+            tool2=""
+            tool3=""
+            tool4=""
+            toolImg1="/icons/java.svg"
+            toolImg2=""
+            toolImg3=""
+            toolImg4=""
+            body="This project consist of creating an Student Managment that makes the basic CRUD of students of an institucion, also it has fingerprint login."
+            link="1"
+            github="https://github.com/Eduardlink/RegistroEstudiantes2023"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class=""></div>
+    </section>
+  </main>
+</Layout>

@@ -1,0 +1,170 @@
+---
+import "animate.css";
+import "../css/styles.css";
+---
+
+<footer
+  class="py-4 sm:py-6 bg-black border-t rounded-t-xl h-[410px] z-50"
+  x-data="{expanded: false}"
+>
+  <div class="grid grid-cols-2 w-full h-full mb-4">
+    <div class="col-start-1">
+      <div class="grid grid-cols-2 justify-center items-center">
+        <div
+          class="ml-10 col-start-1 flex flex-col justify-center items-center p-4 font-mono bg-black"
+        >
+          <form
+            action="https://formspree.io/f/meqyywlw"
+            method="POST"
+            class="w-full max-w-sm"
+          >
+            <div class="flex flex-col mb-4">
+              <label class="uppercase my-1 text-white">Your name:</label>
+              <input
+                class="border rounded-lg p-2 placeholder:text-[#a4a4a4]"
+                type="text"
+                name="name"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="uppercase my-1 text-white">Your email:</label>
+              <input
+                class="border rounded-lg p-2 placeholder:text-[#a4a4a4]"
+                type="email"
+                name="email"
+                placeholder="Your email"
+                required
+              />
+            </div>
+            <div class="flex flex-col mb-4">
+              <label class="uppercase my-1 text-white">Your message:</label>
+              <textarea
+                class="border rounded-lg p-2 placeholder:text-[#a4a4a4]"
+                name="message"
+                placeholder="Your message"
+                required></textarea>
+            </div>
+            <button
+              class="border-2 border-white py-2 px-4 mt-4 rounded-xl text-white hover:bg-white hover:text-black transition-colors"
+              type="submit"
+            >
+              Get in Touch
+            </button>
+          </form>
+        </div>
+        <div
+          class="col-start-2 social-links flex flex-col justify-center items-center"
+        >
+          <h1 class="mb-2 mt-4">Contacts</h1>
+          <div class="flex flex-row gap-4">
+            <a
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              class="in"
+              target="_blank"
+              href="https://www.linkedin.com/in/christianchicolópez"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                height="20"
+                width="20"
+                class=""
+              >
+                <path
+                  stroke="#fff"
+                  stroke-linejoin="round"
+                  d="M1.5 3.5a2 2 0 1 0 4 0 2 2 0 1 0 -4 0"
+                  stroke-width="1"></path>
+                <path
+                  stroke="#fff"
+                  stroke-linejoin="round"
+                  d="M1.5 22.5v-14h4v14h-4Z"
+                  clip-rule="evenodd"
+                  stroke-width="1"></path>
+                <path
+                  stroke="#fff"
+                  stroke-linejoin="round"
+                  d="M8 8.5v14h4v-6.908c0 -1.092 1 -3.092 3.895 -3.092 1.643 0 2.605 0.845 2.605 2.5v7.5h4V15c0 -1.309 -0.312 -2.937 -1.394 -4.277 -1.144 -1.417 -2.913 -2.223 -5.21 -2.223 -1.513 0 -2.835 0.615 -3.896 1.366V8.5H8Z"
+                  clip-rule="evenodd"
+                  stroke-width="1"></path>
+              </svg>
+            </a>
+
+            <a
+              data-aos="fade-up"
+              data-aos-anchor-placement="top-bottom"
+              class="git"
+              target="_blank"
+              href="https://github.com/ChristianCLop"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                height="24"
+                width="24"
+              >
+                <path
+                  stroke="#fff"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M11.996 1.771a10.486 10.486 0 0 0 -3.314 20.438c0.523 0.092 0.69 -0.216 0.69 -0.493 0 -0.25 0.005 -0.945 0 -1.824 -2.919 0.633 -3.522 -1.381 -3.522 -1.381a2.775 2.775 0 0 0 -1.163 -1.534c-0.952 -0.65 0.071 -0.638 0.071 -0.638a2.201 2.201 0 0 1 1.607 1.08 2.232 2.232 0 0 0 3.05 0.871c0.05 -0.53 0.285 -1.025 0.666 -1.397 -2.328 -0.266 -4.776 -1.165 -4.776 -5.184a4.055 4.055 0 0 1 1.08 -2.815 3.762 3.762 0 0 1 0.103 -2.774s0.882 -0.282 2.883 1.076a9.924 9.924 0 0 1 5.252 0c2.007 -1.357 2.881 -1.076 2.881 -1.076 0.387 0.878 0.424 1.87 0.104 2.774a4.05 4.05 0 0 1 1.079 2.816c0 4.03 -2.452 4.916 -4.789 5.174a2.487 2.487 0 0 1 0.718 1.933v2.904c0 0.28 0.17 0.59 0.702 0.488a10.487 10.487 0 0 0 -3.322 -20.438v0Z"
+                  stroke-width="1"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-start-2">
+      <div class="grid grid-cols-2 w-full h-full">
+        <div class="col-start-1">
+          <div class="flex flex-col justify-center items-center text-center">
+            <h1 class="mb-4 mt-4">Navegation</h1>
+            <div class="flex flex-col gap-8 mb-6 font-mono">
+              <a href="#">Home</a>
+              <a href="#about">About Me</a>
+              <a href="#experience">Experience</a>
+              <a href="#achievements">Archivements</a>
+              <a href="#projects">Projects</a>
+              <a href="#contact">Contacts</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-start-2">
+          <div class="flex flex-col justify-center items-center text-center">
+            <h1 class="mb-4 mt-4">About this web</h1>
+            <div class="flex flex-col gap-8 mb-6 font-mono">
+              <p>Created with</p>
+              <p class="inline-block">
+                Astro <img
+                  class="w-6 inline-block"
+                  src="/icons/astro.svg"
+                  alt=""
+                />
+              </p>
+              <p class="inline-block">
+                Tailwindcss <img
+                  class="w-6 inline-block"
+                  src="/icons/tailwindcss.svg"
+                  alt=""
+                />
+              </p>
+              <p class="inline-block">
+                CSS <img class="w-6 inline-block" src="/icons/css.svg" alt="" />
+              </p>
+              <div>
+                <p class="inline-block">Created by</p>
+                <p class="text-[#3a8f49] inline-block">Christian Chico</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

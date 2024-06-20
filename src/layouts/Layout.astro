@@ -1,0 +1,50 @@
+---
+import { ViewTransitions } from "astro:transitions";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "aos/dist/aos.css";
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="https://careeraway.com/wp-content/uploads/2021/10/ca_logo_01.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <ViewTransitions />
+  </head>
+  <body>
+    <script>
+      import { aosInit } from "../js/aos";
+      aosInit();
+      document.addEventListener("astro:after-swap", aosInit);
+    </script>
+    <Header />
+    <slot />
+    <Footer />    
+  </body>
+</html>
+<style is:global>
+  :root {
+    color-scheme: light dark;
+  }
+  html {
+    font-family: system-ui, sans-serif;
+  }
+
+  body {
+    background: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+</style>
