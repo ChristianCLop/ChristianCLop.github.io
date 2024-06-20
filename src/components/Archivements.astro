@@ -10,7 +10,7 @@ interface Props {
 const { img, title, body, date, link } = Astro.props;
 ---
 
-<li data-aos="zoom-out-up" data-aos-duration="2000" class="link-card p-4 border rounded-lg bg-gray-800 h-[450px] w-[550px] border-animate">
+<li data-aos="zoom-out-up" data-aos-duration="2000" class="link-card p-4 border rounded-lg bg-gray-800 h-[450px] w-[550px] border-animate max-sm:w-[300px] max-sm:h-[350px]">
   <div class="flex flex-col justify-between h-full w-full">
     <div class="relative flex justify-center items-center h-[75%] w-full overflow-hidden">
       <img src={img} alt={title} class="w-full h-full object-cover rounded-t-lg transition-transform duration-300 ease-in-out transform hover:scale-110" />

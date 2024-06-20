@@ -18,17 +18,23 @@ const { img, img2, title, date, item1, item2, item3, item4, item5 } =
 <li
   data-aos="fade-up"
   data-aos-duration="2000"
-  class="link-card p-4 border border-3 rounded-lg bg-gray-800 w-[700px] h-[350px] border-animate"
+  class="link-card p-4 border border-3 rounded-lg bg-gray-800 w-[700px] h-[350px] border-animate max-md:w-[600px] max-md:h-[350px] max-sm:w-[300px] max-sm:h-[650px]"
 >
   <div class="flex flex-col space-y-4 items-start justify-center m-8">
-    <div class="flex flex-row items-center space-x-4">
-      <img src={img} alt={img} class="w-20 h-20 object-cover" />
-      <img src={img2} alt={img2} class="w-20 h-20 object-cover" />
-      <h2 class="text-2xl text-white font-mono font-semibold mt-2 uppercase">
-        {title}
-      </h2>
+    <div
+      class="flex flex-row items-center space-x-4 max-sm:flex max-sm:flex-col"
+    >
+      <div class="flex flex-row items-center space-x-4">
+        <img src={img} alt={img} class="w-20 h-20 object-cover" />
+        <img src={img2} alt={img2} class="w-20 h-20 object-cover" />
+      </div>
+      <div>
+        <h2 class="text-2xl text-white font-mono font-semibold mt-2 uppercase max-sm:text-lg">
+          {title}
+        </h2>
+      </div>
     </div>
-    <div class="text-lg font-semibold text-white text-center">
+    <div class="text-lg font-semibold text-white text-center max-sm:text-base">
       <h2 class="font-mono">{date}</h2>
     </div>
     <div class="flex flex-col items-start space-y-1">

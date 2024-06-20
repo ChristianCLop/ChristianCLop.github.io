@@ -4,14 +4,16 @@ import "../css/styles.css";
 ---
 
 <footer
-  class="py-4 sm:py-6 bg-black border-t rounded-t-xl h-[410px] z-50"
+  class="py-4 sm:py-6 bg-black border-t rounded-t-xl h-[410px] z-50 max-sm:h-auto"
   x-data="{expanded: false}"
 >
-  <div class="grid grid-cols-2 w-full h-full mb-4">
+  <div class="grid grid-cols-2 w-full h-full mb-4 max-sm:flex max-sm:flex-col">
     <div class="col-start-1">
-      <div class="grid grid-cols-2 justify-center items-center">
+      <div
+        class="grid grid-cols-2 justify-center items-center max-sm:flex max-sm:flex-row"
+      >
         <div
-          class="ml-10 col-start-1 flex flex-col justify-center items-center p-4 font-mono bg-black"
+          class="ml-10 col-start-1 flex flex-col justify-center items-center p-4 font-mono bg-black max-md:col-span-2 max-sm:ml-0"
         >
           <form
             action="https://formspree.io/f/meqyywlw"
@@ -55,7 +57,7 @@ import "../css/styles.css";
           </form>
         </div>
         <div
-          class="col-start-2 social-links flex flex-col justify-center items-center"
+          class="col-start-2 social-links flex flex-col justify-center items-center max-md:hidden max-sm:hidden"
         >
           <h1 class="mb-2 mt-4">Contacts</h1>
           <div class="flex flex-row gap-4">
@@ -121,8 +123,8 @@ import "../css/styles.css";
       </div>
     </div>
     <div class="col-start-2">
-      <div class="grid grid-cols-2 w-full h-full">
-        <div class="col-start-1">
+      <div class="grid grid-cols-2 max-sm:flex max-sm:flex-row">
+        <div class="col-start-1 max-sm:hidden">
           <div class="flex flex-col justify-center items-center text-center">
             <h1 class="mb-4 mt-4">Navegation</h1>
             <div class="flex flex-col gap-8 mb-6 font-mono">
@@ -135,7 +137,7 @@ import "../css/styles.css";
             </div>
           </div>
         </div>
-        <div class="col-start-2">
+        <div class="col-start-2 max-sm:w-full">
           <div class="flex flex-col justify-center items-center text-center">
             <h1 class="mb-4 mt-4">About this web</h1>
             <div class="flex flex-col gap-8 mb-6 font-mono">
