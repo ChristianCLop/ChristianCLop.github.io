@@ -5,9 +5,10 @@ interface Props {
   img: string;
   color: string;
   name: string;
+  level: "Baja" | "Media" | "Alta" | number;
 }
 
-const { img, color, name } = Astro.props;
+const { img, color, name, level } = Astro.props;
 
 function getColorWithOpacity(color: string, opacity: number) {
   if (color.startsWith("#")) {
@@ -35,17 +36,27 @@ const glowColor = getGlowColor(color);
 const backgroundColor = getColorWithOpacity(color, 0.6);
 ---
 
-<li
-  class="w-[70px] h-[70px] rounded-xl relative group flex items-center justify-center pulsate-bck max-sm:w-[45px] max-sm:h-[45px]"
-  style={`background-color: ${backgroundColor}; --glow-color: ${glowColor}; --glow-color-stronger: ${getGlowColor(color, 0.8)};`}
->
-  <span
-    class={`tooltip absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 bg-transparent text-xs p-2 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 border`}
-    style={`color: ${color}; border-color: ${color};`}
-  >
-    {name}
-  </span>
-  <img src={img} alt={name} class="w-10 h-10 object-contain" />
+<li class="w-full flex flex-col gap-2 my-6 pr-18">
+  <div class="flex items-center gap-4">
+    <img src={img} alt={name} class="w-8 h-8 object-contain" />
+    <span class="font-mono text-sm text-white">{name}</span>
+  </div>
+
+  <div class="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+    <div
+      class="h-full transition-all duration-500 rounded-full"
+      style={`width: ${
+        typeof level === "number"
+          ? level + "%"
+          : level === "Alta"
+            ? "90%"
+            : level === "Media"
+              ? "60%"
+              : "30%"
+      }; background-color: ${glowColor};`}
+    >
+    </div>
+  </div>
 </li>
 
 <style>
