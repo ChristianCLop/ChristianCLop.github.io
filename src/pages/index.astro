@@ -144,7 +144,7 @@ import Projects from "../components/Projects.astro";
               and database development, from Ecuador, currently searching for a
               job. I've been working on many projects developing movil and web
               applications throw all my studies. Currently, I am expanding my
-              knowledge in Docker.
+              knowledge in Arch Linux.
             </p>
             <br />
             <p class="text-lg font-medium font-mono">
@@ -152,8 +152,7 @@ import Projects from "../components/Projects.astro";
             </p>
             <br />
             <p class="text-lg font-medium font-mono">
-              In my free time I usually listen to music. Play video games.
-              Hangout with my family, girlfriend and friends.
+              On my free time I love to learn about new technologies, and I am a big fan of cybersecurity and ethical hacking. 
             </p>
           </div>
         </div>
@@ -171,37 +170,36 @@ import Projects from "../components/Projects.astro";
             class="text-center grid grid-cols-3 gap-x-16 gap-y-16
                     max-lg:grid-cols-3 max-lg:gap-x-12 max-lg:gap-y-14
                     max-md:grid-cols-2 max-md:gap-x-10 max-md:gap-y-12
-                    max-sm:grid-cols-1 max-sm:gap-x-6 max-sm:gap-y-10
-                    "
+                    max-sm:grid-cols-1 max-sm:gap-x-6 max-sm:gap-y-10"
           >
             <div class="border rounded-lg p-4">
               <h1>Languages</h1>
               <Skills
-                img="/icons/javascript.svg"
+                img="/icons/skills/javascript.svg"
                 color="#FFDA3F"
                 name="JAVASCRIPT"
                 level={75}
               />
               <Skills
-                img="/icons/typescript.svg"
+                img="/icons/skills/typescript.svg"
                 color="#115FC1"
                 name="TYPESCRIPT"
                 level={70}
               />
               <Skills
-                img="/icons/python.svg"
+                img="/icons/skills/python.svg"
                 color="#2371b1"
                 name="PYTHON"
                 level={50}
               />
               <Skills
-                img="/icons/php.svg"
+                img="/icons/skills/php.svg"
                 color="#105FC2"
                 name="PHP"
                 level={55}
               />
               <Skills
-                img="/icons/java.svg"
+                img="/icons/skills/java.svg"
                 color="#f58219"
                 name="JAVA"
                 level={50}
@@ -210,19 +208,19 @@ import Projects from "../components/Projects.astro";
             <div class="border rounded-lg p-4">
               <h1>Backend</h1>
               <Skills
-                img="/icons/nestjs.svg"
+                img="/icons/skills/nestjs.svg"
                 color="#ea2845"
                 name="NEST"
                 level={"Alta"}
               />
               <Skills
-                img="/icons/nodejs.svg"
+                img="/icons/skills/nodejs.svg"
                 color="#8cc84b"
                 name="NODE"
                 level={75}
               />
               <Skills
-                img="/icons/expressjs.svg"
+                img="/icons/skills/expressjs.svg"
                 color="#747783"
                 name="EXPRESS"
                 level={"Media"}
@@ -231,37 +229,37 @@ import Projects from "../components/Projects.astro";
             <div class="border rounded-lg p-4">
               <h1>Frontend</h1>
               <Skills
-                img="/icons/nextjs.svg"
+                img="/icons/skills/nextjs.svg"
                 color="#747783"
                 name="NEXT"
                 level={70}
               />
               <Skills
-                img="/icons/reactjs.svg"
+                img="/icons/skills/reactjs.svg"
                 color="#00d8ff"
                 name="REACT"
                 level={70}
               />
               <Skills
-                img="/icons/angular.svg"
+                img="/icons/skills/angular.svg"
                 color="#dd0031"
                 name="Angular"
                 level={"Media"}
               />
               <Skills
-                img="/icons/html5.svg"
+                img="/icons/skills/html5.svg"
                 color="#E44D26"
                 name="HTML"
                 level={"Media"}
               />
               <Skills
-                img="/icons/css.svg"
+                img="/icons/skills/css.svg"
                 color="#264de4 "
                 name="CSS"
                 level={"Media"}
               />
               <Skills
-                img="/icons/tailwindcss.svg"
+                img="/icons/skills/tailwindcss.svg"
                 color="#46a8b1"
                 name="TAILWINDCSS"
                 level={70}
@@ -270,19 +268,19 @@ import Projects from "../components/Projects.astro";
             <div class="border rounded-lg p-4">
               <h1>Databases</h1>
               <Skills
-                img="/icons/mysql.svg"
+                img="/icons/skills/mysql.svg"
                 color="#05526f"
                 name="MySQL"
                 level={85}
               />
               <Skills
-                img="/icons/postgresql.svg"
+                img="/icons/skills/postgresql.svg"
                 color="#336791"
                 name="PostgreSQL"
                 level={75}
               />
               <Skills
-                img="/icons/mongodb.svg"
+                img="/icons/skills/mongodb.svg"
                 color="#13aa52"
                 name="MongoDB"
                 level={30}
@@ -291,7 +289,7 @@ import Projects from "../components/Projects.astro";
             <div class="border rounded-lg p-4">
               <h1>DevOps</h1>
               <Skills
-                img="/icons/docker.svg"
+                img="/icons/skills/docker.svg"
                 color="#1794d4"
                 name="Docker"
                 level={55}
@@ -300,13 +298,13 @@ import Projects from "../components/Projects.astro";
             <div class="border rounded-lg p-4">
               <h1>Source Control</h1>
               <Skills
-                img="/icons/github.svg"
+                img="/icons/skills/github.svg"
                 color="#525765"
                 name="GITHUB"
                 level={75}
               />
               <Skills
-                img="/icons/git.svg"
+                img="/icons/skills/git.svg"
                 color="#d64935"
                 name="GIT"
                 level={65}
@@ -339,12 +337,28 @@ import Projects from "../components/Projects.astro";
     </section>
 
     <section id="experience" class="overflow-hidden">
-      <div class="flex flex-col items-center justify-start my-36">
+      <div class="flex flex-col items-center justify-start mt-36 mb-10">
         <h1
           class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
         >
           Experience
         </h1>
+        <div class="pulsate-border">
+          <Experience
+            img="/img/experience/UTA.webp"
+            img2="/img/experience/FISEI.png"
+            title="Laboratory Technician"
+            date="September 2025 - January 2026"
+            item1="Server administration and maintenance."
+            item2="Management, support, and maintenance of internal faculty applications."
+            item3="Technical support and maintenance of academic IT infrastructure."
+            item4="Development of web applications and internal tools to optimize processes."
+            skills={[
+              { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+              { name: "Docker", img: "/icons/skills/docker.svg" }
+            ]}
+          />
+        </div>
         <div class="pulsate-border">
           <Experience
             img="/img/experience/UTA.webp"
@@ -356,6 +370,13 @@ import Projects from "../components/Projects.astro";
             item3="Maintenance of a web application for document management."
             item4="Machine maintenance and support."
             item5="Maintenance and restructuring of classrooms."
+            skills={[
+              { name: "React Native", img: "/icons/skills/reactjs.svg" },
+              { name: "Angular", img: "/icons/skills/angular.svg" },
+              { name: "MySQL", img: "/icons/skills/mysql.svg" },
+              { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+              { name: "Technical Support", img: "/icons/skills/technical_support.svg" },
+            ]}
           />
         </div>
       </div>
@@ -384,20 +405,6 @@ import Projects from "../components/Projects.astro";
             link="https://drive.google.com/file/d/1wLG311guenZzt0kmB3-tAAOHtrXpDoOT/view?usp=drive_link"
           />
           <Archivements
-            img="/img/archivements/CSEI 24 PAPER 9 Presentation.png"
-            title="Emerging Research Frontiers in Computer Science, Electronics and Industrial Engineering"
-            body="CSEI 24 PAPER 9"
-            date="October 25, 2024"
-            link="https://drive.google.com/file/d/1rRLd2yZk8c5z8TigoyYGJILH1tX2ucny/view?usp=drive_link"
-          />
-          <Archivements
-            img="/img/archivements/CSEI 24 PAPER 9.png"
-            title="Emerging Research Frontiers in Computer Science, Electronics and Industrial Engineering"
-            body="CSEI 24 PAPER 9"
-            date="October 25, 2024"
-            link="https://drive.google.com/file/d/1c8naRuSuPextO8QPYVCQ0JqEPgz5jmWk/view?usp=drive_link"
-          />
-          <Archivements
             img="/img/archivements/java.jpg"
             title="JAVA Programming degree"
             body="Java Basics"
@@ -412,11 +419,11 @@ import Projects from "../components/Projects.astro";
             link="https://drive.google.com/file/d/1gSxeQOg0VHJW0eScWqIuftrP86sp96ac/view?usp=drive_link"
           />
           <Archivements
-            img="/img/archivements/CSEI23.jpg"
+            img="/img/archivements/CSEI 24 PAPER 9 Presentation.png"
             title="Emerging Research Frontiers in Computer Science, Electronics and Industrial Engineering"
-            body="CSEI 23"
-            date="November 10, 2023"
-            link="https://drive.google.com/file/d/1Mh1JAn7KFGfiwbGHLMGcQyz4SevOSK8g/view?usp=drive_link"
+            body="CSEI 24 PAPER 9"
+            date="October 25, 2024"
+            link="https://drive.google.com/file/d/1rRLd2yZk8c5z8TigoyYGJILH1tX2ucny/view?usp=drive_link"
           />
           <Archivements
             img="/img/archivements/EthicalHacking.jpg"
@@ -445,13 +452,12 @@ import Projects from "../components/Projects.astro";
             tool2="TailwindCSS"
             tool3="Nest.js"
             tool4="MySQL"
-            toolImg1="/icons/nextjs.svg"
-            toolImg2="/icons/tailwindcss.svg"
-            toolImg3="/icons/nestjs.svg"
-            toolImg4="/icons/mysql.svg"
+            toolImg1="/icons/skills/nextjs.svg"
+            toolImg2="/icons/skills/tailwindcss.svg"
+            toolImg3="/icons/skills/nestjs.svg"
+            toolImg4="/icons/skills/mysql.svg"
             body="Horarios FISEI this is an application where you can create your academic schedule with IA, and then manage and search it using many parameters."
             github="https://github.com/ChristianCLop/HorariosFISEI"
-            projectLink="https://horariosfisei.uta.edu.ec"
           />
           <Projects
             img1="https://avatars.githubusercontent.com/u/166830605?s=200&v=4"
@@ -461,10 +467,10 @@ import Projects from "../components/Projects.astro";
             tool2="TailwindCSS"
             tool3="Node.js"
             tool4="MySQL"
-            toolImg1="/icons/nextjs.svg"
-            toolImg2="/icons/tailwindcss.svg"
-            toolImg3="/icons/nodejs.svg"
-            toolImg4="/icons/mysql.svg"
+            toolImg1="/icons/skills/nextjs.svg"
+            toolImg2="/icons/skills/tailwindcss.svg"
+            toolImg3="/icons/skills/nodejs.svg"
+            toolImg4="/icons/skills/mysql.svg"
             body="GourtmetGO is an online restaurant management platform, which aims to streamline the purchasing process and provide facilities for small businesses to emerge in the digital market."
             github="https://github.com/PSW-GourtmetGO"
           />
@@ -476,10 +482,10 @@ import Projects from "../components/Projects.astro";
             tool2="HTML"
             tool3="TailwindCSS"
             tool4="CSS"
-            toolImg1="/icons/nextjs.svg"
-            toolImg2="/icons/html5.svg"
-            toolImg3="/icons/tailwindcss.svg"
-            toolImg4="/icons/css.svg"
+            toolImg1="/icons/skills/nextjs.svg"
+            toolImg2="/icons/skills/html5.svg"
+            toolImg3="/icons/skills/tailwindcss.svg"
+            toolImg4="/icons/skills/css.svg"
             body="SimDrive is a didactic immersive learning experience with traffic rules in virtual worlds."
             github="https://github.com/ChristianCLop/simdrive-frontend"
           />
@@ -491,10 +497,10 @@ import Projects from "../components/Projects.astro";
             tool2="Tailwindcss"
             tool3="Express"
             tool4="PostgreSQL"
-            toolImg1="/icons/reactjs.svg"
-            toolImg2="/icons/tailwindcss.svg"
-            toolImg3="/icons/expressjs.svg"
-            toolImg4="/icons/postgresql.svg"
+            toolImg1="/icons/skills/reactjs.svg"
+            toolImg2="/icons/skills/tailwindcss.svg"
+            toolImg3="/icons/skills/expressjs.svg"
+            toolImg4="/icons/skills/postgresql.svg"
             body="This project involves creating an E-Commerce aplication . It includes functionalities and design elements to recreate a full functional E-Commerce application."
             github="https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend"
           />
@@ -506,10 +512,10 @@ import Projects from "../components/Projects.astro";
             tool2="TailwindCSS"
             tool3="Nest.js"
             tool4="PostgreSQL"
-            toolImg1="/icons/nextjs.svg"
-            toolImg2="/icons/tailwindcss.svg"
-            toolImg3="/icons/nestjs.svg"
-            toolImg4="/icons/postgresql.svg"
+            toolImg1="/icons/skills/nextjs.svg"
+            toolImg2="/icons/skills/tailwindcss.svg"
+            toolImg3="/icons/skills/nestjs.svg"
+            toolImg4="/icons/skills/postgresql.svg"
             body="This project involves creating an Credit Simulator aplication. It includes all basics elements to recreate a full functional application."
             github="https://github.com/ChristianCLop/frontend-simulador"
           />
@@ -521,7 +527,7 @@ import Projects from "../components/Projects.astro";
             tool2=""
             tool3=""
             tool4=""
-            toolImg1="/icons/java.svg"
+            toolImg1="/icons/skills/java.svg"
             toolImg2=""
             toolImg3=""
             toolImg4=""
