@@ -4,7 +4,7 @@ import "animate.css";
 import "../css/styles.css";
 import Skills from "../components/Skills.astro";
 import Experience from "../components/Experience.astro";
-import Archivements from "../components/Archivements.astro";
+import Archivement from "../sections/Archivement.astro";
 import Projects from "../components/Projects.astro";
 ---
 
@@ -383,66 +383,7 @@ import Projects from "../components/Projects.astro";
       </div>
     </section>
 
-    <section id="achievements" class="overflow-hidden">
-      <div class="flex flex-col justify-center items-center mb-36">
-        <h1
-          class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
-        >
-          Archivements
-        </h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
-          <Archivements
-            img="/img/archivements/Python Essentials 1.png"
-            title="Python Essentials"
-            body="Python Essentials 1"
-            date="February 19, 2026"
-            link="https://drive.google.com/file/d/1OpayUwHpEWC_LVi2mSlZT6wtxQy5DLjS/view?usp=sharing"
-          />
-          <Archivements
-            img="/img/archivements/cybersecurity.png"
-            title="Cybersecurity"
-            body="Introduction to Cybersecurity"
-            date="November 03, 2024"
-            link="https://drive.google.com/file/d/1_bmQsga2yVHQXWOIFWbqQ-P-Z26J-k_b/view?usp=drive_link"
-          />
-          <Archivements
-            img="/img/archivements/AI Fundamentals.png"
-            title="AI"
-            body="AI Fundamentals"
-            date="November 15, 2024"
-            link="https://drive.google.com/file/d/1wLG311guenZzt0kmB3-tAAOHtrXpDoOT/view?usp=drive_link"
-          />
-          <Archivements
-            img="/img/archivements/java.jpg"
-            title="JAVA Programming degree"
-            body="Java Basics"
-            date="March 30, 2024"
-            link="https://drive.google.com/file/d/1AJMvviNfzwzL0hZ7eOiSsyGKMjD--q_i/view?usp=drive_link"
-          />
-          <Archivements
-            img="/img/archivements/php.jpg"
-            title="PHP Programming degree"
-            body="PHP Basics"
-            date="April 13, 2024"
-            link="https://drive.google.com/file/d/1gSxeQOg0VHJW0eScWqIuftrP86sp96ac/view?usp=drive_link"
-          />
-          <Archivements
-            img="/img/archivements/CSEI 24 PAPER 9 Presentation.png"
-            title="Emerging Research Frontiers in Computer Science, Electronics and Industrial Engineering"
-            body="CSEI 24 PAPER 9"
-            date="October 25, 2024"
-            link="https://drive.google.com/file/d/1rRLd2yZk8c5z8TigoyYGJILH1tX2ucny/view?usp=drive_link"
-          />
-          <Archivements
-            img="/img/archivements/EthicalHacking.jpg"
-            title="Ethical Hacking | Red Team 2da edición"
-            body="Hacker Mentor"
-            date="October 10, 2022"
-            link="https://drive.google.com/file/d/1lUI-zu6I4ndb7P4Md3bqWhmolun4cFHi/view?usp=drive_link"
-          />
-        </div>
-      </div>
-    </section>
+    <Archivement/>
 
     <section id="projects" class="overflow-hidden">
       <div class="flex flex-col justify-center items-center mb-36">
