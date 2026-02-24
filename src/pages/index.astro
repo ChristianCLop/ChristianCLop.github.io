@@ -5,7 +5,7 @@ import "../css/styles.css";
 import Skills from "../components/Skills.astro";
 import Experience from "../components/Experience.astro";
 import Archivement from "../sections/archivement.astro";
-import Projects from "../components/Projects.astro";
+import Project from "../sections/project.astro";
 ---
 
 <Layout title="Christian Chico">
@@ -294,6 +294,12 @@ import Projects from "../components/Projects.astro";
                 name="Docker"
                 level={55}
               />
+              <Skills
+                img="/icons/skills/linux.svg"
+                color="#ffffff"
+                name="Linux"
+                level={45}
+              />
             </div>
             <div class="border rounded-lg p-4">
               <h1>Source Control</h1>
@@ -385,107 +391,7 @@ import Projects from "../components/Projects.astro";
 
     <Archivement/>
 
-    <section id="projects" class="overflow-hidden">
-      <div class="flex flex-col justify-center items-center mb-36">
-        <h1
-          class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
-        >
-          Projects
-        </h1>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-24">
-          <Projects
-            img1="https://github.com/ChristianCLop/HorariosFISEI/blob/main/images/logoApp.png?raw=true"
-            img2="https://github.com/ChristianCLop/HorariosFISEI/blob/main/images/Banner-01.png?raw=true"
-            title="Horarios FISEI"
-            tool1="Next.js"
-            tool2="TailwindCSS"
-            tool3="Nest.js"
-            tool4="MySQL"
-            toolImg1="/icons/skills/nextjs.svg"
-            toolImg2="/icons/skills/tailwindcss.svg"
-            toolImg3="/icons/skills/nestjs.svg"
-            toolImg4="/icons/skills/mysql.svg"
-            body="Horarios FISEI this is an application where you can create your academic schedule with IA, and then manage and search it using many parameters."
-            github="https://github.com/ChristianCLop/HorariosFISEI"
-          />
-          <Projects
-            img1="https://avatars.githubusercontent.com/u/166830605?s=200&v=4"
-            img2="https://github.com/PSW-GourtmetGO/GourtmetGo-Web-Respaldos/raw/develop/public/screenshots/Landing.png"
-            title="GourmetGO"
-            tool1="Next.js"
-            tool2="TailwindCSS"
-            tool3="Node.js"
-            tool4="MySQL"
-            toolImg1="/icons/skills/nextjs.svg"
-            toolImg2="/icons/skills/tailwindcss.svg"
-            toolImg3="/icons/skills/nodejs.svg"
-            toolImg4="/icons/skills/mysql.svg"
-            body="GourtmetGO is an online restaurant management platform, which aims to streamline the purchasing process and provide facilities for small businesses to emerge in the digital market."
-            github="https://github.com/PSW-GourtmetGO"
-          />
-          <Projects
-            img1="https://github.com/ChristianCLop/simdrive-frontend/raw/main/app/favicon.ico"
-            img2="https://github.com/ChristianCLop/simdrive-frontend/raw/main/public/screenshots/SimDriveOS.jpeg"
-            title="SimDrive"
-            tool1="Next.js"
-            tool2="HTML"
-            tool3="TailwindCSS"
-            tool4="CSS"
-            toolImg1="/icons/skills/nextjs.svg"
-            toolImg2="/icons/skills/html5.svg"
-            toolImg3="/icons/skills/tailwindcss.svg"
-            toolImg4="/icons/skills/css.svg"
-            body="SimDrive is a didactic immersive learning experience with traffic rules in virtual worlds."
-            github="https://github.com/ChristianCLop/simdrive-frontend"
-          />
-          <Projects
-            img1="https://github.com/ChristianCLop/DealDash-Ecommerce-Backend/raw/main/img/logo.png"
-            img2="https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend/raw/main/Images/3.Principal.jpeg"
-            title="DealDash"
-            tool1="React Native"
-            tool2="Tailwindcss"
-            tool3="Express"
-            tool4="PostgreSQL"
-            toolImg1="/icons/skills/reactjs.svg"
-            toolImg2="/icons/skills/tailwindcss.svg"
-            toolImg3="/icons/skills/expressjs.svg"
-            toolImg4="/icons/skills/postgresql.svg"
-            body="This project involves creating an E-Commerce aplication . It includes functionalities and design elements to recreate a full functional E-Commerce application."
-            github="https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend"
-          />
-          <Projects
-            img1="https://github.com/ChristianCLop/frontend-simulador/raw/main/public/img/logoApp.png"
-            img2="https://github.com/ChristianCLop/frontend-simulador/raw/main/public/imgs/investment.png"
-            title="CrediPlan"
-            tool1="Next.js"
-            tool2="TailwindCSS"
-            tool3="Nest.js"
-            tool4="PostgreSQL"
-            toolImg1="/icons/skills/nextjs.svg"
-            toolImg2="/icons/skills/tailwindcss.svg"
-            toolImg3="/icons/skills/nestjs.svg"
-            toolImg4="/icons/skills/postgresql.svg"
-            body="This project involves creating an Credit Simulator aplication. It includes all basics elements to recreate a full functional application."
-            github="https://github.com/ChristianCLop/frontend-simulador"
-          />
-          <Projects
-            img1="https://github.com/Eduardlink/RegistroEstudiantes2023/raw/main/src/imagenesFrames/Loguin_Admin.png"
-            img2="/img/transparente.png"
-            title="Student Management Application"
-            tool1="Java"
-            tool2=""
-            tool3=""
-            tool4=""
-            toolImg1="/icons/skills/java.svg"
-            toolImg2=""
-            toolImg3=""
-            toolImg4=""
-            body="This project consist of creating an Student Managment that makes the basic CRUD of students of an institucion, also it has fingerprint login."
-            github="https://github.com/Eduardlink/RegistroEstudiantes2023"
-          />
-        </div>
-      </div>
-    </section>
+    <Project/>
 
     <section id="contact">
       <div class=""></div>
