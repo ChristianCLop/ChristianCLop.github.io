@@ -1,0 +1,196 @@
+---
+import Projects from "../components/Projects.astro";
+
+const projects = [
+  {
+    img1: "https://github.com/ChristianCLop/HorariosFISEI/blob/main/images/logoApp.png?raw=true",
+    img2: "https://github.com/ChristianCLop/HorariosFISEI/blob/main/images/Banner-01.png?raw=true",
+    title: "Horarios FISEI",
+    tool1: "Next.js",
+    tool2: "TailwindCSS",
+    tool3: "Nest.js",
+    tool4: "MySQL",
+    toolImg1: "/icons/skills/nextjs.svg",
+    toolImg2: "/icons/skills/tailwindcss.svg",
+    toolImg3: "/icons/skills/nestjs.svg",
+    toolImg4: "/icons/skills/mysql.svg",
+    body: "Horarios FISEI this is an application where you can create your academic schedule with IA, and then manage and search it using many parameters.",
+    github: "https://github.com/ChristianCLop/HorariosFISEI",
+  },
+  {
+    img1: "https://grupoestena.com/wp-content/uploads/2022/04/Recurso-14-1.png",
+    img2: "https://grupoestena.com/wp-content/uploads/2022/04/Recurso-15-1.png",
+    title: "Estena Campus",
+    tool1: "AlmaLinux",
+    tool2: "Docker",
+    tool3: "PostgreSQL",
+    tool4: "Moodle",
+    toolImg1: "/icons/skills/almalinux.svg",
+    toolImg2: "/icons/skills/docker.svg",
+    toolImg3: "/icons/skills/postgresql.svg",
+    toolImg4: "/icons/skills/moodle.svg",
+    body: "Deployment and configuration of multiple Moodle platforms on a single AlmaLinux production server using Docker-based architecture with GitHub.",
+    projectLink: "https://campus.estenasalus.com/login/index.php",
+  },
+  {
+    img1: "https://yt3.googleusercontent.com/4-3yYpDFSuBiw2GzEPivUI7E3vaRDVkez52AomEF8M2_yNakzVKYsOyPLIBF-OTuymALNXcQVg=s160-c-k-c0x00ffffff-no-rj",
+    title: "Pharma Dicris",
+    tool1: "Wordpress",
+    tool2: "CSS",
+    tool3: "Figma",
+    toolImg1: "/icons/skills/wordpress.svg",
+    toolImg2: "/icons/skills/css.svg",
+    toolImg3: "/icons/skills/figma.svg",
+    body: "Development of a corporate website for a pharmaceutical company, including UI/UX design, front-end implementation, SEO optimization, and ongoing maintenance.",
+    projectLink: "https://pharmadicris.com/inicio/",
+  },
+  {
+    img1: "https://avatars.githubusercontent.com/u/166830605?s=200&v=4",
+    img2: "https://github.com/PSW-GourtmetGO/GourtmetGo-Web-Respaldos/raw/develop/public/screenshots/Landing.png",
+    title: "GourmetGO",
+    tool1: "Next.js",
+    tool2: "TailwindCSS",
+    tool3: "Node.js",
+    tool4: "MySQL",
+    toolImg1: "/icons/skills/nextjs.svg",
+    toolImg2: "/icons/skills/tailwindcss.svg",
+    toolImg3: "/icons/skills/nodejs.svg",
+    toolImg4: "/icons/skills/mysql.svg",
+    body: "GourtmetGO is an online restaurant management platform, which aims to streamline the purchasing process and provide facilities for small businesses to emerge in the digital market.",
+    github: "https://github.com/PSW-GourtmetGO",
+  },
+  {
+    img1: "https://github.com/ChristianCLop/simdrive-frontend/raw/main/app/favicon.ico",
+    img2: "https://github.com/ChristianCLop/simdrive-frontend/raw/main/public/screenshots/SimDriveOS.jpeg",
+    title: "SimDrive",
+    tool1: "Next.js",
+    tool2: "TailwindCSS",
+    tool3: "Node.js",
+    tool4: "MySQL",
+    toolImg1: "/icons/skills/nextjs.svg",
+    toolImg2: "/icons/skills/tailwindcss.svg",
+    toolImg3: "/icons/skills/nodejs.svg",
+    toolImg4: "/icons/skills/mysql.svg",
+    body: "SimDrive is a didactic immersive learning experience with traffic rules in virtual worlds.",
+    github: "https://github.com/ChristianCLop/simdrive-frontend",
+  },
+  {
+    img1: "https://github.com/ChristianCLop/DealDash-Ecommerce-Backend/raw/main/img/logo.png",
+    img2: "https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend/raw/main/Images/3.Principal.jpeg",
+    title: "DealDash",
+    tool1: "React Native",
+    tool2: "Tailwindcss",
+    tool3: "Express",
+    tool4: "PostgreSQL",
+    toolImg1: "/icons/skills/reactjs.svg",
+    toolImg2: "/icons/skills/tailwindcss.svg",
+    toolImg3: "/icons/skills/expressjs.svg",
+    toolImg4: "/icons/skills/postgresql.svg",
+    body: "This project involves creating an E-Commerce aplication . It includes functionalities and design elements to recreate a full functional E-Commerce application.",
+    github: "https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend",
+  },
+  {
+    img1: "https://github.com/ChristianCLop/frontend-simulador/raw/main/public/img/logoApp.png",
+    img2: "https://github.com/ChristianCLop/frontend-simulador/raw/main/public/imgs/investment.png",
+    title: "CrediPlan",
+    tool1: "Next.js",
+    tool2: "TailwindCSS",
+    tool3: "Nest.js",
+    tool4: "PostgreSQL",
+    toolImg1: "/icons/skills/nextjs.svg",
+    toolImg2: "/icons/skills/tailwindcss.svg",
+    toolImg3: "/icons/skills/nestjs.svg",
+    toolImg4: "/icons/skills/postgresql.svg",
+    body: "This project involves creating an Credit Simulator aplication. It includes all basics elements to recreate a full functional application.",
+    github: "https://github.com/ChristianCLop/frontend-simulador",
+  },
+  {
+    img1: "https://github.com/Eduardlink/RegistroEstudiantes2023/raw/main/src/imagenesFrames/Loguin_Admin.png",
+    title: "Student Management Application",
+    tool1: "Java",
+    tool2: "",
+    tool3: "",
+    tool4: "MySQL",
+    toolImg1: "/icons/skills/java.svg",
+    toolImg2: "",
+    toolImg3: "",
+    toolImg4: "/icons/skills/mysql.svg",
+    body: "This project consist of creating an Student Managment that makes the basic CRUD of students of an institucion, also it has fingerprint login.",
+    github: "https://github.com/Eduardlink/RegistroEstudiantes2023",
+  },
+];
+---
+
+<section id="projects" class="overflow-hidden">
+  <div class="flex flex-col justify-center items-center mb-36">
+    <h1
+      class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
+    >
+      Projects
+    </h1>
+    <div class="grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-1 gap-24">
+      {projects.slice(0, 6).map((item) => <Projects {...item} />)}
+    </div>
+    {
+      projects.length > 6 && (
+        <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+          <button
+            id="showAllProjBtn"
+            class="px-6 py-3 border border-white font-mono uppercase hover:bg-white hover:text-black relative rounded-xl"
+          >
+            Show All
+          </button>
+        </div>
+      )
+    }
+    <div
+      id="modalPrj"
+      class="fixed inset-0 hidden justify-center items-center z-50 h-full w-full"
+    >
+      <div
+        class="p-10 w-full max-h-[90vh] max-w-[200vh] overflow-y-auto relative border border-white rounded-xl bg-opacity-90 bg-zinc-900 scroll-hidde"
+      >
+        <button
+          id="closeModalPrj"
+          class="fixed top-12 right-16 text-white text-2xl z-50"
+        >
+          ✕
+        </button>
+
+        <div
+          class="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 gap-24 mt-6"
+        >
+          {projects.map((item) => <Projects {...item} compact={true} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalPrj");
+    const showBtn = document.getElementById("showAllProjBtn");
+    const closeBtn = document.getElementById("closeModalPrj");
+
+    showBtn?.addEventListener("click", () => {
+      modal?.classList.remove("hidden");
+      modal?.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    });
+
+    closeBtn?.addEventListener("click", () => {
+      modal?.classList.add("hidden");
+      modal?.classList.remove("flex");
+      document.body.style.overflow = "auto";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+</script>

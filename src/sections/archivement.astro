@@ -1,0 +1,128 @@
+---
+import Archivements from "../components/Archivements.astro";
+
+const archivements = [
+  {
+    img: "/img/archivements/Python Essentials 1.png",
+    title: "Python Essentials",
+    body: "Python Essentials 1",
+    date: "February 19, 2026",
+    link: "https://drive.google.com/file/d/1OpayUwHpEWC_LVi2mSlZT6wtxQy5DLjS/view?usp=sharing",
+  },
+  {
+    img: "/img/archivements/cybersecurity.png",
+    title: "Cybersecurity",
+    body: "Introduction to Cybersecurity",
+    date: "November 03, 2024",
+    link: "https://drive.google.com/file/d/1_bmQsga2yVHQXWOIFWbqQ-P-Z26J-k_b/view?usp=drive_link",
+  },
+  {
+    img: "/img/archivements/AI Fundamentals.png",
+    title: "AI",
+    body: "AI Fundamentals",
+    date: "November 15, 2024",
+    link: "https://drive.google.com/file/d/1wLG311guenZzt0kmB3-tAAOHtrXpDoOT/view?usp=drive_link",
+  },
+  {
+    img: "/img/archivements/java.jpg",
+    title: "JAVA Programming degree",
+    body: "Java Basics",
+    date: "March 30, 2024",
+    link: "https://drive.google.com/file/d/1AJMvviNfzwzL0hZ7eOiSsyGKMjD--q_i/view?usp=drive_link",
+  },
+  {
+    img: "/img/archivements/php.jpg",
+    title: "PHP Programming degree",
+    body: "PHP Basics",
+    date: "April 13, 2024",
+    link: "https://drive.google.com/file/d/1gSxeQOg0VHJW0eScWqIuftrP86sp96ac/view?usp=drive_link",
+  },
+  {
+    img: "/img/archivements/CSEI 24 PAPER 9 Presentation.png",
+    title:
+      "Emerging Research Frontiers in Computer Science, Electronics and Industrial Engineering",
+    body: "CSEI 24 PAPER 9",
+    date: "October 25, 2024",
+    link: "https://drive.google.com/file/d/1rRLd2yZk8c5z8TigoyYGJILH1tX2ucny/view?usp=drive_link",
+  },
+  {
+    img: "/img/archivements/EthicalHacking.jpg",
+    title: "Ethical Hacking | Red Team 2da edición",
+    body: "Hacker Mentor",
+    date: "October 10, 2022",
+    link: "https://drive.google.com/file/d/1lUI-zu6I4ndb7P4Md3bqWhmolun4cFHi/view?usp=drive_link",
+  },
+];
+---
+
+<section id="achievements" class="overflow-hidden">
+  <div class="flex flex-col justify-center items-center mb-36">
+    <h1
+      class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
+    >
+      Archivements
+    </h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 md:grid-cols-1 gap-24">
+      {archivements.slice(0, 6).map((item) => <Archivements {...item} />)}
+    </div>
+    {
+      archivements.length > 6 && (
+        <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+          <button
+            id="showAllBtn"
+            class="px-6 py-3 border border-white font-mono uppercase hover:bg-white hover:text-black relative rounded-xl"
+          >
+            Show All
+          </button>
+        </div>
+      )
+    }
+    <div
+      id="modalArch"
+      class="fixed inset-0 hidden justify-center items-center z-50 h-full w-full"
+    >
+      <div
+        class="p-10 w-full max-h-[90vh] max-w-[200vh] overflow-y-auto relative border border-white rounded-xl bg-opacity-90 bg-zinc-900 scroll-hidde"
+      >
+        <button
+          id="closeModalArch"
+          class="fixed top-12 right-16 text-white text-2xl z-50"
+        >
+          ✕
+        </button>
+
+        <div class="grid grid-cols-1 xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-24 mt-6">
+          {archivements.map((item) => <Archivements {...item} compact={true} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalArch");
+    const showBtn = document.getElementById("showAllBtn");
+    const closeBtn = document.getElementById("closeModalArch");
+
+    showBtn?.addEventListener("click", () => {
+      modal?.classList.remove("hidden");
+      modal?.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    });
+
+    closeBtn?.addEventListener("click", () => {
+      modal?.classList.add("hidden");
+      modal?.classList.remove("flex");
+      document.body.style.overflow = "auto";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+</script>
