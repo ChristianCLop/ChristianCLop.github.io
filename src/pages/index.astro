@@ -2,10 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import "animate.css";
 import "../css/styles.css";
-import Skills from "../components/Skills.astro";
+import Skill from "../sections/skill.astro";
 import Experience from "../components/Experience.astro";
-import Archivement from "../sections/archivement.astro";
 import Project from "../sections/project.astro";
+import Archivement from "../sections/archivement.astro";
 ---
 
 <Layout title="Christian Chico">
@@ -152,197 +152,15 @@ import Project from "../sections/project.astro";
             </p>
             <br />
             <p class="text-lg font-medium font-mono">
-              On my free time I love to learn about new technologies, and I am a big fan of cybersecurity and ethical hacking. 
+              On my free time I love to learn about new technologies, and I am a
+              big fan of cybersecurity and ethical hacking.
             </p>
           </div>
         </div>
       </div>
-      <div class="mt-28">
-        <div class="flex flex-col px-10 py-10 bg-[#141419] relative z-10">
-          <header>
-            <h1
-              class="mb-14 text-center text-4xl font-black text-transparent font-mono stroke-1 uppercase max-md:whitespace-nowrap"
-            >
-              My Stack
-            </h1>
-          </header>
-          <div
-            class="text-center grid grid-cols-3 gap-x-16 gap-y-16
-                    max-lg:grid-cols-3 max-lg:gap-x-12 max-lg:gap-y-14
-                    max-md:grid-cols-2 max-md:gap-x-10 max-md:gap-y-12
-                    max-sm:grid-cols-1 max-sm:gap-x-6 max-sm:gap-y-10"
-          >
-            <div class="border rounded-lg p-4">
-              <h1>Languages</h1>
-              <Skills
-                img="/icons/skills/javascript.svg"
-                color="#FFDA3F"
-                name="JAVASCRIPT"
-                level={75}
-              />
-              <Skills
-                img="/icons/skills/typescript.svg"
-                color="#115FC1"
-                name="TYPESCRIPT"
-                level={70}
-              />
-              <Skills
-                img="/icons/skills/python.svg"
-                color="#2371b1"
-                name="PYTHON"
-                level={50}
-              />
-              <Skills
-                img="/icons/skills/php.svg"
-                color="#105FC2"
-                name="PHP"
-                level={55}
-              />
-              <Skills
-                img="/icons/skills/java.svg"
-                color="#f58219"
-                name="JAVA"
-                level={50}
-              />
-            </div>
-            <div class="border rounded-lg p-4">
-              <h1>Backend</h1>
-              <Skills
-                img="/icons/skills/nestjs.svg"
-                color="#ea2845"
-                name="NEST"
-                level={"Alta"}
-              />
-              <Skills
-                img="/icons/skills/nodejs.svg"
-                color="#8cc84b"
-                name="NODE"
-                level={75}
-              />
-              <Skills
-                img="/icons/skills/expressjs.svg"
-                color="#747783"
-                name="EXPRESS"
-                level={"Media"}
-              />
-            </div>
-            <div class="border rounded-lg p-4">
-              <h1>Frontend</h1>
-              <Skills
-                img="/icons/skills/nextjs.svg"
-                color="#747783"
-                name="NEXT"
-                level={70}
-              />
-              <Skills
-                img="/icons/skills/reactjs.svg"
-                color="#00d8ff"
-                name="REACT"
-                level={70}
-              />
-              <Skills
-                img="/icons/skills/angular.svg"
-                color="#dd0031"
-                name="Angular"
-                level={"Media"}
-              />
-              <Skills
-                img="/icons/skills/html5.svg"
-                color="#E44D26"
-                name="HTML"
-                level={"Media"}
-              />
-              <Skills
-                img="/icons/skills/css.svg"
-                color="#264de4 "
-                name="CSS"
-                level={"Media"}
-              />
-              <Skills
-                img="/icons/skills/tailwindcss.svg"
-                color="#46a8b1"
-                name="TAILWINDCSS"
-                level={70}
-              />
-            </div>
-            <div class="border rounded-lg p-4">
-              <h1>Databases</h1>
-              <Skills
-                img="/icons/skills/mysql.svg"
-                color="#05526f"
-                name="MySQL"
-                level={85}
-              />
-              <Skills
-                img="/icons/skills/postgresql.svg"
-                color="#336791"
-                name="PostgreSQL"
-                level={75}
-              />
-              <Skills
-                img="/icons/skills/mongodb.svg"
-                color="#13aa52"
-                name="MongoDB"
-                level={30}
-              />
-            </div>
-            <div class="border rounded-lg p-4">
-              <h1>DevOps</h1>
-              <Skills
-                img="/icons/skills/docker.svg"
-                color="#1794d4"
-                name="Docker"
-                level={55}
-              />
-              <Skills
-                img="/icons/skills/linux.svg"
-                color="#ffffff"
-                name="Linux"
-                level={45}
-              />
-            </div>
-            <div class="border rounded-lg p-4">
-              <h1>Source Control</h1>
-              <Skills
-                img="/icons/skills/github.svg"
-                color="#525765"
-                name="GITHUB"
-                level={75}
-              />
-              <Skills
-                img="/icons/skills/git.svg"
-                color="#d64935"
-                name="GIT"
-                level={65}
-              />
-            </div>
-            
-            <!-- <div class="border rounded-lg p-4 col-span-full flex flex-col justify-center">
-              <h1>Tools</h1>
-              <Skills
-                img="/icons/vsc.svg"
-                color="#007acc"
-                name="VSC"
-                level={85}
-              />
-              <Skills
-                img="/icons/postman.svg"
-                color="#E44D26"
-                name="POSTMAN"
-                level={75}
-              />
-              <Skills
-                img="/icons/figma.svg"
-                color="#9856ec"
-                name="FIGMA"
-                level={65}
-              />
-            </div> -->
-            
-          </div>
-        </div>
-      </div>
     </section>
+
+    <Skill/>
 
     <section id="experience" class="overflow-hidden">
       <div class="flex flex-col items-center justify-start mt-36 mb-10">
@@ -363,7 +181,7 @@ import Project from "../sections/project.astro";
             item4="Development of web applications and internal tools to optimize processes."
             skills={[
               { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
-              { name: "Docker", img: "/icons/skills/docker.svg" }
+              { name: "Docker", img: "/icons/skills/docker.svg" },
             ]}
           />
         </div>
@@ -383,16 +201,19 @@ import Project from "../sections/project.astro";
               { name: "Angular", img: "/icons/skills/angular.svg" },
               { name: "MySQL", img: "/icons/skills/mysql.svg" },
               { name: "JavaScript", img: "/icons/skills/javascript.svg" },
-              { name: "Technical Support", img: "/icons/skills/technical_support.svg" },
+              {
+                name: "Technical Support",
+                img: "/icons/skills/technical_support.svg",
+              },
             ]}
           />
         </div>
       </div>
     </section>
 
-    <Archivement/>
+    <Archivement />
 
-    <Project/>
+    <Project />
 
     <section id="contact">
       <div class=""></div>
