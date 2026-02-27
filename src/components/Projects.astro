@@ -15,194 +15,439 @@ interface Props {
   github?: string;
   projectLink?: string;
   compact?: boolean;
+  // ── Optional flip back ──
+  backTitle?: string;
+  backDetails?: string[];
+  backStatus?: string;
+  backYear?: string;
 }
+
 const {
-  title,
-  img1,
-  img2,
-  toolImg1,
-  toolImg2,
-  toolImg3,
-  toolImg4,
-  tool1,
-  tool2,
-  tool3,
-  tool4,
-  body,
-  github,
-  projectLink,
+  title, img1, img2,
+  toolImg1, toolImg2, toolImg3, toolImg4,
+  tool1, tool2, tool3, tool4,
+  body, github, projectLink,
   compact = false,
+  backTitle, backDetails, backStatus, backYear,
 } = Astro.props as Props;
+
+const tools = [
+  { name: tool1, img: toolImg1 },
+  { name: tool2, img: toolImg2 },
+  { name: tool3, img: toolImg3 },
+  { name: tool4, img: toolImg4 },
+].filter((t) => t.name && t.img);
+
+const slug     = title.toLowerCase().replace(/\s+/g, "_");
+const hasBack  = !!(backTitle || (backDetails && backDetails.length));
 ---
 
 <li
   data-aos="zoom-in-up"
   data-aos-duration="2000"
-  class={`link-card p-4 border rounded-lg bg-gray-800 ${compact ? "h-[550px] w-[350px]" : "h-[550px] w-[550px]"} border-animate relative max-sm:w-[300px] max-sm:h-[650px]`}
+  class={`project-wrap ${hasBack ? "flippable" : ""} w-[92vw] sm:w-auto`}
+  style={compact ? "--card-w: 340px" : "--card-w: 500px"}
 >
-  <div class="flex flex-col h-full">
-    <h1 class="text-white text-xl mb-4 text-center font-mono max-md:mb-[0px]">
-      {title}
-    </h1>
-    <div
-      class="flex flex-row gap-2 flex-grow items-center justify-center max-sm:h[100px]"
-    >
-      {
-        img2 && !compact && (
-          <div class="flex flex-col gap-4 w-[200px] h-[200px] max-sm:hidden">
-            <img
-              src={img2}
-              alt=""
-              class="side-image w-full h-full object-contain rounded-lg cursor-pointer"
-            />
-          </div>
-        )
-      }
-      <div
-        class={`"flex-grow ${compact ? "w-[80px] h-[80px]" : "h-[250px] w-[250px]"} rounded-xl cursor-pointer"`}
-      >
-        <img
-          src={img1}
-          alt="Main Image"
-          class="w-full h-full object-contain rounded-xl"
-        />
-      </div>
-    </div>
-    <div class={`${compact ? 'grid grid-cols-2': 'flex flex-row'} gap-2 mt-2 justify-around`}>
-      {
-        tool1 && toolImg1 && (
-          <div class="text-center border p-2 rounded-2xl bg-[#262525]">
-            <p class="text-gray-300 text-xs inline-block font-mono max-sm:hidden">
-              {tool1}
-            </p>
-            <img src={toolImg1} alt="" class="w-6 h-6 mx-auto inline-block" />
-          </div>
-        )
-      }
-      {
-        tool2 && toolImg2 && (
-          <div class="text-center border p-2 rounded-2xl bg-[#262525]">
-            <p class="text-gray-300 text-xs inline-block font-mono max-sm:hidden">
-              {tool2}
-            </p>
-            <img src={toolImg2} alt="" class="w-6 h-6 mx-auto inline-block" />
-          </div>
-        )
-      }
-      {
-        tool3 && toolImg3 && (
-          <div class="text-center border p-2 rounded-2xl bg-[#262525]">
-            <p class="text-gray-300 text-xs inline-block font-mono max-sm:hidden">
-              {tool3}
-            </p>
-            <img src={toolImg3} alt="" class="w-6 h-6 mx-auto inline-block" />
-          </div>
-        )
-      }
-      {
-        tool4 && toolImg4 && (
-          <div class="text-center border p-2 rounded-2xl bg-[#262525]">
-            <p class="text-gray-300 text-xs inline-block font-mono max-sm:hidden">
-              {tool4}
-            </p>
-            <img src={toolImg4} alt="" class="w-6 h-6 mx-auto inline-block" />
-          </div>
-        )
-      }
-    </div>
-    <div class="text-gray-300 flex-grow overflow-y-auto text-center mt-6">
-      <p class="text-sm font-mono font-semibold">{body}</p>
-    </div>
-    <div class="flex flex-row gap-2 mt-2 justify-around">
-      {
-        github && (
-          <a href={github} class="inline-block">
-            <button class="github-button border-2 border-white p-3 rounded-full bg-black text-white text-base hover:bg-[#ffffff] hover:text-[#000000] hover:border-3 hover:border-[#000000] transition-colors">
-              Github
-              <svg
-                class="w-5 h-5 text-white inline-block mb-1"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z"
-                  clip-rule="evenodd"
-                />
+  <div class={`card-inner ${hasBack ? "flip-inner" : ""}`} id={`ci-${slug}`}>
+
+    <!-- ══════════════════════════════
+         FRONT
+    ══════════════════════════════ -->
+    <div class="project-card project-face project-front group relative overflow-hidden flex flex-col">
+
+      <span class="corner corner-tl"></span>
+      <span class="corner corner-tr"></span>
+      <span class="corner corner-bl"></span>
+      <span class="corner corner-br"></span>
+
+      <!-- Top bar -->
+      <div class="card-topbar flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
+        <span class="dot dot-red"></span>
+        <span class="dot dot-yellow"></span>
+        <span class="dot dot-green"></span>
+        <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate">{slug}.project</span>
+        <div class="ml-auto flex items-center gap-3 shrink-0">
+          {tools.length > 0 && (
+            <span class="font-mono text-[10px] text-[#4ade80]/40">{tools.length} deps</span>
+          )}
+          {hasBack && (
+            <button class="flip-btn font-mono text-[10px] text-white/25 hover:text-[#4ade80]/70
+              transition-colors duration-200 flex items-center gap-1 tracking-widest"
+              data-target={`ci-${slug}`}
+            >
+              <span>flip</span>
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
               </svg>
             </button>
-          </a>
-        )
-      }
-      {
-        projectLink && (
-          <a href={projectLink} target="_blank" class="inline-block">
-            <button class="border-2 border-white p-3 rounded-full bg-slate-900 text-white text-base hover:bg-white hover:text-slate-900 transition-colors">
-              Go To 🌐
-            </button>
-          </a>
-        )
-      }
+          )}
+        </div>
+      </div>
+
+      <!-- Image area — object-contain with dark bg -->
+      <div class={`image-area relative overflow-hidden bg-[#070b10] ${compact ? "h-44" : "h-56 sm:h-64"}`}>
+        <img
+          src={img1} alt={title}
+          class="main-img w-full h-full object-contain p-4 transition-all duration-500"
+          data-lb-src={img1} data-lb={`lb-${slug}`}
+        />
+        {img2 && !compact && (
+          <div id={`si-${slug}`}
+            class="absolute bottom-3 right-3 w-20 h-20 sm:w-24 sm:h-24 rounded-md overflow-hidden
+              border border-white/15 bg-[#0d1117]
+              opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0
+              transition-all duration-300 cursor-zoom-in hidden sm:block"
+            data-lb-src={img2} data-lb={`lb-${slug}`}
+          >
+            <img src={img2} alt="" class="w-full h-full object-contain p-2 hover:scale-105 transition-transform duration-300" />
+          </div>
+        )}
+        <div class="absolute inset-0 bg-gradient-to-t from-[#0d1117]/50 via-transparent to-transparent pointer-events-none"></div>
+        <div class="scan-line absolute inset-x-0 h-px bg-[#4ade80]/20 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+      </div>
+
+      <!-- Body -->
+      <div class="card-body flex flex-col gap-4 p-4 sm:p-5 flex-1">
+        <div>
+          <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// project</span>
+          <h2 class={`font-mono font-bold text-white uppercase tracking-tight leading-tight mt-1
+            ${compact ? "text-base" : "text-lg sm:text-xl"}`}>{title}</h2>
+        </div>
+
+        {tools.length > 0 && (
+          <div class="flex flex-wrap gap-2">
+            {tools.map((t) => (
+              <div class="tool-chip flex items-center gap-1.5 px-2.5 py-1.5 rounded-sm
+                border border-white/6 bg-white/[0.02]
+                hover:border-[#4ade80]/25 hover:bg-[#4ade80]/[0.04] transition-all duration-200">
+                <img src={t.img} alt={t.name} class="w-4 h-4 object-contain" />
+                <span class="font-mono text-[10px] text-white/40">{t.name}</span>
+              </div>
+            ))}
+          </div>
+        )}
+
+        <div class="h-px bg-gradient-to-r from-[#4ade80]/15 via-white/5 to-transparent"></div>
+
+        <p class={`font-mono text-white/50 leading-relaxed flex-1 ${compact ? "text-xs" : "text-sm"}`}>{body}</p>
+
+        <div class="flex gap-3 mt-auto pt-2">
+          {github && (
+            <a href={github} target="_blank" rel="noopener noreferrer"
+              class="action-btn action-btn--gh group/b relative overflow-hidden flex items-center gap-2
+                font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
+              <span class="abg"></span><span class="aborder"></span>
+              <span class="relative z-10 flex items-center gap-2 text-white/60 group-hover/b:text-white transition-colors duration-300">
+                <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                  <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"/>
+                </svg>
+                GitHub
+              </span>
+            </a>
+          )}
+          {projectLink && (
+            <a href={projectLink} target="_blank" rel="noopener noreferrer"
+              class="action-btn action-btn--live group/b relative overflow-hidden flex items-center gap-2
+                font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
+              <span class="abg"></span><span class="aborder aborder--green"></span>
+              <span class="relative z-10 flex items-center gap-2 text-[#4ade80]/60 group-hover/b:text-[#4ade80] transition-colors duration-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover/b:bg-[#4ade80] group-hover/b:animate-pulse transition-colors duration-300"></span>
+                Website
+              </span>
+            </a>
+          )}
+        </div>
+      </div>
+
+      <div class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
+        bg-gradient-to-r from-transparent via-[#4ade80]/40 to-transparent
+        opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
-  </div>
-  <div
-    id="expanded-image-container"
-    class="hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-80 items-center justify-center z-50"
-  >
-    <img
-      id="expanded-image"
-      src=""
-      alt="Expanded Image"
-      class="max-w-full max-h-full object-contain rounded-lg cursor-pointer"
-    />
+
+    <!-- ══════════════════════════════
+         BACK (optional)
+    ══════════════════════════════ -->
+    {hasBack && (
+      <div class="project-card project-face project-back relative overflow-hidden flex flex-col">
+
+        <span class="corner corner-tl"></span>
+        <span class="corner corner-tr"></span>
+        <span class="corner corner-bl"></span>
+        <span class="corner corner-br"></span>
+
+        <!-- Top bar back -->
+        <div class="card-topbar flex items-center gap-2 px-4 py-2.5 border-b border-white/10 shrink-0">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+          <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate">{slug}.details</span>
+          <button class="flip-btn ml-auto font-mono text-[10px] text-white/25 hover:text-[#4ade80]/70
+            transition-colors duration-200 flex items-center gap-1 tracking-widest"
+            data-target={`ci-${slug}`}
+          >
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+            </svg>
+            <span>back</span>
+          </button>
+        </div>
+
+        <!-- Back content -->
+        <div class="flex flex-col gap-5 p-5 sm:p-6 flex-1">
+          <div>
+            <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// details</span>
+            <h2 class="font-mono font-bold text-white uppercase tracking-tight text-lg sm:text-xl mt-1">
+              {backTitle ?? title}
+            </h2>
+          </div>
+
+          <div class="h-px bg-gradient-to-r from-[#4ade80]/20 via-white/5 to-transparent"></div>
+
+          {backDetails && backDetails.length > 0 && (
+            <ul class="flex flex-col gap-2.5 flex-1">
+              {backDetails.map((d, i) => (
+                <li class="back-item flex gap-3 items-start font-mono text-sm text-white/55 leading-relaxed">
+                  <span class="back-num shrink-0 text-[#4ade80]/35 text-xs pt-0.5 w-5 text-right select-none">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span class="text-white/20 shrink-0">→</span>
+                  <span>{d}</span>
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {(backStatus || backYear) && (
+            <div class="flex flex-wrap gap-3 mt-auto pt-3 border-t border-white/5">
+              {backStatus && (
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-sm border border-[#4ade80]/15 bg-[#4ade80]/[0.04]">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse"></span>
+                  <span class="font-mono text-[10px] text-[#4ade80]/70 tracking-widest uppercase">{backStatus}</span>
+                </div>
+              )}
+              {backYear && (
+                <div class="flex items-center gap-2 px-3 py-1.5 rounded-sm border border-white/8 bg-white/[0.02]">
+                  <span class="font-mono text-[10px] text-white/35 tracking-widest">{backYear}</span>
+                </div>
+              )}
+            </div>
+          )}
+
+          <div class="flex gap-3">
+            {github && (
+              <a href={github} target="_blank" rel="noopener noreferrer"
+                class="action-btn action-btn--gh group/b relative overflow-hidden flex items-center gap-2
+                  font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
+                <span class="abg"></span><span class="aborder"></span>
+                <span class="relative z-10 flex items-center gap-2 text-white/60 group-hover/b:text-white transition-colors duration-300">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"/>
+                  </svg>
+                  GitHub
+                </span>
+              </a>
+            )}
+            {projectLink && (
+              <a href={projectLink} target="_blank" rel="noopener noreferrer"
+                class="action-btn action-btn--live group/b relative overflow-hidden flex items-center gap-2
+                  font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
+                <span class="abg"></span><span class="aborder aborder--green"></span>
+                <span class="relative z-10 flex items-center gap-2 text-[#4ade80]/60 group-hover/b:text-[#4ade80] transition-colors duration-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover/b:bg-[#4ade80] transition-colors duration-300"></span>
+                  Website
+                </span>
+              </a>
+            )}
+          </div>
+        </div>
+
+        <div class="absolute bottom-0 left-[10%] right-[10%] h-px
+          bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent"></div>
+      </div>
+    )}
   </div>
 </li>
 
+<!-- Lightbox -->
+<div id={`lb-${slug}`} class="lightbox fixed inset-0 hidden items-center justify-center z-[100] p-4">
+  <div class="lb-bg absolute inset-0 bg-black/88 backdrop-blur-sm"></div>
+  <img class="lb-img relative z-10 max-w-full max-h-[90vh] object-contain rounded-md border border-white/10 shadow-[0_0_60px_rgba(0,0,0,0.9)]" src="" alt="" />
+</div>
+
+<script is:inline define:vars={{ slug }}>
+  (function() {
+    function init() {
+      // Flip
+      document.querySelectorAll('.flip-btn[data-target="ci-' + slug + '"]').forEach(function(btn) {
+        btn.addEventListener("click", function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var inner = document.getElementById("ci-" + slug);
+          if (inner) inner.classList.toggle("is-flipped");
+        });
+      });
+
+      // Lightbox
+      var lb    = document.getElementById("lb-" + slug);
+      var lbImg = lb ? lb.querySelector(".lb-img") : null;
+      var lbBg  = lb ? lb.querySelector(".lb-bg")  : null;
+
+      document.querySelectorAll('[data-lb="lb-' + slug + '"]').forEach(function(el) {
+        el.style.cursor = "zoom-in";
+        el.addEventListener("click", function() {
+          if (!lb || !lbImg) return;
+          lbImg.src = el.getAttribute("data-lb-src") || "";
+          lb.classList.remove("hidden");
+          lb.classList.add("flex");
+          document.body.style.overflow = "hidden";
+        });
+      });
+
+      function closeLb() {
+        if (!lb) return;
+        lb.classList.add("hidden");
+        lb.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+      if (lbBg) lbBg.addEventListener("click", closeLb);
+      document.addEventListener("keydown", function(e) {
+        if (e.key === "Escape") closeLb();
+      });
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+</script>
+
 <style>
-  .link-card {
+  /* ── Wrapper ── */
+  .project-wrap {
+    width: var(--card-w, 500px);
+    max-width: 92vw;
     list-style: none;
-    background-color: #23262d;
-    border-radius: 7px;
-    overflow: hidden;
-    border-width: 2px;
   }
 
-  @keyframes borderGlow {
-    0% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
-    50% {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-    100% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
+  /* ── Perspective on wrapper ── */
+  .flippable {
+    perspective: 1200px;
   }
 
-  .border-animate:hover {
-    animation: borderGlow 1.5s linear infinite;
+  /* ── Flip 3D container ── */
+  .flip-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  .flip-inner.is-flipped { transform: rotateY(180deg); }
+
+  /* ── Shared face styles ── */
+  .project-card {
+    width: 100%;
+    background: #0d1117;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .project-card:hover {
+    border-color: rgba(74,222,128,0.22);
+    box-shadow: 0 0 0 1px rgba(74,222,128,0.07), 0 12px 40px rgba(0,0,0,0.6);
   }
 
-  .github-button:hover svg {
-    color: #000000;
+  /* Back: absolute, same size, pre-rotated */
+  .project-back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transform: rotateY(180deg);
+    overflow-y: auto;
   }
 
-  .view-cert-button {
-    display: none;
+  /* Non-flippable: block */
+  .project-wrap:not(.flippable) .card-inner { display: block; }
+
+  /* ── Corner accents ── */
+  .corner {
+    position: absolute; width: 10px; height: 10px;
+    border-color: rgba(74,222,128,0.45); border-style: solid;
+    opacity: 0; transition: opacity 0.3s ease; z-index: 10; pointer-events: none;
+  }
+  .project-card:hover .corner { opacity: 1; }
+  .corner-tl { top:-1px; left:-1px;   border-width:2px 0 0 2px; border-radius:3px 0 0 0; }
+  .corner-tr { top:-1px; right:-1px;  border-width:2px 2px 0 0; border-radius:0 3px 0 0; }
+  .corner-bl { bottom:-1px; left:-1px;  border-width:0 0 2px 2px; border-radius:0 0 0 3px; }
+  .corner-br { bottom:-1px; right:-1px; border-width:0 2px 2px 0; border-radius:0 0 3px 0; }
+
+  /* ── Top bar & dots ── */
+  .card-topbar { background: rgba(255,255,255,0.02); }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; opacity:0.65; }
+  .dot-red    { background:#ff5f57; }
+  .dot-yellow { background:#febc2e; }
+  .dot-green  { background:#28c840; }
+
+  /* ── Flip button ── */
+  .flip-btn { background: none; border: none; cursor: pointer; padding: 0; }
+
+  /* ── Image ── */
+  .project-front:hover .main-img { transform: scale(1.02); }
+
+  /* ── Scan line ── */
+  .scan-line { top: 0; }
+  .project-front:hover .scan-line { animation: scanDown 2s ease-in-out infinite; }
+  @keyframes scanDown {
+    0%   { top:0%;   opacity:0; }
+    10%  { opacity:1; }
+    90%  { opacity:1; }
+    100% { top:100%; opacity:0; }
   }
 
-  .link-card:hover .view-cert-button {
-    display: flex;
+  /* ── Tool chips ── */
+  .tool-chip { border-color: rgba(255,255,255,0.06); }
+
+  /* ── Back items ── */
+  .back-item:hover { color: rgba(255,255,255,0.85); }
+  .back-item:hover .back-num { color: rgba(74,222,128,0.7); }
+
+  /* ── Action buttons ── */
+  .action-btn { text-decoration: none; }
+  .abg {
+    position: absolute; inset: 0; border-radius: inherit;
+    background: rgba(255,255,255,0.02);
+    transition: background 0.3s ease;
+  }
+  .action-btn--gh:hover   .abg { background: rgba(255,255,255,0.05); }
+  .action-btn--live:hover .abg { background: rgba(74,222,128,0.05); }
+
+  .aborder {
+    position: absolute; inset: 0; border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .action-btn--gh:hover .aborder {
+    border-color: rgba(255,255,255,0.18);
+    box-shadow: 0 0 12px rgba(255,255,255,0.04);
+  }
+  .aborder--green { border-color: rgba(74,222,128,0.12); }
+  .action-btn--live:hover .aborder--green {
+    border-color: rgba(74,222,128,0.35);
+    box-shadow: 0 0 14px rgba(74,222,128,0.1);
   }
 
-  .link-card a {
-    z-index: 15;
+  /* ── Shimmer ── */
+  .project-card::after {
+    content: ""; position: absolute; inset: 0; border-radius: 6px;
+    background: linear-gradient(105deg, transparent 40%, rgba(74,222,128,0.025) 50%, transparent 60%);
+    background-size: 200% 200%; opacity: 0;
+    transition: opacity 0.3s ease; pointer-events: none;
   }
-
-  .side-image {
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
+  .project-card:hover::after { opacity: 1; animation: shimmer 2.5s ease infinite; }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 </style>
