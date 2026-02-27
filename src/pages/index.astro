@@ -6,6 +6,7 @@ import Skill from "../sections/skill.astro";
 import Experience from "../components/Experience.astro";
 import Project from "../sections/project.astro";
 import Archivement from "../sections/archivement.astro";
+import Experiences from "../sections/experiences.astro";
 ---
 
 <Layout title="Christian Chico">
@@ -162,54 +163,7 @@ import Archivement from "../sections/archivement.astro";
 
     <Skill/>
 
-    <section id="experience" class="overflow-hidden">
-      <div class="flex flex-col items-center justify-start mt-36 mb-10">
-        <h1
-          class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
-        >
-          Experience
-        </h1>
-        <div class="pulsate-border">
-          <Experience
-            img="/img/experience/UTA.webp"
-            img2="/img/experience/FISEI.png"
-            title="Laboratory Technician"
-            date="September 2025 - January 2026"
-            item1="Server administration and maintenance."
-            item2="Management, support, and maintenance of internal faculty applications."
-            item3="Technical support and maintenance of academic IT infrastructure."
-            item4="Development of web applications and internal tools to optimize processes."
-            skills={[
-              { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
-              { name: "Docker", img: "/icons/skills/docker.svg" },
-            ]}
-          />
-        </div>
-        <div class="pulsate-border">
-          <Experience
-            img="/img/experience/UTA.webp"
-            img2="/img/experience/FISEI.png"
-            title="Laboratory Intern "
-            date="February 2024 - July 2024"
-            item1="Development of a web application to manage laboratory, subject and teacher schedules."
-            item2="Development of a mobile application for ID card validator."
-            item3="Maintenance of a web application for document management."
-            item4="Machine maintenance and support."
-            item5="Maintenance and restructuring of classrooms."
-            skills={[
-              { name: "React Native", img: "/icons/skills/reactjs.svg" },
-              { name: "Angular", img: "/icons/skills/angular.svg" },
-              { name: "MySQL", img: "/icons/skills/mysql.svg" },
-              { name: "JavaScript", img: "/icons/skills/javascript.svg" },
-              {
-                name: "Technical Support",
-                img: "/icons/skills/technical_support.svg",
-              },
-            ]}
-          />
-        </div>
-      </div>
-    </section>
+    <Experiences/>
 
     <Archivement />
 

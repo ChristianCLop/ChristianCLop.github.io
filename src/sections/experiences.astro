@@ -1,0 +1,323 @@
+---
+import Experience from "../components/Experience.astro";
+
+const experiences = [
+  {
+    img: "https://media.licdn.com/dms/image/v2/D4E0BAQHSvvoRbwD4nw/company-logo_200_200/company-logo_200_200/0/1690086602887?e=1773878400&v=beta&t=iFPbd4UtuE_KeFqiimcWn1MjuKx9QLr_pnEMilVFlMs",
+    title: "Software Engineer",
+    company: "SanTIC Education",
+    date: "December 2025 - January 2026",
+    item1:
+      "Design and implementation of Docker-based architecture (Nginx + PHP + Moodle + PostgreSQL).",
+    item2: "Server configuration and administration on AlmaLinux.",
+    item3: "Docker and Docker Compose configuration and management.",
+    item4:
+      "Reverse proxy implementation with SSL certificates (Let’s Encrypt) for multiple instances.",
+    item5:
+      "Automation of cron jobs and background tasks for provisioning new instances and managing backups.",
+    skills: [
+      { name: "PHP", img: "/icons/skills/php.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+      { name: "AlmaLinux", img: "/icons/skills/almalinux.svg" },
+      { name: "PostgreSQL", img: "/icons/skills/postgresql.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Technician",
+    company: "Universidad Técnica de Ambato - FISEI",
+    date: "September 2025 - January 2026",
+    item1: "Server administration and maintenance.",
+    item2:
+      "Management, support, and maintenance of internal faculty applications.",
+    item3: "Technical support and maintenance of academic IT infrastructure.",
+    item4:
+      "Development of web applications and internal tools to optimize processes.",
+    skills: [
+      { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Intern",
+    company: "Universidad Técnica de Ambato - FISEI",
+    date: "February 2024 - July 2024",
+    item1:
+      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    item2: "Development of a mobile application for ID card validator.",
+    item3: "Maintenance of a web application for document management.",
+    item4: "Machine maintenance and support.",
+    item5: "Maintenance and restructuring of classrooms.",
+    skills: [
+      { name: "React Native", img: "/icons/skills/reactjs.svg" },
+      { name: "Angular", img: "/icons/skills/angular.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+      { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+      {
+        name: "Technical Support",
+        img: "/icons/skills/technical_support.svg",
+      },
+    ],
+  },
+];
+---
+<section id="experience" class="overflow-hidden relative py-24 sm:py-32">
+
+  <!-- Subtle grid background -->
+  <div class="section-grid" aria-hidden="true"></div>
+
+  <div class="flex flex-col items-center justify-start px-4">
+
+    <!-- ── Section Header ── -->
+    <header class="w-full flex flex-col items-center mb-14 sm:mb-20" data-aos="fade-down" data-aos-duration="1200">
+
+      <!-- Terminal file path label -->
+      <span class="font-mono text-[11px] sm:text-xs text-[#4ade80]/50 tracking-[0.25em] uppercase mb-4">
+        ~/portfolio/experience
+      </span>
+
+      <!-- Title -->
+      <div class="title-wrap relative">
+        <h1 class="font-mono font-black uppercase tracking-tight leading-none
+          text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+          text-transparent select-none"
+          style="-webkit-text-stroke: 1px rgba(255,255,255,0.15);"
+        >
+          Experience
+        </h1>
+        <!-- Green underline accent -->
+        <div class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"></div>
+      </div>
+
+      <!-- Subtitle line -->
+      <p class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest">
+        <span class="text-[#4ade80]/50">▶</span> {experiences.length} entries loaded
+      </p>
+    </header>
+
+    <!-- ── Experience List ── -->
+    <div class="flex flex-col items-center w-full gap-0">
+      {experiences.slice(0, 4).map((item) => <Experience {...item} />)}
+    </div>
+
+    <!-- ── Show All Button ── -->
+    {experiences.length > 4 && (
+      <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+        <button
+          id="showAllExpBtn"
+          class="show-all-btn group relative font-mono text-sm uppercase tracking-widest
+            px-8 py-3 overflow-hidden"
+        >
+          <!-- Button bg layers -->
+          <span class="btn-bg"></span>
+          <span class="btn-border"></span>
+          <!-- Content -->
+          <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
+            <span class="text-[#4ade80] group-hover:animate-spin" style="display:inline-block">◈</span>
+            Show All
+            <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
+              ({experiences.length})
+            </span>
+          </span>
+        </button>
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- ── Modal ── -->
+<div
+  id="modalExp"
+  class="modal-backdrop fixed inset-0 hidden justify-center items-center z-50 p-4 sm:p-6"
+>
+  <!-- Backdrop click area -->
+  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+  <!-- Modal box -->
+  <div class="modal-box relative bg-[#0d1117] border border-white/10 rounded-lg
+    w-full max-w-6xl max-h-[92vh] overflow-hidden flex flex-col
+    shadow-[0_0_60px_rgba(0,0,0,0.8)]"
+  >
+    <!-- Modal top bar -->
+    <div class="modal-topbar flex items-center gap-2 px-5 py-3 border-b border-white/10 shrink-0">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest">all_experience.json</span>
+      <button
+        id="closeModalExp"
+        class="close-btn ml-auto font-mono text-white/40 hover:text-white text-lg leading-none transition-colors duration-200"
+        aria-label="Close modal"
+      >
+        ✕
+      </button>
+    </div>
+
+    <!-- Modal scroll area -->
+    <div class="overflow-y-auto flex-1 p-5 sm:p-8">
+      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
+        {experiences.map((item) => <Experience {...item} compact={true} />)}
+      </div>
+    </div>
+
+    <!-- Modal bottom glow -->
+    <div class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent shrink-0"></div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal    = document.getElementById("modalExp");
+    const showBtn  = document.getElementById("showAllExpBtn");
+    const closeBtn = document.getElementById("closeModalExp");
+    const backdrop = modal?.querySelector(".absolute.inset-0");
+
+    function openModal() {
+      modal?.classList.remove("hidden");
+      modal?.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      // Animate in
+      requestAnimationFrame(() => {
+        modal?.classList.add("modal-open");
+      });
+    }
+
+    function closeModal() {
+      modal?.classList.remove("modal-open");
+      setTimeout(() => {
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }, 250);
+    }
+
+    showBtn?.addEventListener("click", openModal);
+    closeBtn?.addEventListener("click", closeModal);
+    backdrop?.addEventListener("click", closeModal);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  });
+</script>
+
+<style>
+  /* ── Section grid bg ── */
+  .section-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  /* ── Title stroke gradient ── */
+  .title-wrap h1 {
+    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.15) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 1.5px rgba(255,255,255,0.12);
+  }
+
+  /* ── Show All button ── */
+  .show-all-btn {
+    border-radius: 6px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+
+  .btn-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+  .show-all-btn:hover .btn-bg {
+    background: rgba(74, 222, 128, 0.06);
+  }
+
+  .btn-border {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    transition: border-color 0.3s ease;
+  }
+  .show-all-btn:hover .btn-border {
+    border-color: rgba(74, 222, 128, 0.35);
+    box-shadow: 0 0 16px rgba(74, 222, 128, 0.08);
+  }
+
+  /* ── Modal backdrop ── */
+  .modal-backdrop {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .modal-backdrop.modal-open {
+    opacity: 1;
+  }
+
+  /* ── Modal box slide-in ── */
+  .modal-box {
+    transform: translateY(16px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    opacity: 0;
+  }
+  .modal-open .modal-box {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* ── Modal scrollbar ── */
+  .modal-box ::-webkit-scrollbar {
+    width: 4px;
+  }
+  .modal-box ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .modal-box ::-webkit-scrollbar-thumb {
+    background: rgba(74, 222, 128, 0.2);
+    border-radius: 2px;
+  }
+  .modal-box ::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 222, 128, 0.4);
+  }
+
+  /* ── Terminal dots ── */
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.7;
+  }
+  .dot-red    { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green  { background: #28c840; }
+
+  /* ── Close button ── */
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  .close-btn:hover {
+    background: rgba(255,255,255,0.07);
+  }
+</style>
