@@ -1,84 +1,284 @@
-<header class="py-2 bg-black" x-data="{expanded: false}">
-  <div class="px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between">
-      <div class="shrink-0">
-        <a href="#" title="" class="flex">
-          <img
-            class="w-auto h-20"
-            src="/logos/AllWhiteLogo.svg"
-            alt=""
-          />
+---
+const navLinks = [
+  { href: "#",            label: "Home"         },
+  { href: "#about",       label: "About"        },
+  { href: "#experience",  label: "Experience"   },
+  { href: "#skills",      label: "Stack"        },
+  { href: "#achievements",label: "Achievements" },
+  { href: "#projects",    label: "Projects"     },
+  { href: "#contact",     label: "Contact"      },
+];
+
+const cvLink = "https://drive.google.com/file/d/1yAbVlSFV3E6Cmggv-ltOCXE9ZHSXCv1U/view?usp=sharing";
+---
+
+<header class="nav-header fixed top-0 inset-x-0 z-50">
+
+  <!-- Top scan line -->
+  <div class="nav-scanline"></div>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 sm:h-18">
+
+      <!-- ── Logo ── -->
+      <a href="#" class="logo-wrap flex items-center gap-2.5 shrink-0 group" aria-label="Home">
+        <img src="/logos/AllWhiteLogo.svg" alt="Logo" class="h-10 sm:h-12 w-auto" />
+        <!-- Optional: terminal-style name next to logo -->
+        <!-- <span class="font-mono text-xs text-[#4ade80]/50 tracking-widest hidden sm:block">~/christian</span> -->
+      </a>
+
+      <!-- ── Desktop nav ── -->
+      <nav class="hidden md:flex items-center gap-1" aria-label="Main navigation">
+        {navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="nav-link group/link relative font-mono text-xs uppercase tracking-widest
+              px-3 py-2 rounded-sm text-white/40 hover:text-white
+              transition-colors duration-200"
+          >
+            <!-- Hover bg -->
+            <span class="absolute inset-0 rounded-sm bg-white/0 group-hover/link:bg-white/[0.04] transition-colors duration-200"></span>
+            <!-- Active indicator dot -->
+            <span class="nav-dot absolute bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full
+              bg-[#4ade80] opacity-0 scale-0
+              transition-all duration-200"></span>
+            <span class="relative">{link.label}</span>
+          </a>
+        ))}
+      </nav>
+
+      <!-- ── Desktop CV button ── -->
+      <div class="hidden md:flex items-center gap-3">
+        <a
+          href={cvLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cv-btn group relative overflow-hidden font-mono text-xs uppercase tracking-widest
+            px-5 py-2 rounded-md"
+        >
+          <span class="cv-bg"></span>
+          <span class="cv-border"></span>
+          <span class="relative z-10 flex items-center gap-2 text-[#4ade80]/70 group-hover:text-[#4ade80] transition-colors duration-300">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover:bg-[#4ade80] group-hover:animate-pulse transition-colors duration-300"></span>
+            Download CV
+          </span>
         </a>
       </div>
 
-      <nav
-        class="hidden space-x-10 md:flex md:items-center md:justify-center lg:space-x-12"
+      <!-- ── Mobile menu button ── -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden flex flex-col items-center justify-center gap-1.5 p-2 rounded-md
+          border border-white/8 bg-white/[0.02]
+          hover:border-[#4ade80]/25 hover:bg-[#4ade80]/[0.04]
+          transition-all duration-200"
+        aria-label="Toggle menu"
+        aria-expanded="false"
       >
-        <a
-          href="#"
-          title=""
-          class="text-base font-normal text-[#F8F9FA] transition-all duration-200 hover:text-[#3a8f49]"
-        >
-          Home
-        </a>
+        <span class="hamburger-line w-5 h-px bg-white/50 transition-all duration-300"></span>
+        <span class="hamburger-line w-5 h-px bg-white/50 transition-all duration-300"></span>
+        <span class="hamburger-line w-5 h-px bg-white/50 transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
 
-        <a
-          href="#about"
-          title=""
-          class="text-base font-normal text-[#F8F9FA] transition-all duration-200 hover:text-[#3a8f49]"
-        >
-          About Me
-        </a>
+  <!-- ── Mobile menu panel ── -->
+  <div
+    id="mobile-menu"
+    class="mobile-menu md:hidden overflow-hidden"
+    aria-hidden="true"
+  >
+    <div class="border-t border-white/8 bg-[#0d1117]/95 backdrop-blur-md">
 
-        <a
-          href="#experience"
-          title=""
-          class="text-base font-normal text-[#F8F9FA] transition-all duration-200 hover:text-[#3a8f49]"
-        >
-          Experience
-        </a>
+      <!-- Terminal-style label -->
+      <div class="px-5 pt-4 pb-2">
+        <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// navigation</span>
+      </div>
 
-        <a
-          href="#achievements"
-          title=""
-          class="text-base font-normal text-[#F8F9FA] transition-all duration-200 hover:text-[#3a8f49]"
-        >
-          Achievements
-        </a>
-
-        <a
-          href="#projects"
-          title=""
-          class="text-base font-normal text-[#F8F9FA] transition-all duration-200 hover:text-[#3a8f49]"
-        >
-          Project
-        </a>
-
-        <a
-          href="#contact"
-          title=""
-          class="text-base font-normal text-[#F8F9FA] transition-all duration-200 hover:text-[#3a8f49]"
-        >
-          Contacts
-        </a>
+      <nav class="px-3 pb-4 flex flex-col gap-1">
+        {navLinks.map((link, i) => (
+          <a
+            href={link.href}
+            class="mobile-nav-link group flex items-center gap-3
+              px-3 py-3 rounded-md font-mono text-sm text-white/50
+              hover:text-white hover:bg-white/[0.04]
+              transition-all duration-200"
+            style={`animation-delay: ${i * 40}ms`}
+          >
+            <span class="font-mono text-[10px] text-[#4ade80]/30 w-4 text-right select-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span class="text-white/15">→</span>
+            <span class="uppercase tracking-widest text-xs">{link.label}</span>
+            <span class="ml-auto text-white/10 group-hover:text-[#4ade80]/40 transition-colors duration-200 text-xs">▸</span>
+          </a>
+        ))}
       </nav>
 
-      <div
-        class="relative hidden md:justify-center md:items-center md:inline-flex group"
-      >
-        <div
-          class="absolute transition-all duration-200 rounded-full -inset-px bg-gradient-to-r from-[#3a8f49] via-[#16321b] to-[#309442] group-hover:shadow-lg group-hover:shadow-green-500/50"
-        >
-        </div>
+      <!-- CV button mobile -->
+      <div class="px-5 pb-5 pt-2 border-t border-white/5">
         <a
-          href="https://drive.google.com/file/d/1yAbVlSFV3E6Cmggv-ltOCXE9ZHSXCv1U/view?usp=sharing"
-          title=""
-          class="relative inline-flex items-center justify-center px-6 py-2 text-base font-normal text-[#3a8f49] bg-black border border-transparent rounded-full"
-          role="button"
+          href={cvLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cv-btn group relative overflow-hidden font-mono text-xs uppercase tracking-widest
+            w-full flex justify-center px-5 py-3 rounded-md"
         >
-          CV
+          <span class="cv-bg"></span>
+          <span class="cv-border"></span>
+          <span class="relative z-10 flex items-center gap-2 text-[#4ade80]/70 group-hover:text-[#4ade80] transition-colors duration-300">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover:bg-[#4ade80] group-hover:animate-pulse transition-colors duration-300"></span>
+            Download CV
+          </span>
         </a>
       </div>
     </div>
   </div>
 </header>
+
+<!-- Spacer so content doesn't hide under fixed nav -->
+<div class="h-16 sm:h-18"></div>
+
+<script is:inline>
+  (function () {
+    const btn        = document.getElementById("mobile-menu-btn");
+    const menu       = document.getElementById("mobile-menu");
+    const lines      = btn?.querySelectorAll(".hamburger-line");
+    let isOpen       = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+      btn?.setAttribute("aria-expanded", String(isOpen));
+      menu?.setAttribute("aria-hidden",  String(!isOpen));
+
+      if (isOpen) {
+        menu?.classList.add("is-open");
+        lines?.[0].classList.add("rotate-45", "translate-y-[7px]");
+        lines?.[1].classList.add("opacity-0");
+        lines?.[2].classList.add("-rotate-45", "-translate-y-[7px]");
+      } else {
+        menu?.classList.remove("is-open");
+        lines?.[0].classList.remove("rotate-45", "translate-y-[7px]");
+        lines?.[1].classList.remove("opacity-0");
+        lines?.[2].classList.remove("-rotate-45", "-translate-y-[7px]");
+      }
+    }
+
+    btn?.addEventListener("click", toggleMenu);
+
+    // Close on nav link click
+    menu?.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isOpen) toggleMenu();
+      });
+    });
+
+    // Active link highlight on scroll
+    const sections = document.querySelectorAll("section[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    function onScroll() {
+      let current = "";
+      sections.forEach((section) => {
+        const top = section.getBoundingClientRect().top;
+        if (top <= 80) current = section.id;
+      });
+
+      navLinks.forEach((link) => {
+        const dot = link.querySelector(".nav-dot");
+        const href = link.getAttribute("href")?.replace("#", "");
+        const isActive = href === current || (current === "" && href === "");
+        link.classList.toggle("text-white",   isActive);
+        link.classList.toggle("text-white/40", !isActive);
+        if (dot) {
+          dot.classList.toggle("opacity-100", isActive);
+          dot.classList.toggle("scale-100",   isActive);
+          dot.classList.toggle("opacity-0",   !isActive);
+          dot.classList.toggle("scale-0",     !isActive);
+        }
+      });
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+
+<style>
+  /* ── Header shell ── */
+  .nav-header {
+    background: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .nav-header:hover {
+    border-bottom-color: rgba(74, 222, 128, 0.1);
+  }
+
+  /* ── Top scan line ── */
+  .nav-scanline {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(74,222,128,0.4) 50%, transparent 100%);
+    opacity: 0.5;
+  }
+
+  /* ── Logo hover ── */
+  .logo-wrap img {
+    transition: opacity 0.2s ease, filter 0.2s ease;
+    filter: brightness(0.8);
+  }
+  .logo-wrap:hover img {
+    opacity: 1;
+    filter: brightness(1) drop-shadow(0 0 8px rgba(74,222,128,0.2));
+  }
+
+  /* ── Nav link active dot ── */
+  .nav-link { cursor: pointer; }
+
+  /* ── CV button ── */
+  .cv-btn { text-decoration: none; cursor: pointer; }
+  .cv-bg {
+    position: absolute; inset: 0; border-radius: inherit;
+    background: rgba(74,222,128,0.04);
+    transition: background 0.3s ease;
+  }
+  .cv-btn:hover .cv-bg { background: rgba(74,222,128,0.08); }
+  .cv-border {
+    position: absolute; inset: 0; border-radius: inherit;
+    border: 1px solid rgba(74,222,128,0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .cv-btn:hover .cv-border {
+    border-color: rgba(74,222,128,0.4);
+    box-shadow: 0 0 16px rgba(74,222,128,0.1);
+  }
+
+  /* ── Mobile menu ── */
+  .mobile-menu {
+    max-height: 0;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-menu.is-open {
+    max-height: 600px;
+  }
+
+  /* ── Mobile nav link slide-in ── */
+  .mobile-nav-link {
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.25s ease, transform 0.25s ease, color 0.2s ease, background 0.2s ease;
+  }
+  .mobile-menu.is-open .mobile-nav-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── Hamburger lines ── */
+  .hamburger-line {
+    transform-origin: center;
+  }
+</style>
