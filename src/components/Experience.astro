@@ -13,96 +13,184 @@ interface Props {
     name: string;
     img: string;
   }[];
+  compact?: boolean;
 }
 
-const { img, img2, title, date, item1, item2, item3, item4, item5, skills } =
-  Astro.props;
+const {
+  img,
+  img2,
+  title,
+  date,
+  item1,
+  item2,
+  item3,
+  item4,
+  item5,
+  skills,
+  compact = false,
+} = Astro.props;
 ---
 
 <li
   data-aos="fade-up"
-  data-aos-duration="2000"
-  class="link-card p-4 border border-3 rounded-lg bg-gray-800 w-[700px] h-[450px] border-animate max-md:w-[600px] max-md:h-[350px] max-sm:w-[300px] max-sm:h-[650px] mb-5"
+  data-aos-duration="1200"
+  class={`link-card ${compact ? "compact" : ""}`}
 >
-  <div class="flex flex-col space-y-4 items-start justify-center m-8">
-    <div
-      class="flex flex-row items-center space-x-4 max-sm:flex max-sm:flex-col"
-    >
-      <div class="flex flex-row items-center space-x-4">
-        <img src={img} alt={img} class="w-20 h-20 object-cover" />
-        <img src={img2} alt={img2} class="w-20 h-20 object-cover" />
+  <div class="card-content">
+    
+    <!-- HEADER -->
+    <div class="card-header">
+      <div class="logos">
+        <img src={img} alt={title} />
+        {!compact && img2 && <img src={img2} alt={title} />}
       </div>
+
       <div>
-        <h2
-          class="text-2xl text-white font-mono font-semibold mt-2 uppercase max-sm:text-lg"
-        >
-          {title}
-        </h2>
+        <h2 class="title">{title}</h2>
+        <p class="date">{date}</p>
       </div>
     </div>
-    <div class="text-lg font-semibold text-white text-center max-sm:text-base">
-      <h2 class="font-mono">{date}</h2>
-    </div>
-    <div class="flex flex-col items-start space-y-1">
-      <ul class="list-disc list-inside text-white font-mono">
-        <li>{item1}</li>
-        <li>{item2}</li>
-        {item3 && <li>{item3}</li>}
-        {item4 && <li>{item4}</li>}
-        {item5 && <li>{item5}</li>}
-      </ul>
 
-      {
-        skills && (
-          <div class="mt-4">
-            <strong class="font-bold text-xl text-white font-mono">
-              Skills:
-            </strong>
+    <!-- BODY -->
+    <ul class="description">
+      <li>{item1}</li>
+      <li>{item2}</li>
+      {item3 && <li>{item3}</li>}
+      {item4 && <li>{item4}</li>}
+      {item5 && <li>{item5}</li>}
+    </ul>
 
-            <div class="flex flex-wrap gap-4 mt-2">
-              {skills.map((skill) => (
-                <div class="flex flex-col items-center text-white text-sm">
-                  <img
-                    src={skill.img}
-                    alt={skill.name}
-                    class="w-10 h-10 object-contain"
-                  />
-                  <span class="mt-1 font-mono">{skill.name}</span>
-                </div>
-              ))}
+    <!-- SKILLS (siempre abajo) -->
+    {skills && (
+      <div class="skills">
+        <span class="skills-title">Tech Stack</span>
+        <div class="skills-grid">
+          {skills.map((skill) => (
+            <div class="skill">
+              <img src={skill.img} alt={skill.name} />
+              <span>{skill.name}</span>
             </div>
-          </div>
-        )
-      }
-    </div>
+          ))}
+        </div>
+      </div>
+    )}
+
   </div>
 </li>
 <style>
   .link-card {
-    list-style: none;
-    display: flex;
-    padding: 1px;
-    background-color: #23262d;
-    background-image: none;
-    background-size: 400%;
-    border-radius: 7px;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-    overflow: hidden;
-  }
+  list-style: none;
+  background: #1c1f26;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  display: flex;
+  margin-bottom: 20px;
+}
 
-  @keyframes borderGlow {
-    0% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
-    50% {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-    100% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
-  }
+.link-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
 
-  .link-card:hover {
-    animation: borderGlow 1.5s linear infinite;
-  }
+.card-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.logos {
+  display: flex;
+  gap: 1rem;
+}
+
+.logos img {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+}
+
+.title {
+  font-family: monospace;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+.date {
+  font-family: monospace;
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-top: 0.25rem;
+}
+
+.description {
+  font-family: monospace;
+  font-size: 0.95rem;
+  color: white;
+  line-height: 1.6;
+  padding-left: 1rem;
+}
+
+.skills {
+  margin-top: auto; /* 🔥 Empuja skills hacia abajo */
+  margin-top: 2rem;
+}
+
+.skills-title {
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.75rem;
+  gap: 0.4rem;
+}
+
+.skill img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+/* COMPACT MODE */
+.compact {
+  padding: 1.5rem;
+}
+
+.compact .logos img {
+  width: 45px;
+  height: 45px;
+}
+
+.compact .title {
+  font-size: 1.1rem;
+}
+
+.compact .description {
+  font-size: 0.85rem;
+}
 </style>
