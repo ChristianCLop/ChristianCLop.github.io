@@ -14,105 +14,172 @@ const { img, title, body, date, link, compact = false } = Astro.props;
 <li
   data-aos="zoom-out-up"
   data-aos-duration="2000"
-  class={`link-card p-4 border rounded-lg bg-gray-800 border-animate max-sm:w-[300px] max-sm:h-[350px] ${compact ? "h-[300px] w-[400px]" : "h-[450px] w-[550px]"} transition`}
+  class="achievement-card group relative overflow-hidden
+    w-[92vw] sm:w-auto
+    flex flex-col"
+  style={compact ? "--card-w: 340px" : "--card-w: 480px"}
 >
-  <div class="flex flex-col justify-between h-full w-full">
-    <div
-      class="relative flex justify-center items-center h-[75%] w-full overflow-hidden"
-    >
-      <img
-        src={img}
-        alt={title}
-        class={`object-cover rounded-t-lg transition-transform duration-300 ease-in-out transform hover:scale-110 ${compact ? "h-50" : "h-full w-full"} `}
-      />
+  <!-- Corner accents -->
+  <span class="corner corner-tl"></span>
+  <span class="corner corner-tr"></span>
+  <span class="corner corner-bl"></span>
+  <span class="corner corner-br"></span>
+
+  <!-- Top bar -->
+  <div class="card-topbar flex items-center gap-2 px-4 py-2 border-b border-white/10 shrink-0">
+    <span class="dot dot-red"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-green"></span>
+    <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate">
+      {title.toLowerCase().replace(/\s+/g, "_")}.cert
+    </span>
+    <span class="ml-auto font-mono text-[10px] text-[#4ade80]/40 shrink-0">{date}</span>
+  </div>
+
+  <!-- Image area -->
+  <div class={`image-wrap relative overflow-hidden ${compact ? "h-44" : "h-64 sm:h-72"}`}>
+    <img
+      src={img}
+      alt={title}
+      class="card-img w-full h-full object-cover transition-all duration-500"
+    />
+
+    <!-- Overlay on hover -->
+    <div class="img-overlay absolute inset-0 bg-[#0d1117]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <button
-          class="absolute left-1/2 transform -translate-x-1/2 transition hidden view-cert-button p-2 rounded-xl border border-[#3a8f49] text-[#3a8f49] bg-[#0d1e1b] items-center justify-center"
+        <button class="view-btn flex items-center gap-2 font-mono text-xs sm:text-sm
+          uppercase tracking-widest px-4 py-2.5
+          text-[#4ade80] border border-[#4ade80]/40 bg-[#0d1117]/80
+          rounded-md hover:bg-[#4ade80]/10 hover:border-[#4ade80]/70
+          transition-all duration-200
+          translate-y-2 group-hover:translate-y-0
+          opacity-0 group-hover:opacity-100"
+          style="transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s, background 0.2s, border-color 0.2s;"
         >
           View Certificate
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            aria-hidden="true"
-            role="img"
-            class="iconify iconify--heroicons w-5 h-5 ml-2"
-            preserveAspectRatio="xMidYMid meet"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
-            ></path>
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 1 0 0 0-1.5a.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
           </svg>
         </button>
       </a>
     </div>
-    <div
-      class="flex flex-col text-lg font-semibold text-white text-center border-t rounded-b-lg p-4"
-    >
-      <h2
-        class={` text-white font-mono font-semibold mt-2 uppercase ${compact ? "text-md" : "text-xl"}`}
-      >
-        {title}
-      </h2>
-      <h3 class={`font-mono ${compact ? "text-sm" : "text-lg"}`}>{body}</h3>
-      <p class={`mt-2 ${compact ? "text-xs" : "text-base"}`}>{date}</p>
-    </div>
+
+    <!-- Scan line on hover -->
+    <div class="scan-line absolute inset-x-0 h-px bg-[#4ade80]/30 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+  </div>
+
+  <!-- Info area -->
+  <div class="card-body flex flex-col gap-1.5 p-4 sm:p-5 border-t border-white/10">
+    <!-- Line number decoration -->
+    <span class="font-mono text-[10px] text-white/15 tracking-widest">// achievement</span>
+
+    <h2 class={`font-mono font-bold text-white uppercase tracking-tight leading-tight
+      ${compact ? "text-sm" : "text-base sm:text-lg"}`}>
+      {title}
+    </h2>
+
+    <p class={`font-mono text-white/50 leading-snug
+      ${compact ? "text-xs" : "text-sm"}`}>
+      {body}
+    </p>
+  </div>
+
+  <!-- Bottom glow line -->
+  <div class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
+    bg-gradient-to-r from-transparent via-[#4ade80]/40 to-transparent
+    opacity-0 group-hover:opacity-100 transition-opacity duration-400">
   </div>
 </li>
 
 <style>
-  .link-card {
+  /* ── Card shell ── */
+  .achievement-card {
+    width: var(--card-w, 480px);
+    max-width: 92vw;
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
     list-style: none;
-    background-color: #23262d;
-    border-radius: 7px;
-    overflow: hidden;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
   }
 
-  @keyframes borderGlow {
-    0% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
-    50% {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-    100% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
+  .achievement-card:hover {
+    border-color: rgba(74, 222, 128, 0.25);
+    box-shadow:
+      0 0 0 1px rgba(74, 222, 128, 0.08),
+      0 12px 40px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.03);
   }
 
-  .link-card:hover {
-    animation: borderGlow 1.5s linear infinite;
-  }
-
-  .relative {
-    position: relative;
-  }
-
-  .absolute {
+  /* ── Corner accents ── */
+  .corner {
     position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(74, 222, 128, 0.45);
+    border-style: solid;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .achievement-card:hover .corner { opacity: 1; }
+  .corner-tl { top: -1px;    left: -1px;  border-width: 2px 0 0 2px; border-radius: 3px 0 0 0; }
+  .corner-tr { top: -1px;    right: -1px; border-width: 2px 2px 0 0; border-radius: 0 3px 0 0; }
+  .corner-bl { bottom: -1px; left: -1px;  border-width: 0 0 2px 2px; border-radius: 0 0 0 3px; }
+  .corner-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-radius: 0 0 3px 0; }
+
+  /* ── Top bar ── */
+  .card-topbar { background: rgba(255, 255, 255, 0.02); }
+
+  /* ── Dots ── */
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.65;
+  }
+  .dot-red    { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green  { background: #28c840; }
+
+  /* ── Image ── */
+  .card-img { transform-origin: center; }
+  .achievement-card:hover .card-img { transform: scale(1.05); }
+
+  /* ── Scan line animation ── */
+  .scan-line {
+    animation: none;
+    top: 0;
+  }
+  .achievement-card:hover .scan-line {
+    animation: scanDown 1.8s ease-in-out infinite;
+  }
+  @keyframes scanDown {
+    0%   { top: 0%;   opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
   }
 
-  .view-cert-button {
-    display: none;
+  /* ── Shimmer sweep ── */
+  .achievement-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(74,222,128,0.03) 50%, transparent 60%);
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 6px;
   }
-
-  .link-card:hover .view-cert-button {
-    display: flex;
+  .achievement-card:hover::after {
+    opacity: 1;
+    animation: shimmer 2.5s ease infinite;
   }
-
-  .link-card:hover img {
-    opacity: 0.7;
-    transform: scale(1.1);
-  }
-
-  img {
-    transition:
-      transform 0.3s ease-in-out,
-      opacity 0.3s ease-in-out;
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 </style>
