@@ -1,0 +1,270 @@
+---
+import Experience from "../components/Experience.astro";
+
+const experiences = [
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Technician",
+    date: "September 2025 - January 2026",
+    item1: "Server administration and maintenance.",
+    item2:
+      "Management, support, and maintenance of internal faculty applications.",
+    item3: "Technical support and maintenance of academic IT infrastructure.",
+    item4:
+      "Development of web applications and internal tools to optimize processes.",
+    skills: [
+      { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Intern",
+    date: "February 2024 - July 2024",
+    item1:
+      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    item2: "Development of a mobile application for ID card validator.",
+    item3: "Maintenance of a web application for document management.",
+    item4: "Machine maintenance and support.",
+    item5: "Maintenance and restructuring of classrooms.",
+    skills: [
+      { name: "React Native", img: "/icons/skills/reactjs.svg" },
+      { name: "Angular", img: "/icons/skills/angular.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+      { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+      {
+        name: "Technical Support",
+        img: "/icons/skills/technical_support.svg",
+      },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Technician",
+    date: "September 2025 - January 2026",
+    item1: "Server administration and maintenance.",
+    item2:
+      "Management, support, and maintenance of internal faculty applications.",
+    item3: "Technical support and maintenance of academic IT infrastructure.",
+    item4:
+      "Development of web applications and internal tools to optimize processes.",
+    skills: [
+      { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Intern",
+    date: "February 2024 - July 2024",
+    item1:
+      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    item2: "Development of a mobile application for ID card validator.",
+    item3: "Maintenance of a web application for document management.",
+    item4: "Machine maintenance and support.",
+    item5: "Maintenance and restructuring of classrooms.",
+    skills: [
+      { name: "React Native", img: "/icons/skills/reactjs.svg" },
+      { name: "Angular", img: "/icons/skills/angular.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+      { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+      {
+        name: "Technical Support",
+        img: "/icons/skills/technical_support.svg",
+      },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Technician",
+    date: "September 2025 - January 2026",
+    item1: "Server administration and maintenance.",
+    item2:
+      "Management, support, and maintenance of internal faculty applications.",
+    item3: "Technical support and maintenance of academic IT infrastructure.",
+    item4:
+      "Development of web applications and internal tools to optimize processes.",
+    skills: [
+      { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Intern",
+    date: "February 2024 - July 2024",
+    item1:
+      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    item2: "Development of a mobile application for ID card validator.",
+    item3: "Maintenance of a web application for document management.",
+    item4: "Machine maintenance and support.",
+    item5: "Maintenance and restructuring of classrooms.",
+    skills: [
+      { name: "React Native", img: "/icons/skills/reactjs.svg" },
+      { name: "Angular", img: "/icons/skills/angular.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+      { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+      {
+        name: "Technical Support",
+        img: "/icons/skills/technical_support.svg",
+      },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Technician",
+    date: "September 2025 - January 2026",
+    item1: "Server administration and maintenance.",
+    item2:
+      "Management, support, and maintenance of internal faculty applications.",
+    item3: "Technical support and maintenance of academic IT infrastructure.",
+    item4:
+      "Development of web applications and internal tools to optimize processes.",
+    skills: [
+      { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Intern",
+    date: "February 2024 - July 2024",
+    item1:
+      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    item2: "Development of a mobile application for ID card validator.",
+    item3: "Maintenance of a web application for document management.",
+    item4: "Machine maintenance and support.",
+    item5: "Maintenance and restructuring of classrooms.",
+    skills: [
+      { name: "React Native", img: "/icons/skills/reactjs.svg" },
+      { name: "Angular", img: "/icons/skills/angular.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+      { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+      {
+        name: "Technical Support",
+        img: "/icons/skills/technical_support.svg",
+      },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Technician",
+    date: "September 2025 - January 2026",
+    item1: "Server administration and maintenance.",
+    item2:
+      "Management, support, and maintenance of internal faculty applications.",
+    item3: "Technical support and maintenance of academic IT infrastructure.",
+    item4:
+      "Development of web applications and internal tools to optimize processes.",
+    skills: [
+      { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
+      { name: "Docker", img: "/icons/skills/docker.svg" },
+    ],
+  },
+  {
+    img: "/img/experience/UTA.webp",
+    img2: "/img/experience/FISEI.png",
+    title: "Laboratory Intern",
+    date: "February 2024 - July 2024",
+    item1:
+      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    item2: "Development of a mobile application for ID card validator.",
+    item3: "Maintenance of a web application for document management.",
+    item4: "Machine maintenance and support.",
+    item5: "Maintenance and restructuring of classrooms.",
+    skills: [
+      { name: "React Native", img: "/icons/skills/reactjs.svg" },
+      { name: "Angular", img: "/icons/skills/angular.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+      { name: "JavaScript", img: "/icons/skills/javascript.svg" },
+      {
+        name: "Technical Support",
+        img: "/icons/skills/technical_support.svg",
+      },
+    ],
+  },
+];
+---
+
+<section id="experience" class="overflow-hidden">
+  <div class="flex flex-col items-center justify-start mt-36 mb-10">
+    <header>
+      <h1
+        class="font-mono text-7xl font-black text-transparent stroke-1 mb-12 uppercase max-sm:text-5xl"
+      >
+        Experience
+      </h1>
+    </header>
+    <div class="pulsate-border">
+      {experiences.slice(0, 4).map((item) => <Experience {...item} />)}
+    </div>
+    {
+      experiences.length > 4 && (
+        <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+          <button
+            id="showAllExpBtn"
+            class="px-6 py-3 border border-white font-mono uppercase rounded-xl"
+          >
+            Show All
+          </button>
+        </div>
+      )
+    }
+    <div
+      id="modalExp"
+      class="fixed inset-0 hidden justify-center items-center z-50"
+    >
+      <div
+        class="bg-zinc-900 p-10 max-w-6xl w-full max-h-[90vh] overflow-y-auto rounded-xl relative"
+      >
+        <button
+          id="closeModalExp"
+          class="absolute top-6 right-8 text-white text-2xl"
+        >
+          ✕
+        </button>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-24 mt-6">
+          {experiences.map((item) => <Experience {...item} compact={true} />)}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalExp");
+    const showBtn = document.getElementById("showAllExpBtn");
+    const closeBtn = document.getElementById("closeModalExp");
+
+    showBtn?.addEventListener("click", () => {
+      modal?.classList.remove("hidden");
+      modal?.classList.add("flex");
+      document.body.style.overflow = "hidden";
+    });
+
+    closeBtn?.addEventListener("click", () => {
+      modal?.classList.add("hidden");
+      modal?.classList.remove("flex");
+      document.body.style.overflow = "auto";
+    });
+
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }
+    });
+  });
+</script>
