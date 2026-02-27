@@ -7,6 +7,7 @@ import Experience from "../components/Experience.astro";
 import Project from "../sections/project.astro";
 import Archivement from "../sections/archivement.astro";
 import Experiences from "../sections/experiences.astro";
+import About from "../sections/about.astro";
 ---
 
 <Layout title="Christian Chico">
@@ -107,59 +108,7 @@ import Experiences from "../sections/experiences.astro";
       </div>
     </section>
 
-    <section id="about" class="overflow-hidden">
-      <div class="flex flex-col items-center justify-start mx-36 my-36">
-        <h1
-          class="font-mono text-7xl max-sm:text-5xl font-black text-transparent stroke-1 uppercase max-sm:whitespace-nowrap"
-        >
-          About Me
-        </h1>
-        <div
-          class="flex flex-row mt-20 justify-center items-center space-x-8 max-lg:flex max-lg:flex-col max-md:flex max-md:flex-col max-sm:flex max-sm:flex-col"
-        >
-          <div class="max-md:w-[200px]">
-            <div
-              class="border rounded-full pulsate-border"
-              style="border-color: #ffrgb(255, 255, 255)-border-glow-color: rgba(129, 14, 20, 0.6); --border-glow-color-stronger: rgba(224, 251, 252, 0.8);"
-            >
-              <img
-                class="object-cover rounded-[50%] w-full max-lg:w-[200px]"
-                src="https://avatars.githubusercontent.com/u/93953404?v=4"
-                alt="Foto de Christian Chico"
-              />
-            </div>
-            <div class="justify-center text-center">
-              <p
-                class="p-2 rounded-xl border border-[#3a8f49] text-[#3a8f49] bg-[#0d1e1b] mt-5 max-lg:mb-[50px] max-xl:whitespace-nowrap"
-              >
-                Open to work
-              </p>
-            </div>
-          </div>
-          <div
-            class="flex flex-col justify-center items-start text-justify mx-8 max-md:w-[300px] max-md:text-justify max-sm:w-[250px] max-sm:justify-center"
-          >
-            <p class="text-lg font-medium font-mono">
-              I'm, an software engineer, I am a passionate Full-Stack developer
-              with experience in different technologies for backend, frontend
-              and database development, from Ecuador, currently searching for a
-              job. I've been working on many projects developing movil and web
-              applications throw all my studies. Currently, I am expanding my
-              knowledge in Arch Linux.
-            </p>
-            <br />
-            <p class="text-lg font-medium font-mono">
-              My goal is to course a Master's degree in Cybersecurity.
-            </p>
-            <br />
-            <p class="text-lg font-medium font-mono">
-              On my free time I love to learn about new technologies, and I am a
-              big fan of cybersecurity and ethical hacking.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <About/>
 
     <Skill/>
 
