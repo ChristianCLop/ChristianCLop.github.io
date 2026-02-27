@@ -1,8 +1,9 @@
 ---
 interface Props {
   img: string;
-  img2: string;
+  img2?: string;
   title: string;
+  company: string;
   date: string;
   item1: string;
   item2: string;
@@ -13,96 +14,253 @@ interface Props {
     name: string;
     img: string;
   }[];
+  compact?: boolean;
 }
 
-const { img, img2, title, date, item1, item2, item3, item4, item5, skills } =
-  Astro.props;
+const {
+  img,
+  img2,
+  title,
+  company,
+  date,
+  item1,
+  item2,
+  item3,
+  item4,
+  item5,
+  skills,
+  compact = false,
+} = Astro.props;
+
+const items = [item1, item2, item3, item4, item5].filter(Boolean);
 ---
 
 <li
   data-aos="fade-up"
   data-aos-duration="2000"
-  class="link-card p-4 border border-3 rounded-lg bg-gray-800 w-[700px] h-[450px] border-animate max-md:w-[600px] max-md:h-[350px] max-sm:w-[300px] max-sm:h-[650px] mb-5"
+  class={`exp-card group relative mb-6 overflow-hidden ${compact ? "w-[85vw] xl:w-[40vw]" : "w-[95vw] sm:w-[85vw] md:w-[72vw] lg:w-[62vw] xl:w-[55vw]"}`}
 >
-  <div class="flex flex-col space-y-4 items-start justify-center m-8">
-    <div
-      class="flex flex-row items-center space-x-4 max-sm:flex max-sm:flex-col"
-    >
-      <div class="flex flex-row items-center space-x-4">
-        <img src={img} alt={img} class="w-20 h-20 object-cover" />
-        <img src={img2} alt={img2} class="w-20 h-20 object-cover" />
+  <!-- Corner decorations -->
+  <span class="corner corner-tl"></span>
+  <span class="corner corner-tr"></span>
+  <span class="corner corner-bl"></span>
+  <span class="corner corner-br"></span>
+
+  <!-- Top bar: terminal style -->
+  <div class="top-bar flex items-center gap-2 px-4 py-2 border-b border-white/10">
+    <span class="dot dot-red"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-green"></span>
+    <span class="bar-label font-mono text-xs text-white/30 ml-2 tracking-widest uppercase">
+      experience.json
+    </span>
+    <span class="ml-auto font-mono text-xs text-[#4ade80]/60">{date}</span>
+  </div>
+
+  <!-- Main content -->
+  <div class="inner p-5 sm:p-7 md:p-8 flex flex-col gap-5">
+
+    <!-- Header row -->
+    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+
+      <!-- Logos -->
+      <div class="flex items-center gap-3 shrink-0">
+        <div class="logo-wrap">
+          <img src={img} alt={company} class="w-14 h-14 sm:w-16 sm:h-16 object-cover" />
+        </div>
+        {img2 && !compact && (
+          <div class="logo-wrap hidden sm:block">
+            <img src={img2} alt={company} class="w-14 h-14 sm:w-16 sm:h-16 object-cover" />
+          </div>
+        )}
       </div>
-      <div>
-        <h2
-          class="text-2xl text-white font-mono font-semibold mt-2 uppercase max-sm:text-lg"
-        >
+
+      <!-- Title block -->
+      <div class="flex flex-col gap-1 min-w-0">
+        <span class="prompt-prefix font-mono text-xs sm:text-sm text-[#4ade80]/70 tracking-widest uppercase">
+          <span class="text-[#4ade80]">▶</span> {company}
+        </span>
+        <h2 class="font-mono font-bold text-white text-lg sm:text-xl md:text-2xl uppercase tracking-tight leading-none">
           {title}
         </h2>
+        <div class="h-px w-12 bg-gradient-to-r from-[#4ade80] to-transparent mt-1"></div>
       </div>
     </div>
-    <div class="text-lg font-semibold text-white text-center max-sm:text-base">
-      <h2 class="font-mono">{date}</h2>
-    </div>
-    <div class="flex flex-col items-start space-y-1">
-      <ul class="list-disc list-inside text-white font-mono">
-        <li>{item1}</li>
-        <li>{item2}</li>
-        {item3 && <li>{item3}</li>}
-        {item4 && <li>{item4}</li>}
-        {item5 && <li>{item5}</li>}
+
+    <!-- Responsibilities -->
+    <div class="responsibilities">
+      <span class="block font-mono text-[10px] sm:text-xs text-white/30 tracking-[0.2em] uppercase mb-2">
+        // responsibilities
+      </span>
+      <ul class="flex flex-col gap-2">
+        {items.map((item, i) => (
+          <li class="item-line font-mono text-sm sm:text-base text-white/80 flex gap-3 items-start leading-relaxed">
+            <span class="line-num shrink-0 text-[#4ade80]/40 text-xs pt-0.5 w-5 text-right select-none">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <span class="text-[#64748b] shrink-0">→</span>
+            <span>{item}</span>
+          </li>
+        ))}
       </ul>
-
-      {
-        skills && (
-          <div class="mt-4">
-            <strong class="font-bold text-xl text-white font-mono">
-              Skills:
-            </strong>
-
-            <div class="flex flex-wrap gap-4 mt-2">
-              {skills.map((skill) => (
-                <div class="flex flex-col items-center text-white text-sm">
-                  <img
-                    src={skill.img}
-                    alt={skill.name}
-                    class="w-10 h-10 object-contain"
-                  />
-                  <span class="mt-1 font-mono">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )
-      }
     </div>
+
+    <!-- Skills -->
+    {skills && (
+      <div class="skills-section border-t border-white/5 pt-5">
+        <span class="block font-mono text-[10px] sm:text-xs text-white/30 tracking-[0.2em] uppercase mb-3">
+          // stack
+        </span>
+        <div class="flex flex-wrap gap-3">
+          {skills.map((skill) => (
+            <div class="skill-chip group/chip flex flex-col items-center gap-1.5 px-3 py-2 cursor-default">
+              <img
+                src={skill.img}
+                alt={skill.name}
+                class={`object-contain transition-transform duration-300 group-hover/chip:scale-110 ${compact ? "w-7 h-7" : "w-8 h-8 sm:w-9 sm:h-9"}`}
+              />
+              <span class="font-mono text-[10px] sm:text-xs text-white/50 group-hover/chip:text-[#4ade80] transition-colors duration-300">
+                {skill.name}
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
   </div>
+
+  <!-- Glow line bottom -->
+  <div class="glow-line"></div>
 </li>
+
 <style>
-  .link-card {
-    list-style: none;
-    display: flex;
-    padding: 1px;
-    background-color: #23262d;
-    background-image: none;
-    background-size: 400%;
-    border-radius: 7px;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+  /* ── Card shell ── */
+  .exp-card {
+    background: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 6px;
+    position: relative;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+  }
+
+  .exp-card:hover {
+    border-color: rgba(74, 222, 128, 0.25);
+    box-shadow:
+      0 0 0 1px rgba(74, 222, 128, 0.1),
+      0 8px 40px rgba(74, 222, 128, 0.06),
+      0 2px 8px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
+
+  /* ── Corner accents ── */
+  .corner {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-color: rgba(74, 222, 128, 0.4);
+    border-style: solid;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+  }
+  .exp-card:hover .corner { opacity: 1; }
+
+  .corner-tl { top: -1px; left: -1px; border-width: 2px 0 0 2px; border-radius: 3px 0 0 0; }
+  .corner-tr { top: -1px; right: -1px; border-width: 2px 2px 0 0; border-radius: 0 3px 0 0; }
+  .corner-bl { bottom: -1px; left: -1px; border-width: 0 0 2px 2px; border-radius: 0 0 0 3px; }
+  .corner-br { bottom: -1px; right: -1px; border-width: 0 2px 2px 0; border-radius: 0 0 3px 0; }
+
+  /* ── Top bar ── */
+  .top-bar {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.6;
+  }
+  .dot-red    { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green  { background: #28c840; }
+
+  /* ── Logo wrapper ── */
+  .logo-wrap {
+    border-radius: 8px;
     overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    transition: border-color 0.3s ease;
+  }
+  .exp-card:hover .logo-wrap {
+    border-color: rgba(74, 222, 128, 0.2);
   }
 
-  @keyframes borderGlow {
-    0% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
-    50% {
-      border-color: rgba(255, 255, 255, 0.1);
-    }
-    100% {
-      border-color: rgba(255, 255, 255, 0.8);
-    }
+  /* ── Item lines ── */
+  .item-line {
+    transition: color 0.2s ease;
+  }
+  .item-line:hover {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  .item-line:hover .line-num {
+    color: rgba(74, 222, 128, 0.8);
   }
 
-  .link-card:hover {
-    animation: borderGlow 1.5s linear infinite;
+  /* ── Skill chips ── */
+  .skill-chip {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 6px;
+    transition: background 0.3s ease, border-color 0.3s ease;
+    min-width: 56px;
+  }
+  .skill-chip:hover {
+    background: rgba(74, 222, 128, 0.05);
+    border-color: rgba(74, 222, 128, 0.2);
+  }
+
+  /* ── Glow line bottom ── */
+  .glow-line {
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.4), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+  .exp-card:hover .glow-line {
+    opacity: 1;
+  }
+
+  /* ── Scan line shimmer on hover ── */
+  .exp-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      105deg,
+      transparent 40%,
+      rgba(74, 222, 128, 0.03) 50%,
+      transparent 60%
+    );
+    background-size: 200% 200%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    border-radius: 6px;
+  }
+  .exp-card:hover::after {
+    opacity: 1;
+    animation: shimmer 2s ease infinite;
+  }
+
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 </style>

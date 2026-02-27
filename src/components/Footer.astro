@@ -1,182 +1,321 @@
 ---
 import "animate.css";
-import "../css/styles.css";
+
+const navLinks = [
+  { href: "#",             label: "Home"         },
+  { href: "#about",        label: "About"        },
+  { href: "#experience",   label: "Experience"   },
+  { href: "#skills",       label: "Stack"        },
+  { href: "#achievements", label: "Achievements" },
+  { href: "#projects",     label: "Projects"     },
+];
+
+const techStack = [
+  { name: "Astro",       icon: "/icons/skills/astro.svg"       },
+  { name: "JavaScript",  icon: "/icons/skills/javascript.svg"  },
+  { name: "Tailwindcss", icon: "/icons/skills/tailwindcss.svg" },
+  { name: "CSS",         icon: "/icons/skills/css.svg"         },
+];
 ---
 
-<footer
-  class="py-4 sm:py-6 bg-black border-t rounded-t-xl h-[410px] z-49 max-sm:h-auto"
-  x-data="{expanded: false}"
->
-  <div class="grid grid-cols-2 w-full h-full mb-4 max-sm:flex max-sm:flex-col">
-    <div class="col-start-1">
-      <div
-        class="grid grid-cols-2 justify-center items-center max-sm:flex max-sm:flex-row"
-      >
-        <div
-          class="ml-10 col-start-1 flex flex-col justify-center items-center p-4 font-mono bg-black max-md:col-span-2 max-sm:ml-0"
-        >
+<footer id="contact" class="footer relative overflow-hidden">
+
+  <!-- Grid bg -->
+  <div class="footer-grid" aria-hidden="true"></div>
+
+  <!-- Top glow line -->
+  <div class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+
+    <!-- ── Top bar: terminal style ── -->
+    <div class="panel-topbar flex items-center gap-2 px-4 py-2.5 border border-white/7 rounded-t-md mb-0">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest">contact.json</span>
+      <span class="ml-auto font-mono text-[10px] text-[#4ade80]/40 tracking-widest hidden sm:block">~/portfolio/contact</span>
+    </div>
+
+    <!-- ── Main panel ── -->
+    <div class="footer-panel border border-white/7 border-t-0 rounded-b-md p-6 sm:p-8 lg:p-10">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-8">
+
+        <!-- ── Col 1: Contact form ── -->
+        <div class="lg:col-span-1 flex flex-col gap-5">
+          <div>
+            <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// get_in_touch</span>
+            <h2 class="font-mono font-bold text-white uppercase text-lg sm:text-xl mt-1">Contact Me</h2>
+            <div class="h-[2px] w-10 bg-gradient-to-r from-[#4ade80] to-transparent mt-2 opacity-60"></div>
+          </div>
+
           <form
             action="https://formspree.io/f/meqyywlw"
             method="POST"
-            class="w-full max-w-sm"
+            class="flex flex-col gap-4"
+            id="contact-form"
           >
-            <div class="flex flex-col mb-4">
-              <label class="uppercase my-1 text-white">Your name:</label>
+            <!-- Name -->
+            <div class="flex flex-col gap-1.5">
+              <label class="font-mono text-[10px] text-white/30 tracking-[0.2em] uppercase">
+                // your_name
+              </label>
               <input
-                class="border rounded-lg p-2 placeholder:text-[#a4a4a4]"
                 type="text"
                 name="name"
-                placeholder="Your name"
+                placeholder="Christian Chico"
                 required
+                class="form-input font-mono text-sm text-white placeholder:text-white/15
+                  bg-white/[0.02] border border-white/8 rounded-md px-4 py-2.5
+                  focus:outline-none focus:border-[#4ade80]/40 focus:bg-[#4ade80]/[0.03]
+                  transition-all duration-200"
               />
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="uppercase my-1 text-white">Your email:</label>
+
+            <!-- Email -->
+            <div class="flex flex-col gap-1.5">
+              <label class="font-mono text-[10px] text-white/30 tracking-[0.2em] uppercase">
+                // your_email
+              </label>
               <input
-                class="border rounded-lg p-2 placeholder:text-[#a4a4a4]"
                 type="email"
                 name="email"
-                placeholder="Your email"
+                placeholder="hello@example.com"
                 required
+                class="form-input font-mono text-sm text-white placeholder:text-white/15
+                  bg-white/[0.02] border border-white/8 rounded-md px-4 py-2.5
+                  focus:outline-none focus:border-[#4ade80]/40 focus:bg-[#4ade80]/[0.03]
+                  transition-all duration-200"
               />
             </div>
-            <div class="flex flex-col mb-4">
-              <label class="uppercase my-1 text-white">Your message:</label>
+
+            <!-- Message -->
+            <div class="flex flex-col gap-1.5">
+              <label class="font-mono text-[10px] text-white/30 tracking-[0.2em] uppercase">
+                // message
+              </label>
               <textarea
-                class="border rounded-lg p-2 placeholder:text-[#a4a4a4]"
                 name="message"
-                placeholder="Your message"
-                required></textarea>
+                placeholder="Let's work together..."
+                required
+                rows="4"
+                class="form-input font-mono text-sm text-white placeholder:text-white/15
+                  bg-white/[0.02] border border-white/8 rounded-md px-4 py-2.5
+                  focus:outline-none focus:border-[#4ade80]/40 focus:bg-[#4ade80]/[0.03]
+                  transition-all duration-200 resize-none"
+              ></textarea>
             </div>
+
+            <!-- Submit -->
             <button
-              class="border-2 border-white py-2 px-4 mt-4 rounded-xl text-white hover:bg-white hover:text-black transition-colors"
               type="submit"
+              class="submit-btn group relative overflow-hidden font-mono text-xs uppercase tracking-widest
+                px-6 py-3 rounded-md mt-1"
             >
-              Get in Touch
+              <span class="sbg"></span>
+              <span class="sborder"></span>
+              <span class="relative z-10 flex items-center justify-center gap-2
+                text-[#4ade80]/70 group-hover:text-[#4ade80] transition-colors duration-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover:bg-[#4ade80] group-hover:animate-pulse transition-colors duration-300"></span>
+                Send Message
+                <svg class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </span>
             </button>
           </form>
         </div>
-        <div
-          class="col-start-2 social-links flex flex-col justify-center items-center max-md:hidden max-sm:hidden"
-        >
-          <h1 class="mb-2 mt-4 text-4xl">Contacts</h1>
-          <div class="flex flex-row gap-4">
-            <a
-              data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom"
-              class="in"
-              target="_blank"
-              href="https://www.linkedin.com/in/christianchicolópez"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                height="60"
-                width="60"
-                class=""
-              >
-                <path
-                  stroke="#fff"
-                  stroke-linejoin="round"
-                  d="M1.5 3.5a2 2 0 1 0 4 0 2 2 0 1 0 -4 0"
-                  stroke-width="1"></path>
-                <path
-                  stroke="#fff"
-                  stroke-linejoin="round"
-                  d="M1.5 22.5v-14h4v14h-4Z"
-                  clip-rule="evenodd"
-                  stroke-width="1"></path>
-                <path
-                  stroke="#fff"
-                  stroke-linejoin="round"
-                  d="M8 8.5v14h4v-6.908c0 -1.092 1 -3.092 3.895 -3.092 1.643 0 2.605 0.845 2.605 2.5v7.5h4V15c0 -1.309 -0.312 -2.937 -1.394 -4.277 -1.144 -1.417 -2.913 -2.223 -5.21 -2.223 -1.513 0 -2.835 0.615 -3.896 1.366V8.5H8Z"
-                  clip-rule="evenodd"
-                  stroke-width="1"></path>
-              </svg>
-            </a>
 
-            <a
-              data-aos="fade-up"
-              data-aos-anchor-placement="top-bottom"
-              class="git"
-              target="_blank"
-              href="https://github.com/ChristianCLop"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                height="64"
-                width="64"
-              >
-                <path
-                  stroke="#fff"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M11.996 1.771a10.486 10.486 0 0 0 -3.314 20.438c0.523 0.092 0.69 -0.216 0.69 -0.493 0 -0.25 0.005 -0.945 0 -1.824 -2.919 0.633 -3.522 -1.381 -3.522 -1.381a2.775 2.775 0 0 0 -1.163 -1.534c-0.952 -0.65 0.071 -0.638 0.071 -0.638a2.201 2.201 0 0 1 1.607 1.08 2.232 2.232 0 0 0 3.05 0.871c0.05 -0.53 0.285 -1.025 0.666 -1.397 -2.328 -0.266 -4.776 -1.165 -4.776 -5.184a4.055 4.055 0 0 1 1.08 -2.815 3.762 3.762 0 0 1 0.103 -2.774s0.882 -0.282 2.883 1.076a9.924 9.924 0 0 1 5.252 0c2.007 -1.357 2.881 -1.076 2.881 -1.076 0.387 0.878 0.424 1.87 0.104 2.774a4.05 4.05 0 0 1 1.079 2.816c0 4.03 -2.452 4.916 -4.789 5.174a2.487 2.487 0 0 1 0.718 1.933v2.904c0 0.28 0.17 0.59 0.702 0.488a10.487 10.487 0 0 0 -3.322 -20.438v0Z"
-                  stroke-width="1"></path>
-              </svg>
-            </a>
+        <!-- ── Col 2: Socials + Nav ── -->
+        <div class="lg:col-span-1 flex flex-col gap-8">
+
+          <!-- Social links -->
+          <div class="flex flex-col gap-4">
+            <div>
+              <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// socials</span>
+              <h3 class="font-mono font-semibold text-white uppercase text-sm mt-1">Connect</h3>
+            </div>
+
+            <div class="flex flex-col gap-3">
+              <!-- LinkedIn -->
+              <a href="https://www.linkedin.com/in/christianchicolópez" target="_blank" rel="noopener noreferrer"
+                class="social-card group relative overflow-hidden flex items-center gap-3 px-4 py-3 rounded-md">
+                <span class="sc-bg"></span><span class="sc-border"></span>
+                <span class="relative z-10 flex items-center justify-center w-8 h-8 rounded-sm border border-white/8 bg-white/[0.02] group-hover:border-[#0077b5]/40 group-hover:bg-[#0077b5]/10 transition-all duration-300 shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="16" width="16">
+                    <path stroke="currentColor" stroke-linejoin="round" d="M1.5 3.5a2 2 0 1 0 4 0 2 2 0 1 0 -4 0" stroke-width="1.5"/>
+                    <path stroke="currentColor" stroke-linejoin="round" d="M1.5 22.5v-14h4v14h-4Z" clip-rule="evenodd" stroke-width="1.5"/>
+                    <path stroke="currentColor" stroke-linejoin="round" d="M8 8.5v14h4v-6.908c0 -1.092 1 -3.092 3.895 -3.092 1.643 0 2.605 0.845 2.605 2.5v7.5h4V15c0 -1.309 -0.312 -2.937 -1.394 -4.277 -1.144 -1.417 -2.913 -2.223 -5.21 -2.223 -1.513 0 -2.835 0.615 -3.896 1.366V8.5H8Z" clip-rule="evenodd" stroke-width="1.5"/>
+                  </svg>
+                </span>
+                <span class="relative z-10 flex flex-col">
+                  <span class="font-mono text-sm text-white/70 group-hover:text-white transition-colors duration-300">LinkedIn</span>
+                  <span class="font-mono text-[10px] text-white/25 group-hover:text-[#0077b5]/60 transition-colors duration-300">/in/christianchico</span>
+                </span>
+                <span class="relative z-10 ml-auto font-mono text-white/15 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300 text-sm">→</span>
+              </a>
+
+              <!-- GitHub -->
+              <a href="https://github.com/ChristianCLop" target="_blank" rel="noopener noreferrer"
+                class="social-card social-card--gh group relative overflow-hidden flex items-center gap-3 px-4 py-3 rounded-md">
+                <span class="sc-bg"></span><span class="sc-border sc-border--gh"></span>
+                <span class="relative z-10 flex items-center justify-center w-8 h-8 rounded-sm border border-white/8 bg-white/[0.02] group-hover:border-white/20 group-hover:bg-white/[0.07] transition-all duration-300 shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" height="16" width="16">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M11.996 1.771a10.486 10.486 0 0 0 -3.314 20.438c0.523 0.092 0.69 -0.216 0.69 -0.493 0 -0.25 0.005 -0.945 0 -1.824 -2.919 0.633 -3.522 -1.381 -3.522 -1.381a2.775 2.775 0 0 0 -1.163 -1.534c-0.952 -0.65 0.071 -0.638 0.071 -0.638a2.201 2.201 0 0 1 1.607 1.08 2.232 2.232 0 0 0 3.05 0.871c0.05 -0.53 0.285 -1.025 0.666 -1.397 -2.328 -0.266 -4.776 -1.165 -4.776 -5.184a4.055 4.055 0 0 1 1.08 -2.815 3.762 3.762 0 0 1 0.103 -2.774s0.882 -0.282 2.883 1.076a9.924 9.924 0 0 1 5.252 0c2.007 -1.357 2.881 -1.076 2.881 -1.076 0.387 0.878 0.424 1.87 0.104 2.774a4.05 4.05 0 0 1 1.079 2.816c0 4.03 -2.452 4.916 -4.789 5.174a2.487 2.487 0 0 1 0.718 1.933v2.904c0 0.28 0.17 0.59 0.702 0.488a10.487 10.487 0 0 0 -3.322 -20.438v0Z" stroke-width="1.5"/>
+                  </svg>
+                </span>
+                <span class="relative z-10 flex flex-col">
+                  <span class="font-mono text-sm text-white/70 group-hover:text-white transition-colors duration-300">GitHub</span>
+                  <span class="font-mono text-[10px] text-white/25 group-hover:text-white/50 transition-colors duration-300">/ChristianCLop</span>
+                </span>
+                <span class="relative z-10 ml-auto font-mono text-white/15 group-hover:text-white/50 group-hover:translate-x-0.5 transition-all duration-300 text-sm">→</span>
+              </a>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-start-2">
-      <div class="grid grid-cols-2 max-sm:flex max-sm:flex-row">
-        <div class="col-start-1 max-sm:hidden">
-          <div class="flex flex-col justify-center items-center text-center">
-            <h1 class="mb-4 mt-4 text-xl">Navegation</h1>
-            <div class="flex flex-col gap-8 mb-6 font-mono">
-              <a href="#">Home</a>
-              <a href="#about">About Me</a>
-              <a href="#experience">Experience</a>
-              <a href="#achievements">Archivements</a>
-              <a href="#projects">Projects</a>
+
+          <!-- Navigation -->
+          <div class="flex flex-col gap-3">
+            <div>
+              <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// navigation</span>
+              <h3 class="font-mono font-semibold text-white uppercase text-sm mt-1">Sitemap</h3>
+            </div>
+            <div class="grid grid-cols-2 gap-1">
+              {navLinks.map((link, i) => (
+                <a href={link.href}
+                  class="group flex items-center gap-2 px-2 py-1.5 rounded-sm
+                    font-mono text-xs text-white/35 hover:text-white/80
+                    hover:bg-white/[0.03] transition-all duration-200">
+                  <span class="text-[#4ade80]/20 group-hover:text-[#4ade80]/50 transition-colors duration-200">▸</span>
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
-        <div class="col-start-2 max-sm:w-full">
-          <div class="flex flex-col justify-center items-center text-center">
-            <h1 class="mb-4 mt-4 text-xl">About this web</h1>
-            <div class="flex flex-col gap-8 mb-4 font-mono">
-              <p>Created with</p>
-              <p class="inline-block">
-                Astro <img
-                  class="w-6 inline-block"
-                  src="/icons/skills/astro.svg"
-                  alt=""
-                />
-              </p>
-              <p class="inline-block">
-                JavaScript <img
-                  class="w-6 inline-block"
-                  src="/icons/skills/javascript.svg"
-                  alt=""
-                />
-              </p>
-              <p class="inline-block">
-                Tailwindcss <img
-                  class="w-6 inline-block"
-                  src="/icons/skills/tailwindcss.svg"
-                  alt=""
-                />
-              </p>
-              <p class="inline-block">
-                CSS <img
-                  class="w-6 inline-block"
-                  src="/icons/skills/css.svg"
-                  alt=""
-                />
-              </p>
-              <div>
-                <p class="inline-block">Created by</p>
-                <p class="text-[#3a8f49] inline-block">Christian Chico</p>
+
+        <!-- ── Col 3: Built with ── -->
+        <div class="lg:col-span-1 flex flex-col gap-5">
+          <div>
+            <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">// built_with</span>
+            <h3 class="font-mono font-semibold text-white uppercase text-sm mt-1">This Site</h3>
+            <div class="h-[2px] w-10 bg-gradient-to-r from-[#4ade80] to-transparent mt-2 opacity-40"></div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            {techStack.map((tech) => (
+              <div class="tech-row group flex items-center gap-3 px-3 py-2.5 rounded-md
+                border border-white/5 bg-white/[0.015]
+                hover:border-[#4ade80]/20 hover:bg-[#4ade80]/[0.03]
+                transition-all duration-200">
+                <img src={tech.icon} alt={tech.name} class="w-5 h-5 object-contain group-hover:scale-110 transition-transform duration-300" />
+                <span class="font-mono text-sm text-white/50 group-hover:text-white/80 transition-colors duration-200">{tech.name}</span>
+                <span class="ml-auto font-mono text-[10px] text-white/15 group-hover:text-[#4ade80]/40 transition-colors duration-200 tracking-widest">v✓</span>
               </div>
-            </div>
+            ))}
+          </div>
+
+          <!-- Author credit -->
+          <div class="mt-auto pt-4 border-t border-white/5">
+            <p class="font-mono text-xs text-white/20 leading-relaxed">
+              // Designed &amp; built by
+            </p>
+            <p class="font-mono text-sm text-[#4ade80]/70 mt-1">Christian Chico</p>
+            <p class="font-mono text-[10px] text-white/15 mt-0.5 tracking-widest">
+              Ecuador 🇪🇨 · {new Date().getFullYear()}
+            </p>
           </div>
         </div>
+
       </div>
     </div>
+
+    <!-- ── Bottom bar ── -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mt-6
+      pt-5 border-t border-white/5">
+      <p class="font-mono text-[10px] text-white/20 tracking-widest">
+        © {new Date().getFullYear()} Christian Chico · All rights reserved
+      </p>
+      <div class="flex items-center gap-2">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse"></span>
+        <span class="font-mono text-[10px] text-[#4ade80]/40 tracking-widest uppercase">Available for work</span>
+      </div>
+    </div>
+
   </div>
 </footer>
+
+<style>
+  /* ── Footer shell ── */
+  .footer {
+    background: #0d1117;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* ── Grid bg ── */
+  .footer-grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(74,222,128,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74,222,128,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 100%, black 20%, transparent 80%);
+  }
+
+  /* ── Panel ── */
+  .panel-topbar { background: rgba(255,255,255,0.02); }
+  .footer-panel { background: rgba(255,255,255,0.01); }
+
+  /* ── Dots ── */
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; opacity:0.65; }
+  .dot-red    { background:#ff5f57; }
+  .dot-yellow { background:#febc2e; }
+  .dot-green  { background:#28c840; }
+
+  /* ── Form inputs ── */
+  .form-input::placeholder { color: rgba(255,255,255,0.15); }
+  .form-input:focus { box-shadow: 0 0 0 1px rgba(74,222,128,0.15); }
+
+  /* ── Submit button ── */
+  .submit-btn { cursor: pointer; border: none; background: transparent; width: 100%; }
+  .sbg {
+    position:absolute; inset:0; border-radius:inherit;
+    background: rgba(74,222,128,0.04);
+    transition: background 0.3s ease;
+  }
+  .submit-btn:hover .sbg { background: rgba(74,222,128,0.09); }
+  .sborder {
+    position:absolute; inset:0; border-radius:inherit;
+    border: 1px solid rgba(74,222,128,0.2);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .submit-btn:hover .sborder {
+    border-color: rgba(74,222,128,0.4);
+    box-shadow: 0 0 20px rgba(74,222,128,0.08);
+  }
+
+  /* ── Social cards ── */
+  .social-card { text-decoration: none; transition: transform 0.2s ease; }
+  .social-card:hover { transform: translateY(-1px); }
+  .sc-bg {
+    position:absolute; inset:0; border-radius:inherit;
+    background: rgba(255,255,255,0.02);
+    transition: background 0.3s ease;
+  }
+  .social-card:hover .sc-bg { background: rgba(74,222,128,0.04); }
+  .social-card--gh:hover .sc-bg { background: rgba(255,255,255,0.04); }
+  .sc-border {
+    position:absolute; inset:0; border-radius:inherit;
+    border: 1px solid rgba(255,255,255,0.07);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .social-card:hover .sc-border {
+    border-color: rgba(74,222,128,0.25);
+    box-shadow: 0 0 16px rgba(74,222,128,0.06);
+  }
+  .sc-border--gh {}
+  .social-card--gh:hover .sc-border--gh {
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 0 16px rgba(255,255,255,0.03);
+  }
+</style>

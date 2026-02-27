@@ -10,76 +10,131 @@ interface Props {
 
 const { img, color, name, level } = Astro.props;
 
-function getColorWithOpacity(color: string, opacity: number) {
+function hexToRgb(color: string) {
   if (color.startsWith("#")) {
     const bigint = parseInt(color.slice(1), 16);
     const r = (bigint >> 16) & 255;
     const g = (bigint >> 8) & 255;
     const b = bigint & 255;
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+    return { r, g, b };
   }
-  return color;
+  return { r: 255, g: 255, b: 255 };
 }
 
-function getGlowColor(color: string, opacity: number = 0.6) {
-  if (color.startsWith("#")) {
-    const bigint = parseInt(color.slice(1), 16);
-    const r = (bigint >> 16) & 255;
-    const g = (bigint >> 8) & 255;
-    const b = bigint & 255;
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-  }
-  return `rgba(255, 255, 255, ${opacity})`;
+function rgba(color: string, opacity: number) {
+  const { r, g, b } = hexToRgb(color);
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
 }
 
-const glowColor = getGlowColor(color);
-const backgroundColor = getColorWithOpacity(color, 0.6);
+const levelValue =
+  typeof level === "number"
+    ? level
+    : level === "Alta"
+      ? 90
+      : level === "Media"
+        ? 60
+        : 30;
+
+const levelLabel =
+  typeof level === "number"
+    ? `${level}%`
+    : level === "Alta"
+      ? "Advanced"
+      : level === "Media"
+        ? "Intermediate"
+        : "Basic";
+
+const barColor     = rgba(color, 0.85);
+const glowColor    = rgba(color, 0.4);
+const bgColor      = rgba(color, 0.06);
+const borderColor  = rgba(color, 0.2);
 ---
 
-<li class="w-full flex flex-col gap-2 my-6 pr-18">
-  <div class="flex items-center gap-4">
-    <img src={img} alt={name} class="w-8 h-8 object-contain" />
-    <span class="font-mono text-sm text-white">{name}</span>
+<li
+  class="skill-item group w-full flex flex-col gap-3 py-3 px-1"
+  style={`--bar-color: ${barColor}; --glow-color: ${glowColor}; --bg-color: ${bgColor}; --border-color: ${borderColor};`}
+>
+  <!-- Top row: icon + name + level badge -->
+  <div class="flex items-center justify-between gap-3">
+
+    <div class="flex items-center gap-3">
+      <!-- Icon wrapper -->
+      <div class="icon-wrap shrink-0 w-9 h-9 flex items-center justify-center rounded-md
+        border border-white/5 bg-white/[0.03]
+        transition-all duration-300
+        group-hover:border-[var(--border-color)] group-hover:bg-[var(--bg-color)]"
+      >
+        <img src={img} alt={name} class="w-5 h-5 object-contain transition-transform duration-300 group-hover:scale-110" />
+      </div>
+
+      <!-- Name -->
+      <span class="font-mono text-sm text-white/70 group-hover:text-white transition-colors duration-300">
+        {name}
+      </span>
+    </div>
+
+    <!-- Level badge -->
+    <span class="level-badge font-mono text-[10px] tracking-widest uppercase px-2 py-0.5
+      border rounded-sm text-white/40
+      border-white/5 bg-white/[0.02]
+      group-hover:text-white/70
+      transition-colors duration-300"
+      style="group-hover:border-color: var(--border-color);"
+    >
+      {levelLabel}
+    </span>
   </div>
 
-  <div class="w-full h-4 bg-gray-800 rounded-full overflow-hidden">
+  <!-- Progress bar -->
+  <div class="bar-track w-full h-[3px] bg-white/[0.05] rounded-full overflow-visible relative">
+
+    <!-- Fill -->
     <div
-      class="h-full transition-all duration-500 rounded-full"
-      style={`width: ${
-        typeof level === "number"
-          ? level + "%"
-          : level === "Alta"
-            ? "90%"
-            : level === "Media"
-              ? "60%"
-              : "30%"
-      }; background-color: ${glowColor};`}
+      class="bar-fill h-full rounded-full relative"
+      style={`width: ${levelValue}%; background: var(--bar-color);`}
     >
+      <!-- Glow tail -->
+      <span
+        class="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full -translate-x-1/2
+          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={`background: var(--bar-color); box-shadow: 0 0 8px 3px var(--glow-color);`}
+      ></span>
     </div>
+
+    <!-- Tick marks -->
+    {[25, 50, 75].map((tick) => (
+      <span
+        class="absolute top-1/2 -translate-y-1/2 w-px h-2 bg-white/10 rounded-full"
+        style={`left: ${tick}%;`}
+      ></span>
+    ))}
   </div>
 </li>
 
 <style>
-  .pulsate-bck {
-    animation: pulsate-bck 2s ease-in-out infinite both;
+  .skill-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+    transition: background 0.3s ease;
+    border-radius: 4px;
   }
 
-  @keyframes pulsate-bck {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 0 10px var(--glow-color);
-    }
-    50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px var(--glow-color-stronger);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: 0 0 10px var(--glow-color);
-    }
+  .skill-item:last-child {
+    border-bottom: none;
   }
 
-  .tooltip {
-    transition: opacity 0.3s ease;
+  .skill-item:hover {
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  /* Bar fill entrance animation */
+  .bar-fill {
+    animation: barGrow 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: 0.2s;
+    transform-origin: left;
+  }
+
+  @keyframes barGrow {
+    from { width: 0% !important; opacity: 0.4; }
+    to   { opacity: 1; }
   }
 </style>
