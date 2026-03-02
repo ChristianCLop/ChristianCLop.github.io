@@ -14,21 +14,24 @@ interface Props {
   body: string;
   github?: string;
   projectLink?: string;
+  demo?:string;
   compact?: boolean;
   // ── Optional flip back ──
   backTitle?: string;
   backDetails?: string[];
   backStatus?: string;
   backYear?: string;
+  problem?:string;
+  solution?:string;
 }
 
 const {
   title, img1, img2,
   toolImg1, toolImg2, toolImg3, toolImg4,
   tool1, tool2, tool3, tool4,
-  body, github, projectLink,
+  body, github, projectLink, demo,
   compact = false,
-  backTitle, backDetails, backStatus, backYear,
+  backTitle, backDetails, backStatus, backYear, problem, solution,
 } = Astro.props as Props;
 
 const tools = [
@@ -48,7 +51,7 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
   class={`project-wrap ${hasBack ? "flippable" : ""} w-[92vw] sm:w-auto`}
   style={compact ? "--card-w: 340px" : "--card-w: 500px"}
 >
-  <div class={`card-inner ${hasBack ? "flip-inner" : ""}`} id={`ci-${slug}`}>
+  <div class={`${hasBack ? "flip-inner" : ""}`} id={`ci-${slug}`}>
 
     <!-- ══════════════════════════════
          FRONT
@@ -155,13 +158,26 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
                 Website
               </span>
             </a>
+            <div class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
+            bg-gradient-to-r from-transparent via-[#4ade80]/40 to-transparent
+            opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          )}
+          {demo && (
+            <a href={demo} target="_blank" rel="noopener noreferrer"
+              class="action-btn action-btn--blue--live group/b relative overflow-hidden flex items-center gap-2
+                font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
+              <span class="abg"></span><span class="aborder aborder--blue"></span>
+              <span class="relative z-10 flex items-center gap-2 text-[#1f2eff]/60 group-hover/b:text-[#4a80de] transition-colors duration-300">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1f2eff]/60 group-hover/b:bg-[#4a80de] group-hover/b:animate-pulse transition-colors duration-300"></span>
+                Demo
+              </span>
+            </a>
+            <div class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
+            bg-gradient-to-r from-transparent via-[#4a80de]/40 to-transparent
+            opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           )}
         </div>
       </div>
-
-      <div class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
-        bg-gradient-to-r from-transparent via-[#4ade80]/40 to-transparent
-        opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
     </div>
 
     <!-- ══════════════════════════════
@@ -217,6 +233,28 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
             </ul>
           )}
 
+          {problem && (
+            <div class="ps-block ps-block--problem">
+              <span class="ps-bar ps-bar--problem"></span>
+              <div class="ps-header">
+                <span class="ps-label">// problem</span>
+                <span class="ps-icon">⚠</span>
+              </div>
+              <p class="ps-text">{problem}</p>
+            </div>
+          )}
+
+          {solution && (
+            <div class="ps-block ps-block--solution">
+              <span class="ps-bar ps-bar--solution"></span>
+              <div class="ps-header">
+                <span class="ps-label">// solution</span>
+                <span class="ps-icon">✓</span>
+              </div>
+              <p class="ps-text">{solution}</p>
+            </div>
+          )}
+          
           {(backStatus || backYear) && (
             <div class="flex flex-wrap gap-3 mt-auto pt-3 border-t border-white/5">
               {backStatus && (
@@ -234,16 +272,14 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
           )}
 
           <div class="flex gap-3">
-            {github && (
-              <a href={github} target="_blank" rel="noopener noreferrer"
-                class="action-btn action-btn--gh group/b relative overflow-hidden flex items-center gap-2
+            {demo && (
+              <a href={demo} target="_blank" rel="noopener noreferrer"
+                class="action-btn action-btn--blue--live group/b relative overflow-hidden flex items-center gap-2
                   font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
-                <span class="abg"></span><span class="aborder"></span>
-                <span class="relative z-10 flex items-center gap-2 text-white/60 group-hover/b:text-white transition-colors duration-300">
-                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"/>
-                  </svg>
-                  GitHub
+                <span class="abg"></span><span class="aborder aborder--blue"></span>
+                <span class="relative z-10 flex items-center gap-2 text-[#1f2eff]/60 group-hover/b:text-[#4a80de] transition-colors duration-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#1f2eff]/60 group-hover/b:bg-[#4a80de] group-hover/b:animate-pulse transition-colors duration-300"></span>
+                  Demo
                 </span>
               </a>
             )}
@@ -255,6 +291,19 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
                 <span class="relative z-10 flex items-center gap-2 text-[#4ade80]/60 group-hover/b:text-[#4ade80] transition-colors duration-300">
                   <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover/b:bg-[#4ade80] transition-colors duration-300"></span>
                   Website
+                </span>
+              </a>
+            )}
+            {github && (
+              <a href={github} target="_blank" rel="noopener noreferrer"
+                class="action-btn action-btn--gh group/b relative overflow-hidden flex items-center gap-2
+                  font-mono text-xs tracking-widest uppercase px-4 py-2.5 rounded-md flex-1 justify-center">
+                <span class="abg"></span><span class="aborder"></span>
+                <span class="relative z-10 flex items-center gap-2 text-white/60 group-hover/b:text-white transition-colors duration-300">
+                  <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" d="M12.006 2a9.847 9.847 0 0 0-6.484 2.44 10.32 10.32 0 0 0-3.393 6.17 10.48 10.48 0 0 0 1.317 6.955 10.045 10.045 0 0 0 5.4 4.418c.504.095.683-.223.683-.494 0-.245-.01-1.052-.014-1.908-2.78.62-3.366-1.21-3.366-1.21a2.711 2.711 0 0 0-1.11-1.5c-.907-.637.07-.621.07-.621.317.044.62.163.885.346.266.183.487.426.647.71.135.253.318.476.538.655a2.079 2.079 0 0 0 2.37.196c.045-.52.27-1.006.635-1.37-2.219-.259-4.554-1.138-4.554-5.07a4.022 4.022 0 0 1 1.031-2.75 3.77 3.77 0 0 1 .096-2.713s.839-.275 2.749 1.05a9.26 9.26 0 0 1 5.004 0c1.906-1.325 2.74-1.05 2.74-1.05.37.858.406 1.828.101 2.713a4.017 4.017 0 0 1 1.029 2.75c0 3.939-2.339 4.805-4.564 5.058a2.471 2.471 0 0 1 .679 1.897c0 1.372-.012 2.477-.012 2.814 0 .272.18.592.687.492a10.05 10.05 0 0 0 5.388-4.421 10.473 10.473 0 0 0 1.313-6.948 10.32 10.32 0 0 0-3.39-6.165A9.847 9.847 0 0 0 12.007 2Z" clip-rule="evenodd"/>
+                  </svg>
+                  GitHub
                 </span>
               </a>
             )}
@@ -277,16 +326,6 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
 <script is:inline define:vars={{ slug }}>
   (function() {
     function init() {
-      // Flip
-      document.querySelectorAll('.flip-btn[data-target="ci-' + slug + '"]').forEach(function(btn) {
-        btn.addEventListener("click", function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          var inner = document.getElementById("ci-" + slug);
-          if (inner) inner.classList.toggle("is-flipped");
-        });
-      });
-
       // Lightbox
       var lb    = document.getElementById("lb-" + slug);
       var lbImg = lb ? lb.querySelector(".lb-img") : null;
@@ -368,6 +407,106 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
     overflow-y: auto;
   }
 
+  /* ── Problem / Solution blocks ── */
+  .ps-block {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.015);
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .ps-block--problem:hover {
+    border-color: rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.03);
+  }
+
+  .ps-block--solution {
+    margin-top: 0.75rem;
+  }
+  .ps-block--solution:hover {
+    border-color: rgba(74, 222, 128, 0.2);
+    background: rgba(74, 222, 128, 0.03);
+  }
+
+  /* Left accent bar */
+  .ps-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0.375rem 0 0 0.375rem;
+  }
+
+  .ps-bar--problem {
+    background: linear-gradient(to bottom,
+      rgba(239, 68, 68, 0.6),
+      rgba(239, 68, 68, 0.3),
+      transparent);
+  }
+
+  .ps-bar--solution {
+    background: linear-gradient(to bottom,
+      rgba(74, 222, 128, 0.6),
+      rgba(74, 222, 128, 0.3),
+      transparent);
+  }
+
+  /* Header row */
+  .ps-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  /* Label */
+  .ps-label {
+    font-family: monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .ps-block--problem .ps-label       { color: rgba(248, 113, 113, 0.5); }
+  .ps-block--problem:hover .ps-label { color: rgba(248, 113, 113, 0.8); }
+
+  .ps-block--solution .ps-label       { color: rgba(74, 222, 128, 0.5); }
+  .ps-block--solution:hover .ps-label { color: rgba(74, 222, 128, 0.8); }
+
+  /* Icon */
+  .ps-icon {
+    margin-left: auto;
+    font-size: 0.75rem;
+    transition: color 0.3s ease;
+  }
+
+  .ps-block--problem .ps-icon       { color: rgba(239, 68, 68, 0.2); }
+  .ps-block--problem:hover .ps-icon { color: rgba(239, 68, 68, 0.5); }
+
+  .ps-block--solution .ps-icon       { color: rgba(74, 222, 128, 0.2); }
+  .ps-block--solution:hover .ps-icon { color: rgba(74, 222, 128, 0.6); }
+
+  /* Body text */
+  .ps-text {
+    font-family: monospace;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
+    padding-left: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .ps-block:hover .ps-text {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
   /* Non-flippable: block */
   .project-wrap:not(.flippable) .card-inner { display: block; }
 
@@ -436,6 +575,14 @@ const hasBack  = !!(backTitle || (backDetails && backDetails.length));
   .action-btn--live:hover .aborder--green {
     border-color: rgba(74,222,128,0.35);
     box-shadow: 0 0 14px rgba(74,222,128,0.1);
+  }
+  
+  .action-btn--blue--live:hover .abg { background: rgba(74, 81, 222, 0.05); }
+  
+  .aborder--blue { border-color: rgba(74, 86, 222, 0.12); }
+  .action-btn--blue--live:hover .aborder--blue {
+    border-color: rgba(74, 86, 222, 0.35);
+    box-shadow: 0 0 14px rgba(81, 74, 222, 0.1);
   }
 
   /* ── Shimmer ── */

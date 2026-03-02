@@ -1,11 +1,11 @@
 ---
 const navLinks = [
-  { href: "#",            label: "Home"         },
+  { href: "#home",        label: "Home"         },
   { href: "#about",       label: "About"        },
-  { href: "#experience",  label: "Experience"   },
   { href: "#skills",      label: "Stack"        },
-  { href: "#achievements",label: "Achievements" },
+  { href: "#experience",  label: "Experience"   },
   { href: "#projects",    label: "Projects"     },
+  { href: "#achievements",label: "Achievements" },
   { href: "#contact",     label: "Contact"      },
 ];
 
@@ -140,17 +140,18 @@ const cvLink = "https://drive.google.com/file/d/15hmqGoESm27aaODUA8eaHvtDmt83_i_
 <div class="h-16 sm:h-18"></div>
 
 <script is:inline>
-  (function () {
-    const btn        = document.getElementById("mobile-menu-btn");
-    const menu       = document.getElementById("mobile-menu");
-    const lines      = btn?.querySelectorAll(".hamburger-line");
-    let isOpen       = false;
-
-    function toggleMenu() {
-      isOpen = !isOpen;
-      btn?.setAttribute("aria-expanded", String(isOpen));
-      menu?.setAttribute("aria-hidden",  String(!isOpen));
-
+  document.addEventListener("DOMContentLoaded", () =>{
+    (function () {
+      const btn        = document.getElementById("mobile-menu-btn");
+      const menu       = document.getElementById("mobile-menu");
+      const lines      = btn?.querySelectorAll(".hamburger-line");
+      let isOpen       = false;
+      
+      function toggleMenu() {
+        isOpen = !isOpen;
+        btn?.setAttribute("aria-expanded", String(isOpen));
+        menu?.setAttribute("aria-hidden",  String(!isOpen));
+        
       if (isOpen) {
         menu?.classList.add("is-open");
         lines?.[0].classList.add("rotate-45", "translate-y-[7px]");
@@ -176,14 +177,14 @@ const cvLink = "https://drive.google.com/file/d/15hmqGoESm27aaODUA8eaHvtDmt83_i_
     // Active link highlight on scroll
     const sections = document.querySelectorAll("section[id]");
     const navLinks = document.querySelectorAll(".nav-link");
-
+    
     function onScroll() {
       let current = "";
       sections.forEach((section) => {
         const top = section.getBoundingClientRect().top;
         if (top <= 80) current = section.id;
       });
-
+      
       navLinks.forEach((link) => {
         const dot = link.querySelector(".nav-dot");
         const href = link.getAttribute("href")?.replace("#", "");
@@ -198,10 +199,11 @@ const cvLink = "https://drive.google.com/file/d/15hmqGoESm27aaODUA8eaHvtDmt83_i_
         }
       });
     }
-
+    
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
   })();
+})
 </script>
 
 <style>

@@ -16,14 +16,16 @@ const projects = [
     toolImg4: "/icons/skills/mysql.svg",
     body: "Horarios FISEI this is an application where you can create your academic schedule with IA, and then manage and search it using many parameters.",
     github: "https://github.com/ChristianCLop/HorariosFISEI",
-      backTitle: "Horarios FISEI",
-  backDetails: [
-    "Application for creating academic schedules",
-    "AI-powered schedule management",
-    "Search and filtering capabilities"
-  ],
-  backStatus: "Completed",
-  backYear: "2023",
+    backTitle: "Horarios FISEI",
+    backDetails: [
+      "Application for creating academic schedules",
+      "AI-powered schedule management",
+      "Search and filtering capabilities",
+    ],
+    backStatus: "Completed",
+    backYear: "2023",
+    problem: "Students and faculty often struggle to create and manage their academic schedules effectively, leading to conflicts and inefficiencies.",
+    solution: "Horarios FISEI provides an intuitive platform for users to create, manage, and search their academic schedules with the help of AI, ensuring optimal organization and conflict resolution."
   },
   {
     img1: "https://grupoestena.com/wp-content/uploads/2022/04/Recurso-14-1.png",
@@ -128,73 +130,92 @@ const projects = [
   },
 ];
 ---
-<section id="projects" class="overflow-hidden relative py-24 sm:py-32">
 
+<section id="projects" class="overflow-hidden relative py-24 sm:py-32">
   <!-- Grid background -->
   <div class="section-grid" aria-hidden="true"></div>
 
   <div class="flex flex-col items-center px-4 sm:px-8">
-
     <!-- ── Header ── -->
     <header
       class="w-full flex flex-col items-center mb-14 sm:mb-20"
       data-aos="fade-down"
       data-aos-duration="1200"
     >
-      <span class="font-mono text-[11px] sm:text-xs text-[#4ade80]/50 tracking-[0.25em] uppercase mb-4">
+      <span
+        class="font-mono text-[11px] sm:text-xs text-[#4ade80]/50 tracking-[0.25em] uppercase mb-4"
+      >
         ~/portfolio/projects
       </span>
 
       <div class="title-wrap relative">
-        <h1 class="font-mono font-black uppercase tracking-tight leading-none
+        <h1
+          class="font-mono font-black uppercase tracking-tight leading-none
           text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-          text-transparent select-none">
+          text-transparent select-none"
+        >
           Projects
         </h1>
-        <div class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"></div>
+        <div
+          class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"
+        >
+        </div>
       </div>
 
-      <p class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest">
-        <span class="text-[#4ade80]/50">▶</span> {projects.length} repositories indexed
+      <p
+        class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest"
+      >
+        <span class="text-[#4ade80]/50">▶</span>
+        {projects.length} repositories indexed
       </p>
     </header>
 
     <!-- ── Projects grid ── -->
     <div class="w-full max-w-6xl">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 justify-items-center">
-        {projects.slice(0, 6).map((item, i) => (
-          <div
-            data-aos="fade-up"
-            data-aos-duration="1400"
-            data-aos-delay={i * 80}
-            class="w-full flex justify-center"
-          >
-            <Projects {...item} />
-          </div>
-        ))}
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 justify-items-center"
+      >
+        {
+          projects.slice(0, 6).map((item, i) => (
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1400"
+              data-aos-delay={i * 80}
+              class="w-full flex justify-center"
+            >
+              <Projects {...item} />
+            </div>
+          ))
+        }
       </div>
     </div>
 
     <!-- ── Show All button ── -->
-    {projects.length > 6 && (
-      <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
-        <button
-          id="showAllProjBtn"
-          class="show-all-btn group relative font-mono text-sm uppercase tracking-widest px-8 py-3 overflow-hidden"
-        >
-          <span class="btn-bg"></span>
-          <span class="btn-border"></span>
-          <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
-            <span class="text-[#4ade80] group-hover:animate-spin" style="display:inline-block">◈</span>
-            Show All
-            <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
-              ({projects.length})
+    {
+      projects.length > 6 && (
+        <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+          <button
+            id="showAllProjBtn"
+            class="show-all-btn group relative font-mono text-sm uppercase tracking-widest px-8 py-3 overflow-hidden"
+          >
+            <span class="btn-bg" />
+            <span class="btn-border" />
+            <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
+              <span
+                class="text-[#4ade80] group-hover:animate-spin"
+                style="display:inline-block"
+              >
+                ◈
+              </span>
+              Show All
+              <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
+                ({projects.length})
+              </span>
             </span>
-          </span>
-        </button>
-      </div>
-    )}
-
+          </button>
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -207,46 +228,108 @@ const projects = [
   <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
 
   <!-- Modal box -->
-  <div class="modal-box relative bg-[#0d1117] border border-white/10 rounded-lg
+  <div
+    class="modal-box relative bg-[#0d1117] border border-white/10 rounded-lg
     w-full max-w-7xl max-h-[92vh] overflow-hidden flex flex-col
     shadow-[0_0_60px_rgba(0,0,0,0.8)]"
   >
     <!-- Top bar -->
-    <div class="modal-topbar flex items-center gap-2 px-5 py-3 border-b border-white/10 shrink-0">
+    <div
+      class="modal-topbar flex items-center gap-2 px-5 py-3 border-b border-white/10 shrink-0"
+    >
       <span class="dot dot-red"></span>
       <span class="dot dot-yellow"></span>
       <span class="dot dot-green"></span>
-      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest">all_projects.json</span>
-      <span class="ml-auto font-mono text-[10px] text-[#4ade80]/40 tracking-widest hidden sm:block">
+      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest"
+        >all_projects.json</span
+      >
+      <span
+        class="ml-auto font-mono text-[10px] text-[#4ade80]/40 tracking-widest hidden sm:block"
+      >
         {projects.length} repositories
       </span>
       <button
         id="closeModalPrj"
         class="close-btn sm:ml-4 font-mono text-white/40 hover:text-white text-lg leading-none transition-colors duration-200"
-        aria-label="Close modal"
-      >✕</button>
+        aria-label="Close modal">✕</button
+      >
     </div>
 
     <!-- Scroll area -->
     <div class="overflow-y-auto flex-1 p-4 sm:p-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 justify-items-center">
-        {projects.map((item) => (
-          <div class="w-full flex justify-center">
-            <Projects {...item} compact={true} />
-          </div>
-        ))}
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 justify-items-center"
+      >
+        {
+          projects.map((item) => (
+            <div class="w-full flex justify-center">
+              <Projects {...item} compact={true} />
+            </div>
+          ))
+        }
       </div>
     </div>
 
     <!-- Bottom glow -->
-    <div class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent shrink-0"></div>
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent shrink-0"
+    >
+    </div>
   </div>
 </div>
 
 <script is:inline>
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.flip-btn[data-target]');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const targetId = btn.getAttribute('data-target');
+    
+    // Buscar dentro del mismo contenedor padre (modal o sección)
+    const modal = document.getElementById('modalPrj');
+    const isInsideModal = modal && modal.contains(btn);
+    const scope = isInsideModal ? modal : document;
+    
+    // Buscar TODOS los elementos con ese id (puede haber duplicados)
+    const allTargets = scope.querySelectorAll('#' + targetId);
+    allTargets.forEach(inner => inner.classList.toggle('is-flipped'));
+  });
+
+  // ── Lightbox global ──
+  document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('[data-lb-src]');
+    if (trigger) {
+      const lbId = trigger.getAttribute('data-lb');
+      // Buscar el lightbox en el mismo contexto
+      const modal = document.getElementById('modalPrj');
+      const isInsideModal = modal && modal.contains(trigger);
+      const scope = isInsideModal ? modal : document;
+      const lb = scope.querySelector('#' + lbId) || document.getElementById(lbId);
+      const lbImg = lb && lb.querySelector('.lb-img');
+      if (lb && lbImg) {
+        lbImg.src = trigger.getAttribute('data-lb-src');
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      return;
+    }
+    const bg = e.target.closest('.lb-bg');
+    if (bg) {
+      const lb = bg.closest('.lightbox');
+      if (lb) {
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+  });
+
   document.addEventListener("DOMContentLoaded", () => {
-    const modal    = document.getElementById("modalPrj");
-    const showBtn  = document.getElementById("showAllProjBtn");
+    const modal = document.getElementById("modalPrj");
+    const showBtn = document.getElementById("showAllProjBtn");
     const closeBtn = document.getElementById("closeModalPrj");
     const backdrop = modal?.querySelector(".absolute.inset-0");
 
@@ -285,15 +368,23 @@ const projects = [
       linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
     background-size: 48px 48px;
     pointer-events: none;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 50%,
+      black 30%,
+      transparent 100%
+    );
   }
 
   /* ── Title ── */
   .title-wrap h1 {
-    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.15) 100%);
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.15) 100%
+    );
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-stroke: 1.5px rgba(255,255,255,0.12);
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
   }
 
   /* ── Show All button ── */
@@ -305,22 +396,28 @@ const projects = [
     outline: none;
   }
   .btn-bg {
-    position: absolute; inset: 0;
-    background: rgba(255,255,255,0.03);
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.03);
     border-radius: 6px;
     transition: background 0.3s ease;
   }
-  .show-all-btn:hover .btn-bg { background: rgba(74,222,128,0.06); }
+  .show-all-btn:hover .btn-bg {
+    background: rgba(74, 222, 128, 0.06);
+  }
 
   .btn-border {
-    position: absolute; inset: 0;
-    border: 1px solid rgba(255,255,255,0.1);
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 6px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
   .show-all-btn:hover .btn-border {
-    border-color: rgba(74,222,128,0.35);
-    box-shadow: 0 0 16px rgba(74,222,128,0.08);
+    border-color: rgba(74, 222, 128, 0.35);
+    box-shadow: 0 0 16px rgba(74, 222, 128, 0.08);
   }
 
   /* ── Modal backdrop ── */
@@ -328,13 +425,17 @@ const projects = [
     opacity: 0;
     transition: opacity 0.25s ease;
   }
-  .modal-backdrop.modal-open { opacity: 1; }
+  .modal-backdrop.modal-open {
+    opacity: 1;
+  }
 
   /* ── Modal box ── */
   .modal-box {
     transform: translateY(16px) scale(0.98);
     opacity: 0;
-    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s ease;
   }
   .modal-open .modal-box {
     transform: translateY(0) scale(1);
@@ -342,32 +443,52 @@ const projects = [
   }
 
   /* ── Modal scrollbar ── */
-  .modal-box ::-webkit-scrollbar       { width: 4px; }
-  .modal-box ::-webkit-scrollbar-track { background: transparent; }
+  .modal-box ::-webkit-scrollbar {
+    width: 4px;
+  }
+  .modal-box ::-webkit-scrollbar-track {
+    background: transparent;
+  }
   .modal-box ::-webkit-scrollbar-thumb {
-    background: rgba(74,222,128,0.2);
+    background: rgba(74, 222, 128, 0.2);
     border-radius: 2px;
   }
-  .modal-box ::-webkit-scrollbar-thumb:hover { background: rgba(74,222,128,0.4); }
+  .modal-box ::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 222, 128, 0.4);
+  }
 
   /* ── Terminal dots ── */
   .dot {
-    width: 10px; height: 10px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
     display: inline-block;
     opacity: 0.65;
   }
-  .dot-red    { background: #ff5f57; }
-  .dot-yellow { background: #febc2e; }
-  .dot-green  { background: #28c840; }
+  .dot-red {
+    background: #ff5f57;
+  }
+  .dot-yellow {
+    background: #febc2e;
+  }
+  .dot-green {
+    background: #28c840;
+  }
 
   /* ── Close button ── */
   .close-btn {
-    background: none; border: none; cursor: pointer;
-    width: 28px; height: 28px;
-    display: flex; align-items: center; justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 4px;
     transition: background 0.2s ease;
   }
-  .close-btn:hover { background: rgba(255,255,255,0.07); }
+  .close-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
 </style>
