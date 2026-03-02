@@ -20,9 +20,9 @@ export const projects = [
       "Search and filtering capabilities",
     ],
     backStatus: "Completed",
-    backYear: "2023",
-    problem: "Students and faculty often struggle to create and manage their academic schedules effectively, leading to conflicts and inefficiencies.",
-    solution: "Horarios FISEI provides an intuitive platform for users to create, manage, and search their academic schedules with the help of AI, ensuring optimal organization and conflict resolution."
+    backYear: "202",
+    problem: "Faculty often struggle to create and manage their academic schedules effectively, leading to conflicts and inefficiencies.",
+    solution: "Horarios FISEI provides an intuitive platform for users to create timetables with the help of AI, manage, and search their academic schedules, ensuring optimal organization and conflict resolution."
   },
   {
     img1: "https://grupoestena.com/wp-content/uploads/2022/04/Recurso-14-1.png",
