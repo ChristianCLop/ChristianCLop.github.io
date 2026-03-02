@@ -1,0 +1,232 @@
+---
+import Project from "../components/Project.astro";
+import "../css/projects.css";
+import { projects } from '../constants/projects.ts';
+---
+
+<section id="projects" class="overflow-hidden relative py-24 sm:py-32">
+  <!-- Grid background -->
+  <div class="section-grid" aria-hidden="true"></div>
+
+  <div class="flex flex-col items-center px-4 sm:px-8">
+    <!-- ── Header ── -->
+    <header
+      class="w-full flex flex-col items-center mb-14 sm:mb-20"
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
+      <span
+        class="font-mono text-[11px] sm:text-xs text-[#4ade80]/50 tracking-[0.25em] uppercase mb-4"
+      >
+        ~/portfolio/projects
+      </span>
+
+      <div class="title-wrap relative">
+        <h1
+          class="font-mono font-black uppercase tracking-tight leading-none
+          text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+          text-transparent select-none"
+        >
+          Projects
+        </h1>
+        <div
+          class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"
+        >
+        </div>
+      </div>
+
+      <p
+        class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest"
+      >
+        <span class="text-[#4ade80]/50">▶</span>
+        {projects.length} repositories indexed
+      </p>
+    </header>
+
+    <!-- ── Projects grid ── -->
+    <div class="w-full max-w-6xl">
+      <div
+        class="grid grid-cols-1 lg:grid-cols-2 gap-5 sm:gap-6 justify-items-center"
+      >
+        {
+          projects.slice(0, 6).map((item, i) => (
+            <div
+              data-aos="fade-up"
+              data-aos-duration="1400"
+              data-aos-delay={i * 80}
+              class="w-full flex justify-center"
+            >
+              <Project {...item} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- ── Show All button ── -->
+    {
+      projects.length > 6 && (
+        <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+          <button
+            id="showAllProjBtn"
+            class="show-all-btn group relative font-mono text-sm uppercase tracking-widest px-8 py-3 overflow-hidden"
+          >
+            <span class="btn-bg" />
+            <span class="btn-border" />
+            <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
+              <span
+                class="text-[#4ade80] group-hover:animate-spin"
+                style="display:inline-block"
+              >
+                ◈
+              </span>
+              Show All
+              <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
+                ({projects.length})
+              </span>
+            </span>
+          </button>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<!-- ── Modal ── -->
+<div
+  id="modalPrj"
+  class="modal-backdrop fixed inset-0 hidden justify-center items-center z-50 p-4 sm:p-6"
+>
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+  <!-- Modal box -->
+  <div
+    class="modal-box relative bg-[#0d1117] border border-white/10 rounded-lg
+    w-full max-w-7xl max-h-[92vh] overflow-hidden flex flex-col
+    shadow-[0_0_60px_rgba(0,0,0,0.8)]"
+  >
+    <!-- Top bar -->
+    <div
+      class="modal-topbar flex items-center gap-2 px-5 py-3 border-b border-white/10 shrink-0"
+    >
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest"
+        >all_projects.json</span
+      >
+      <span
+        class="ml-auto font-mono text-[10px] text-[#4ade80]/40 tracking-widest hidden sm:block"
+      >
+        {projects.length} repositories
+      </span>
+      <button
+        id="closeModalPrj"
+        class="close-btn sm:ml-4 font-mono text-white/40 hover:text-white text-lg leading-none transition-colors duration-200"
+        aria-label="Close modal">✕</button
+      >
+    </div>
+
+    <!-- Scroll area -->
+    <div class="overflow-y-auto flex-1 p-4 sm:p-8">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 justify-items-center"
+      >
+        {
+          projects.map((item) => (
+            <div class="w-full flex justify-center">
+              <Project {...item} compact={true} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Bottom glow -->
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent shrink-0"
+    >
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.flip-btn[data-target]');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const targetId = btn.getAttribute('data-target');
+    
+    // Buscar dentro del mismo contenedor padre (modal o sección)
+    const modal = document.getElementById('modalPrj');
+    const isInsideModal = modal && modal.contains(btn);
+    const scope = isInsideModal ? modal : document;
+    
+    // Buscar TODOS los elementos con ese id (puede haber duplicados)
+    const allTargets = scope.querySelectorAll('#' + targetId);
+    allTargets.forEach(inner => inner.classList.toggle('is-flipped'));
+  });
+
+  // ── Lightbox global ──
+  document.addEventListener('click', function(e) {
+    const trigger = e.target.closest('[data-lb-src]');
+    if (trigger) {
+      const lbId = trigger.getAttribute('data-lb');
+      // Buscar el lightbox en el mismo contexto
+      const modal = document.getElementById('modalPrj');
+      const isInsideModal = modal && modal.contains(trigger);
+      const scope = isInsideModal ? modal : document;
+      const lb = scope.querySelector('#' + lbId) || document.getElementById(lbId);
+      const lbImg = lb && lb.querySelector('.lb-img');
+      if (lb && lbImg) {
+        lbImg.src = trigger.getAttribute('data-lb-src');
+        lb.classList.remove('hidden');
+        lb.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+      }
+      return;
+    }
+    const bg = e.target.closest('.lb-bg');
+    if (bg) {
+      const lb = bg.closest('.lightbox');
+      if (lb) {
+        lb.classList.add('hidden');
+        lb.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }
+    }
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("modalPrj");
+    const showBtn = document.getElementById("showAllProjBtn");
+    const closeBtn = document.getElementById("closeModalPrj");
+    const backdrop = modal?.querySelector(".absolute.inset-0");
+
+    function openModal() {
+      modal?.classList.remove("hidden");
+      modal?.classList.add("flex");
+      document.body.style.overflow = "hidden";
+      requestAnimationFrame(() => modal?.classList.add("modal-open"));
+    }
+
+    function closeModal() {
+      modal?.classList.remove("modal-open");
+      setTimeout(() => {
+        modal?.classList.add("hidden");
+        modal?.classList.remove("flex");
+        document.body.style.overflow = "auto";
+      }, 250);
+    }
+
+    showBtn?.addEventListener("click", openModal);
+    closeBtn?.addEventListener("click", closeModal);
+    backdrop?.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeModal();
+    });
+  });
+</script>

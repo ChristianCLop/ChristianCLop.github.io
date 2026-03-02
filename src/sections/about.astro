@@ -1,3 +1,7 @@
+---
+import "../css/about.css";
+---
+
 <section id="about" class="overflow-hidden relative py-24 sm:py-32">
 
   <!-- Grid background -->
@@ -165,127 +169,5 @@
       <!-- Bottom glow -->
       <div class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/25 to-transparent"></div>
     </div>
-
   </div>
 </section>
-
-<style>
-  /* ── Grid bg ── */
-  .section-grid {
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
-  }
-
-  /* ── Title ── */
-  .title-wrap h1 {
-    background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.15) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-stroke: 1.5px rgba(255,255,255,0.12);
-  }
-
-  /* ── Panel shell ── */
-  .about-panel {
-    background: #0d1117;
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: border-color 0.4s ease, box-shadow 0.4s ease;
-  }
-  .about-panel:hover {
-    border-color: rgba(74, 222, 128, 0.12);
-    box-shadow: 0 12px 48px rgba(0,0,0,0.5);
-  }
-
-  /* ── Top bar ── */
-  .panel-topbar { background: rgba(255,255,255,0.02); }
-
-  /* ── Dots ── */
-  .dot {
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    display: inline-block;
-    opacity: 0.65;
-  }
-  .dot-red    { background: #ff5f57; }
-  .dot-yellow { background: #febc2e; }
-  .dot-green  { background: #28c840; }
-
-  /* ── Avatar ── */
-  .avatar-wrap {
-    position: relative;
-    display: inline-block;
-    padding: 6px;
-  }
-
-  .avatar-inner {
-    position: relative;
-    transition: border-color 0.4s ease;
-  }
-  .avatar-wrap:hover .avatar-inner {
-    border-color: rgba(74, 222, 128, 0.3);
-    box-shadow: 0 0 24px rgba(74, 222, 128, 0.12);
-  }
-
-  .avatar-img {
-    transition: transform 0.5s ease, filter 0.4s ease;
-  }
-  .avatar-wrap:hover .avatar-img {
-    transform: scale(1.04);
-    filter: brightness(1.05);
-  }
-
-  /* Avatar scan line */
-  .avatar-scan {
-    background: linear-gradient(
-      to bottom,
-      transparent 0%,
-      rgba(74, 222, 128, 0.04) 50%,
-      transparent 100%
-    );
-    background-size: 100% 40px;
-    animation: avatarScan 3s linear infinite;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-  .avatar-wrap:hover .avatar-scan { opacity: 1; }
-
-  @keyframes avatarScan {
-    0%   { background-position: 0 -40px; }
-    100% { background-position: 0 220px; }
-  }
-
-  /* ── Corner accents ── */
-  .corner {
-    position: absolute;
-    width: 12px; height: 12px;
-    border-color: rgba(74, 222, 128, 0.5);
-    border-style: solid;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 10;
-  }
-  .avatar-wrap:hover .corner { opacity: 1; }
-  .corner-tl { top: 0;    left: 0;  border-width: 2px 0 0 2px; border-radius: 3px 0 0 0; }
-  .corner-tr { top: 0;    right: 0; border-width: 2px 2px 0 0; border-radius: 0 3px 0 0; }
-  .corner-bl { bottom: 0; left: 0;  border-width: 0 0 2px 2px; border-radius: 0 0 0 3px; }
-  .corner-br { bottom: 0; right: 0; border-width: 0 2px 2px 0; border-radius: 0 0 3px 0; }
-
-  /* ── Status badge pulse ── */
-  .status-dot {
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,0.4); }
-    50%       { opacity: 0.7; box-shadow: 0 0 0 4px rgba(74,222,128,0); }
-  }
-
-  /* ── Tags ── */
-  .tag { border-color: rgba(255,255,255,0.08); }
-</style>

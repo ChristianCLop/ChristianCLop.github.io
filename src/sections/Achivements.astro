@@ -1,127 +1,136 @@
 ---
-import Experience from "../components/Experience.astro";
-import '../css/experience.css';
-import { experiences } from '../constants/experiences.ts';
+import Achivement from "../components/Achivement.astro";
+import '../css/achivements.css';
+import { achivements } from '../constants/achivements.ts';
 ---
-<section id="experience" class="overflow-hidden relative py-24 sm:py-32">
 
-  <!-- Subtle grid background -->
+<section id="achievements" class="overflow-hidden relative py-24 sm:py-32">
+
+  <!-- Grid background -->
   <div class="section-grid" aria-hidden="true"></div>
 
-  <div class="flex flex-col items-center justify-start px-4">
+  <div class="flex flex-col items-center px-4 sm:px-8">
 
-    <!-- ── Section Header ── -->
-    <header class="w-full flex flex-col items-center mb-14 sm:mb-20" data-aos="fade-down" data-aos-duration="1200">
-
-      <!-- Terminal file path label -->
+    <!-- ── Header ── -->
+    <header
+      class="w-full flex flex-col items-center mb-14 sm:mb-20"
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
       <span class="font-mono text-[11px] sm:text-xs text-[#4ade80]/50 tracking-[0.25em] uppercase mb-4">
-        ~/portfolio/experience
+        ~/portfolio/achievements
       </span>
 
-      <!-- Title -->
       <div class="title-wrap relative">
         <h1 class="font-mono font-black uppercase tracking-tight leading-none
           text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-          text-transparent select-none"
-          style="-webkit-text-stroke: 1px rgba(255,255,255,0.15);"
-        >
-          Experience
+          text-transparent select-none">
+          Achievements
         </h1>
-        <!-- Green underline accent -->
         <div class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"></div>
       </div>
 
-      <!-- Subtitle line -->
       <p class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest">
-        <span class="text-[#4ade80]/50">▶</span> {experiences.length} entries loaded
+        <span class="text-[#4ade80]/50">▶</span> {achivements.length} certificates indexed
       </p>
     </header>
 
-    <!-- ── Experience List ── -->
-    <div class="flex flex-col items-center w-full gap-0">
-      {experiences.slice(0, 4).map((item) => <Experience {...item} />)}
+    <!-- ── Cards grid ── -->
+    <div class="w-full max-w-6xl">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 justify-items-center">
+        {achivements.slice(0, 6).map((item, i) => (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1400"
+            data-aos-delay={i * 80}
+            class="w-full flex justify-center"
+          >
+            <Achivement {...item} />
+          </div>
+        ))}
+      </div>
     </div>
 
-    <!-- ── Show All Button ── --> 
-    {experiences.length > 4 && (
+    <!-- ── Show All button ── -->
+    {achivements.length > 6 && (
       <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
         <button
-          id="showAllExpBtn"
-          class="show-all-btn group relative font-mono text-sm uppercase tracking-widest
-            px-8 py-3 overflow-hidden"
+          id="showAllBtn"
+          class="show-all-btn group relative font-mono text-sm uppercase tracking-widest px-8 py-3 overflow-hidden"
         >
-          <!-- Button bg layers -->
           <span class="btn-bg"></span>
           <span class="btn-border"></span>
-          <!-- Content -->
           <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
             <span class="text-[#4ade80] group-hover:animate-spin" style="display:inline-block">◈</span>
             Show All
             <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
-              ({experiences.length})
+              ({achivements.length})
             </span>
           </span>
         </button>
       </div>
     )}
+
   </div>
 </section>
 
 <!-- ── Modal ── -->
 <div
-  id="modalExp"
+  id="modalArch"
   class="modal-backdrop fixed inset-0 hidden justify-center items-center z-50 p-4 sm:p-6"
 >
-  <!-- Backdrop click area -->
+  <!-- Backdrop -->
   <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
 
   <!-- Modal box -->
   <div class="modal-box relative bg-[#0d1117] border border-white/10 rounded-lg
-    w-full max-w-6xl max-h-[92vh] overflow-hidden flex flex-col
+    w-full max-w-7xl max-h-[92vh] overflow-hidden flex flex-col
     shadow-[0_0_60px_rgba(0,0,0,0.8)]"
   >
-    <!-- Modal top bar -->
+    <!-- Top bar -->
     <div class="modal-topbar flex items-center gap-2 px-5 py-3 border-b border-white/10 shrink-0">
       <span class="dot dot-red"></span>
       <span class="dot dot-yellow"></span>
       <span class="dot dot-green"></span>
-      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest">all_experience.json</span>
+      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest">all_achievements.json</span>
+      <span class="ml-auto font-mono text-[10px] text-[#4ade80]/40 tracking-widest hidden sm:block">
+        {achivements.length} entries
+      </span>
       <button
-        id="closeModalExp"
-        class="close-btn ml-auto font-mono text-white/40 hover:text-white text-lg leading-none transition-colors duration-200"
+        id="closeModalArch"
+        class="close-btn sm:ml-4 font-mono text-white/40 hover:text-white text-lg leading-none transition-colors duration-200"
         aria-label="Close modal"
-      >
-        ✕
-      </button>
+      >✕</button>
     </div>
 
-    <!-- Modal scroll area -->
-    <div class="overflow-y-auto flex-1 p-5 sm:p-8">
-      <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
-        {experiences.map((item) => <Experience {...item} compact={true} />)}
+    <!-- Scroll area -->
+    <div class="overflow-y-auto flex-1 p-4 sm:p-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 justify-items-center">
+        {achivements.map((item) => (
+          <div class="w-full flex justify-center">
+            <Achivement {...item} compact={true} />
+          </div>
+        ))}
       </div>
     </div>
 
-    <!-- Modal bottom glow -->
+    <!-- Bottom glow -->
     <div class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent shrink-0"></div>
   </div>
 </div>
 
 <script is:inline>
   document.addEventListener("DOMContentLoaded", () => {
-    const modal    = document.getElementById("modalExp");
-    const showBtn  = document.getElementById("showAllExpBtn");
-    const closeBtn = document.getElementById("closeModalExp");
+    const modal    = document.getElementById("modalArch");
+    const showBtn  = document.getElementById("showAllBtn");
+    const closeBtn = document.getElementById("closeModalArch");
     const backdrop = modal?.querySelector(".absolute.inset-0");
 
     function openModal() {
       modal?.classList.remove("hidden");
       modal?.classList.add("flex");
       document.body.style.overflow = "hidden";
-      // Animate in
-      requestAnimationFrame(() => {
-        modal?.classList.add("modal-open");
-      });
+      requestAnimationFrame(() => modal?.classList.add("modal-open"));
     }
 
     function closeModal() {
@@ -136,7 +145,6 @@ import { experiences } from '../constants/experiences.ts';
     showBtn?.addEventListener("click", openModal);
     closeBtn?.addEventListener("click", closeModal);
     backdrop?.addEventListener("click", closeModal);
-
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") closeModal();
     });

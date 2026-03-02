@@ -1,16 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import "animate.css";
-import "../css/styles.css";
-import Home from "../sections/home.astro";
-import Skill from "../sections/skill.astro";
-import Project from "../sections/project.astro";
-import Archivement from "../sections/archivement.astro";
-import Experiences from "../sections/experiences.astro";
-import About from "../sections/about.astro";
+import Home from "../sections/Home.astro";
+import About from "../sections/About.astro";
+import Skills from "../sections/Skills.astro";
+import Experiences from "../sections/Experiences.astro";
+import Projects from "../sections/Projects.astro";
+import Achivements from "../sections/Achivements.astro";
 ---
 
-<Layout title="Christian Chico">
+<Layout title="Christian Chico | Full Stack Developer">
   <main>
     <div
       id="particles-js"
@@ -32,16 +31,13 @@ import About from "../sections/about.astro";
 
     <About />
 
-    <Skill />
+    <Skills />
 
     <Experiences />
 
-    <Project />
+    <Projects />
 
-    <Archivement />
+    <Achivements />
 
-    <section id="contact">
-      <div class=""></div>
-    </section>
   </main>
 </Layout>
