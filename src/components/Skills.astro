@@ -1,5 +1,6 @@
 ---
 import "animate.css";
+import "../css/skills.styles.css";
 
 interface Props {
   img: string;
@@ -110,31 +111,3 @@ const borderColor  = rgba(color, 0.2);
     ))}
   </div>
 </li>
-
-<style>
-  .skill-item {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    transition: background 0.3s ease;
-    border-radius: 4px;
-  }
-
-  .skill-item:last-child {
-    border-bottom: none;
-  }
-
-  .skill-item:hover {
-    background: rgba(255, 255, 255, 0.015);
-  }
-
-  /* Bar fill entrance animation */
-  .bar-fill {
-    animation: barGrow 1s cubic-bezier(0.16, 1, 0.3, 1) both;
-    animation-delay: 0.2s;
-    transform-origin: left;
-  }
-
-  @keyframes barGrow {
-    from { width: 0% !important; opacity: 0.4; }
-    to   { opacity: 1; }
-  }
-</style>
