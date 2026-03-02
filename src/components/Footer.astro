@@ -1,5 +1,6 @@
 ---
 import "animate.css";
+import '../css/footer.styles.css';
 
 const navLinks = [
   { href: "#",             label: "Home"         },
@@ -243,79 +244,3 @@ const techStack = [
 
   </div>
 </footer>
-
-<style>
-  /* ── Footer shell ── */
-  .footer {
-    background: #0d1117;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  /* ── Grid bg ── */
-  .footer-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(74,222,128,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(74,222,128,0.025) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-    mask-image: radial-gradient(ellipse 90% 70% at 50% 100%, black 20%, transparent 80%);
-  }
-
-  /* ── Panel ── */
-  .panel-topbar { background: rgba(255,255,255,0.02); }
-  .footer-panel { background: rgba(255,255,255,0.01); }
-
-  /* ── Dots ── */
-  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; opacity:0.65; }
-  .dot-red    { background:#ff5f57; }
-  .dot-yellow { background:#febc2e; }
-  .dot-green  { background:#28c840; }
-
-  /* ── Form inputs ── */
-  .form-input::placeholder { color: rgba(255,255,255,0.15); }
-  .form-input:focus { box-shadow: 0 0 0 1px rgba(74,222,128,0.15); }
-
-  /* ── Submit button ── */
-  .submit-btn { cursor: pointer; border: none; background: transparent; width: 100%; }
-  .sbg {
-    position:absolute; inset:0; border-radius:inherit;
-    background: rgba(74,222,128,0.04);
-    transition: background 0.3s ease;
-  }
-  .submit-btn:hover .sbg { background: rgba(74,222,128,0.09); }
-  .sborder {
-    position:absolute; inset:0; border-radius:inherit;
-    border: 1px solid rgba(74,222,128,0.2);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .submit-btn:hover .sborder {
-    border-color: rgba(74,222,128,0.4);
-    box-shadow: 0 0 20px rgba(74,222,128,0.08);
-  }
-
-  /* ── Social cards ── */
-  .social-card { text-decoration: none; transition: transform 0.2s ease; }
-  .social-card:hover { transform: translateY(-1px); }
-  .sc-bg {
-    position:absolute; inset:0; border-radius:inherit;
-    background: rgba(255,255,255,0.02);
-    transition: background 0.3s ease;
-  }
-  .social-card:hover .sc-bg { background: rgba(74,222,128,0.04); }
-  .social-card--gh:hover .sc-bg { background: rgba(255,255,255,0.04); }
-  .sc-border {
-    position:absolute; inset:0; border-radius:inherit;
-    border: 1px solid rgba(255,255,255,0.07);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  .social-card:hover .sc-border {
-    border-color: rgba(74,222,128,0.25);
-    box-shadow: 0 0 16px rgba(74,222,128,0.06);
-  }
-  .sc-border--gh {}
-  .social-card--gh:hover .sc-border--gh {
-    border-color: rgba(255,255,255,0.15);
-    box-shadow: 0 0 16px rgba(255,255,255,0.03);
-  }
-</style>
