@@ -1,4 +1,4 @@
-export const archivements = [
+export const achivements = [
   {
     img: "/img/archivements/Python Essentials 1.png",
     title: "Python Essentials",
