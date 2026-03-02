@@ -20,7 +20,7 @@ export const projects = [
       "Search and filtering capabilities",
     ],
     backStatus: "Completed",
-    backYear: "202",
+    backYear: "2025",
     problem: "Faculty often struggle to create and manage their academic schedules effectively, leading to conflicts and inefficiencies.",
     solution: "Horarios FISEI provides an intuitive platform for users to create timetables with the help of AI, manage, and search their academic schedules, ensuring optimal organization and conflict resolution."
   },
