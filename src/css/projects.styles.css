@@ -1,0 +1,369 @@
+/* ──────────────────── SECTION ──────────────────── */
+  /* ── Grid bg ── */
+  .section-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    mask-image: radial-gradient(
+      ellipse 80% 60% at 50% 50%,
+      black 30%,
+      transparent 100%
+    );
+  }
+
+  /* ── Title ── */
+  .title-wrap h1 {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.15) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
+  }
+
+  /* ── Show All button ── */
+  .show-all-btn {
+    border-radius: 6px;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    outline: none;
+  }
+  .btn-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    transition: background 0.3s ease;
+  }
+  .show-all-btn:hover .btn-bg {
+    background: rgba(74, 222, 128, 0.06);
+  }
+
+  .btn-border {
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition:
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+  .show-all-btn:hover .btn-border {
+    border-color: rgba(74, 222, 128, 0.35);
+    box-shadow: 0 0 16px rgba(74, 222, 128, 0.08);
+  }
+
+  /* ── Modal backdrop ── */
+  .modal-backdrop {
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .modal-backdrop.modal-open {
+    opacity: 1;
+  }
+
+  /* ── Modal box ── */
+  .modal-box {
+    transform: translateY(16px) scale(0.98);
+    opacity: 0;
+    transition:
+      transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+      opacity 0.25s ease;
+  }
+  .modal-open .modal-box {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  /* ── Modal scrollbar ── */
+  .modal-box ::-webkit-scrollbar {
+    width: 4px;
+  }
+  .modal-box ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .modal-box ::-webkit-scrollbar-thumb {
+    background: rgba(74, 222, 128, 0.2);
+    border-radius: 2px;
+  }
+  .modal-box ::-webkit-scrollbar-thumb:hover {
+    background: rgba(74, 222, 128, 0.4);
+  }
+
+  /* ── Terminal dots ── */
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.65;
+  }
+  .dot-red {
+    background: #ff5f57;
+  }
+  .dot-yellow {
+    background: #febc2e;
+  }
+  .dot-green {
+    background: #28c840;
+  }
+
+  /* ── Close button ── */
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+  .close-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+  }
+  
+/* ──────────────────── COMPONENT ──────────────────── */
+  /* ── Wrapper ── */
+  .project-wrap {
+    width: var(--card-w, 500px);
+    max-width: 92vw;
+    list-style: none;
+  }
+
+  /* ── Perspective on wrapper ── */
+  .flippable {
+    perspective: 1200px;
+  }
+
+  /* ── Flip 3D container ── */
+  .flip-inner {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  }
+  .flip-inner.is-flipped { transform: rotateY(180deg); }
+
+  /* ── Shared face styles ── */
+  .project-card {
+    width: 100%;
+    background: #0d1117;
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 6px;
+    transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  .project-card:hover {
+    border-color: rgba(74,222,128,0.22);
+    box-shadow: 0 0 0 1px rgba(74,222,128,0.07), 0 12px 40px rgba(0,0,0,0.6);
+  }
+
+  /* Back: absolute, same size, pre-rotated */
+  .project-back {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    transform: rotateY(180deg);
+    overflow-y: auto;
+  }
+
+  /* ── Problem / Solution blocks ── */
+  .ps-block {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.375rem;
+    margin-top: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.015);
+    transition: border-color 0.3s ease, background 0.3s ease;
+  }
+
+  .ps-block--problem:hover {
+    border-color: rgba(239, 68, 68, 0.2);
+    background: rgba(239, 68, 68, 0.03);
+  }
+
+  .ps-block--solution {
+    margin-top: 0.75rem;
+  }
+  .ps-block--solution:hover {
+    border-color: rgba(74, 222, 128, 0.2);
+    background: rgba(74, 222, 128, 0.03);
+  }
+
+  /* Left accent bar */
+  .ps-bar {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    border-radius: 0.375rem 0 0 0.375rem;
+  }
+
+  .ps-bar--problem {
+    background: linear-gradient(to bottom,
+      rgba(239, 68, 68, 0.6),
+      rgba(239, 68, 68, 0.3),
+      transparent);
+  }
+
+  .ps-bar--solution {
+    background: linear-gradient(to bottom,
+      rgba(74, 222, 128, 0.6),
+      rgba(74, 222, 128, 0.3),
+      transparent);
+  }
+
+  /* Header row */
+  .ps-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-left: 0.5rem;
+  }
+
+  /* Label */
+  .ps-label {
+    font-family: monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+
+  .ps-block--problem .ps-label       { color: rgba(248, 113, 113, 0.5); }
+  .ps-block--problem:hover .ps-label { color: rgba(248, 113, 113, 0.8); }
+
+  .ps-block--solution .ps-label       { color: rgba(74, 222, 128, 0.5); }
+  .ps-block--solution:hover .ps-label { color: rgba(74, 222, 128, 0.8); }
+
+  /* Icon */
+  .ps-icon {
+    margin-left: auto;
+    font-size: 0.75rem;
+    transition: color 0.3s ease;
+  }
+
+  .ps-block--problem .ps-icon       { color: rgba(239, 68, 68, 0.2); }
+  .ps-block--problem:hover .ps-icon { color: rgba(239, 68, 68, 0.5); }
+
+  .ps-block--solution .ps-icon       { color: rgba(74, 222, 128, 0.2); }
+  .ps-block--solution:hover .ps-icon { color: rgba(74, 222, 128, 0.6); }
+
+  /* Body text */
+  .ps-text {
+    font-family: monospace;
+    font-size: 0.8125rem;
+    color: rgba(255, 255, 255, 0.45);
+    line-height: 1.6;
+    padding-left: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .ps-block:hover .ps-text {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  /* Non-flippable: block */
+  .project-wrap:not(.flippable) .card-inner { display: block; }
+
+  /* ── Corner accents ── */
+  .corner {
+    position: absolute; width: 10px; height: 10px;
+    border-color: rgba(74,222,128,0.45); border-style: solid;
+    opacity: 0; transition: opacity 0.3s ease; z-index: 10; pointer-events: none;
+  }
+  .project-card:hover .corner { opacity: 1; }
+  .corner-tl { top:-1px; left:-1px;   border-width:2px 0 0 2px; border-radius:3px 0 0 0; }
+  .corner-tr { top:-1px; right:-1px;  border-width:2px 2px 0 0; border-radius:0 3px 0 0; }
+  .corner-bl { bottom:-1px; left:-1px;  border-width:0 0 2px 2px; border-radius:0 0 0 3px; }
+  .corner-br { bottom:-1px; right:-1px; border-width:0 2px 2px 0; border-radius:0 0 3px 0; }
+
+  /* ── Top bar & dots ── */
+  .card-topbar { background: rgba(255,255,255,0.02); }
+  .dot { width:10px; height:10px; border-radius:50%; display:inline-block; opacity:0.65; }
+  .dot-red    { background:#ff5f57; }
+  .dot-yellow { background:#febc2e; }
+  .dot-green  { background:#28c840; }
+
+  /* ── Flip button ── */
+  .flip-btn { background: none; border: none; cursor: pointer; padding: 0; }
+
+  /* ── Image ── */
+  .project-front:hover .main-img { transform: scale(1.02); }
+
+  /* ── Scan line ── */
+  .scan-line { top: 0; }
+  .project-front:hover .scan-line { animation: scanDown 2s ease-in-out infinite; }
+  @keyframes scanDown {
+    0%   { top:0%;   opacity:0; }
+    10%  { opacity:1; }
+    90%  { opacity:1; }
+    100% { top:100%; opacity:0; }
+  }
+
+  /* ── Tool chips ── */
+  .tool-chip { border-color: rgba(255,255,255,0.06); }
+
+  /* ── Back items ── */
+  .back-item:hover { color: rgba(255,255,255,0.85); }
+  .back-item:hover .back-num { color: rgba(74,222,128,0.7); }
+
+  /* ── Action buttons ── */
+  .action-btn { text-decoration: none; }
+  .abg {
+    position: absolute; inset: 0; border-radius: inherit;
+    background: rgba(255,255,255,0.02);
+    transition: background 0.3s ease;
+  }
+  .action-btn--gh:hover   .abg { background: rgba(255,255,255,0.05); }
+  .action-btn--live:hover .abg { background: rgba(74,222,128,0.05); }
+
+  .aborder {
+    position: absolute; inset: 0; border-radius: inherit;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  .action-btn--gh:hover .aborder {
+    border-color: rgba(255,255,255,0.18);
+    box-shadow: 0 0 12px rgba(255,255,255,0.04);
+  }
+  .aborder--green { border-color: rgba(74,222,128,0.12); }
+  .action-btn--live:hover .aborder--green {
+    border-color: rgba(74,222,128,0.35);
+    box-shadow: 0 0 14px rgba(74,222,128,0.1);
+  }
+  
+  .action-btn--blue--live:hover .abg { background: rgba(74, 81, 222, 0.05); }
+  
+  .aborder--blue { border-color: rgba(74, 86, 222, 0.12); }
+  .action-btn--blue--live:hover .aborder--blue {
+    border-color: rgba(74, 86, 222, 0.35);
+    box-shadow: 0 0 14px rgba(81, 74, 222, 0.1);
+  }
+
+  /* ── Shimmer ── */
+  .project-card::after {
+    content: ""; position: absolute; inset: 0; border-radius: 6px;
+    background: linear-gradient(105deg, transparent 40%, rgba(74,222,128,0.025) 50%, transparent 60%);
+    background-size: 200% 200%; opacity: 0;
+    transition: opacity 0.3s ease; pointer-events: none;
+  }
+  .project-card:hover::after { opacity: 1; animation: shimmer 2.5s ease infinite; }
+  @keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
