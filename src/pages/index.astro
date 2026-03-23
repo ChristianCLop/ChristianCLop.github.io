@@ -1,12 +1,13 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import "animate.css";
-import Home from "../sections/Home.astro";
-import About from "../sections/About.astro";
-import Skills from "../sections/Skills.astro";
-import Experiences from "../sections/Experiences.astro";
-import Projects from "../sections/Projects.astro";
-import Achivements from "../sections/Achivements.astro";
+import Layout from '../layouts/Layout.astro';
+import 'animate.css';
+import Home from '../sections/Home.astro';
+import About from '../sections/About.astro';
+import Educations from '../sections/Educations.astro';
+import Skills from '../sections/Skills.astro';
+import Experiences from '../sections/Experiences.astro';
+import Projects from '../sections/Projects.astro';
+import Achivements from '../sections/Achivements.astro';
 ---
 
 <Layout title="Christian Chico | Full Stack Developer">
@@ -20,16 +21,18 @@ import Achivements from "../sections/Achivements.astro";
     <script src="/scripts/particles.min.js" is:inline></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", async (event) => {
-        const response = await fetch("/particlesjs-config.json");
+      document.addEventListener('DOMContentLoaded', async (event) => {
+        const response = await fetch('/particlesjs-config.json');
         const particlesConfig = await response.json();
-        particlesJS("particles-js", particlesConfig);
+        particlesJS('particles-js', particlesConfig);
       });
     </script>
 
-    <Home/>
+    <Home />
 
     <About />
+
+    <Educations />
 
     <Skills />
 
@@ -38,6 +41,5 @@ import Achivements from "../sections/Achivements.astro";
     <Projects />
 
     <Achivements />
-
   </main>
 </Layout>
