@@ -1,0 +1,406 @@
+/* ──────────────────── SECTION ──────────────────── */
+/* ── Grid bg ── */
+.section-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(74, 222, 128, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%,
+      black 30%,
+      transparent 100%);
+}
+
+/* ── Title ── */
+.title-wrap h1 {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.9) 0%,
+      rgba(255, 255, 255, 0.15) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.12);
+}
+
+/* ── Show All button ── */
+.show-all-btn {
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.btn-bg {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 6px;
+  transition: background 0.3s ease;
+}
+
+.show-all-btn:hover .btn-bg {
+  background: rgba(74, 222, 128, 0.06);
+}
+
+.btn-border {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.show-all-btn:hover .btn-border {
+  border-color: rgba(74, 222, 128, 0.35);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.08);
+}
+
+/* ── Modal backdrop ── */
+.modal-backdrop {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.modal-backdrop.modal-open {
+  opacity: 1;
+}
+
+/* ── Modal box ── */
+.modal-box {
+  transform: translateY(16px) scale(0.98);
+  opacity: 0;
+  transition:
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease;
+}
+
+.modal-open .modal-box {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ── Modal scrollbar ── */
+.modal-box ::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-box ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.modal-box ::-webkit-scrollbar-thumb {
+  background: rgba(74, 222, 128, 0.2);
+  border-radius: 2px;
+}
+
+.modal-box ::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 222, 128, 0.4);
+}
+
+/* ── Terminal dots ── */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.65;
+}
+
+.dot-red {
+  background: #ff5f57;
+}
+
+.dot-yellow {
+  background: #febc2e;
+}
+
+.dot-green {
+  background: #28c840;
+}
+
+/* ── Close button ── */
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  transition: background 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+/* ──────────────────── COMPONENT ──────────────────── */
+/* ── Card shell ── */
+.edu-card {
+  background: #0d1117;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 6px;
+  list-style: none;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.edu-card:hover {
+  border-color: rgba(74, 222, 128, 0.22);
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.07),
+    0 10px 40px rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+/* ── Corner accents ── */
+.corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: rgba(74, 222, 128, 0.45);
+  border-style: solid;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.edu-card:hover .corner {
+  opacity: 1;
+}
+
+.corner-tl {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+  border-radius: 3px 0 0 0;
+}
+
+.corner-tr {
+  top: -1px;
+  right: -1px;
+  border-width: 2px 2px 0 0;
+  border-radius: 0 3px 0 0;
+}
+
+.corner-bl {
+  bottom: -1px;
+  left: -1px;
+  border-width: 0 0 2px 2px;
+  border-radius: 0 0 0 3px;
+}
+
+.corner-br {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+  border-radius: 0 0 3px 0;
+}
+
+/* ── Top bar & dots ── */
+.topbar {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.65;
+}
+
+.dot-red {
+  background: #ff5f57;
+}
+
+.dot-yellow {
+  background: #febc2e;
+}
+
+.dot-green {
+  background: #28c840;
+}
+
+/* ── Logo wrap ── */
+.logo-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.edu-card:hover .logo-wrap {
+  border-color: rgba(74, 222, 128, 0.2);
+}
+
+/* ── Achievement items ── */
+.ach-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.ach-item:hover .ach-num {
+  color: rgba(74, 222, 128, 0.7);
+}
+
+/* ── Skill chips ── */
+.skill-chip {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+  min-width: 56px;
+}
+
+.skill-chip:hover {
+  background: rgba(74, 222, 128, 0.05);
+  border-color: rgba(74, 222, 128, 0.2);
+}
+
+/* ── Certificate thumbnail ── */
+.cert-thumb {
+  transition: border-color 0.3s ease;
+}
+
+.cert-thumb:hover {
+  border-color: rgba(74, 222, 128, 0.3);
+}
+
+.cert-scan {
+  top: 0;
+  opacity: 0;
+}
+
+.cert-thumb:hover .cert-scan {
+  opacity: 1;
+}
+
+@keyframes certScan {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+/* ── Cert action buttons ── */
+.cert-action-btn {
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.cbg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(255, 255, 255, 0.02);
+  transition: background 0.3s ease;
+}
+
+.cert-action-btn--view:hover .cbg {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cbg--green {
+  background: rgba(74, 222, 128, 0.03);
+}
+
+.cert-action-btn--link:hover .cbg--green {
+  background: rgba(74, 222, 128, 0.07);
+}
+
+.cborder {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-action-btn--view:hover .cborder {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.04);
+}
+
+.cborder--green {
+  border-color: rgba(74, 222, 128, 0.15);
+}
+
+.cert-action-btn--link:hover .cborder--green {
+  border-color: rgba(74, 222, 128, 0.4);
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.1);
+}
+
+/* ── Lightbox ── */
+.cert-lightbox {
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+.cert-lightbox.lb-open {
+  opacity: 1;
+}
+
+.lb-box {
+  transform: translateY(12px) scale(0.98);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease;
+  opacity: 0;
+}
+
+.lb-open .lb-box {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+/* ── Shimmer ── */
+.edu-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  background: linear-gradient(105deg, transparent 40%, rgba(74, 222, 128, 0.025) 50%, transparent 60%);
+  background-size: 200% 200%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.edu-card:hover::after {
+  opacity: 1;
+  animation: shimmer 2.5s ease infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}

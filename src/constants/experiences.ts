@@ -1,6 +1,6 @@
 export const experiences = [
   {
-    img: "https://media.licdn.com/dms/image/v2/D4E0BAQHSvvoRbwD4nw/company-logo_200_200/company-logo_200_200/0/1690086602887?e=1773878400&v=beta&t=iFPbd4UtuE_KeFqiimcWn1MjuKx9QLr_pnEMilVFlMs",
+    img: "/img/experience/SanTIC Education.png",
     title: "Software Engineer",
     company: "SanTIC Education",
     date: "December 2025 - January 2026",
