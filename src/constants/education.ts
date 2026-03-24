@@ -6,10 +6,10 @@ export const education = [
     type: "degree" as const,
     startDate: "2019",
     endDate: "2025",
-    description: "Carrera enfocada en desarrollo de software y seguridad informática.",
+    description: "Comprehensive program covering software development, systems design, and software engineering principles with hands-on projects and real-world applications.",
     achievements: [
-      "Proyecto de grado con distinción",
-      "Club de ciberseguridad",
+      "Implemented a web application for managing timetables schedules, optimizing classrooms utilization.",
+      "Project: Horarios FISEI",
     ],
     skills: [
       { name: "Docker", img: "/icons/skills/docker.svg" },
