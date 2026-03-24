@@ -1,0 +1,181 @@
+---
+import EducationCard from '../components/Education.astro';
+import { education } from '../constants/education.ts';
+import '../css/education.css';
+---
+
+<section id="education" class="overflow-hidden relative py-24 sm:py-32">
+  <!-- Grid background -->
+  <div class="section-grid" aria-hidden="true"></div>
+
+  <div class="flex flex-col items-center px-4 sm:px-8">
+    <!-- ── Header ── -->
+    <header
+      class="w-full flex flex-col items-center mb-14 sm:mb-20"
+      data-aos="fade-down"
+      data-aos-duration="1200"
+    >
+      <span
+        class="font-mono text-[11px] sm:text-xs text-[#4ade80]/50 tracking-[0.25em] uppercase mb-4"
+      >
+        ~/portfolio/education
+      </span>
+
+      <div class="title-wrap relative">
+        <h1
+          class="font-mono font-black uppercase tracking-tight leading-none
+          text-5xl sm:text-6xl md:text-7xl lg:text-8xl
+          text-transparent select-none"
+        >
+          Education
+        </h1>
+        <div
+          class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"
+        >
+        </div>
+      </div>
+
+      <p
+        class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest"
+      >
+        <span class="text-[#4ade80]/50">▶</span>
+        {education.length} entries loaded
+      </p>
+    </header>
+
+    <!-- ── Cards list ── -->
+    <div
+      class="flex flex-col items-center w-full gap-0"
+      data-aos="fade-up"
+      data-aos-duration="1600"
+    >
+      {
+        education.slice(0, 4).map((item, i) => (
+          <div
+            data-aos="fade-up"
+            data-aos-duration="1400"
+            data-aos-delay={i * 100}
+            class="w-full flex justify-center"
+          >
+            <EducationCard {...item} />
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- ── Show All button ── -->
+    {
+      education.length > 4 && (
+        <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
+          <button
+            id="showAllEduBtn"
+            class="show-all-btn group relative font-mono text-sm uppercase tracking-widest px-8 py-3 overflow-hidden"
+          >
+            <span class="btn-bg" />
+            <span class="btn-border" />
+            <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
+              <span
+                class="text-[#4ade80] group-hover:animate-spin"
+                style="display:inline-block"
+              >
+                ◈
+              </span>
+              Show All
+              <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
+                ({education.length})
+              </span>
+            </span>
+          </button>
+        </div>
+      )
+    }
+  </div>
+</section>
+
+<!-- ── Modal ── -->
+<div
+  id="modalEdu"
+  class="modal-backdrop fixed inset-0 hidden justify-center items-center z-50 p-4 sm:p-6"
+>
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
+
+  <!-- Modal box -->
+  <div
+    class="modal-box relative bg-[#0d1117] border border-white/10 rounded-lg
+    w-full max-w-4xl max-h-[92vh] overflow-hidden flex flex-col
+    shadow-[0_0_60px_rgba(0,0,0,0.8)]"
+  >
+    <!-- Top bar -->
+    <div
+      class="modal-topbar flex items-center gap-2 px-5 py-3 border-b border-white/10 shrink-0"
+    >
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+      <span class="font-mono text-xs text-white/30 ml-3 tracking-widest"
+        >all_education.json</span
+      >
+      <span
+        class="ml-auto font-mono text-[10px] text-[#4ade80]/40 tracking-widest hidden sm:block"
+      >
+        {education.length} entries
+      </span>
+      <button
+        id="closeModalEdu"
+        class="close-btn sm:ml-4 font-mono text-white/40 hover:text-white text-lg leading-none transition-colors duration-200"
+        aria-label="Close modal">✕</button
+      >
+    </div>
+
+    <!-- Scroll area -->
+    <div class="overflow-y-auto flex-1 p-4 sm:p-6">
+      <div class="flex flex-col items-center gap-0">
+        {education.map((item) => <EducationCard {...item} compact={true} />)}
+      </div>
+    </div>
+
+    <!-- Bottom glow -->
+    <div
+      class="h-px bg-gradient-to-r from-transparent via-[#4ade80]/30 to-transparent shrink-0"
+    >
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('modalEdu');
+    var showBtn = document.getElementById('showAllEduBtn');
+    var closeBtn = document.getElementById('closeModalEdu');
+    var backdrop = modal ? modal.querySelector('.absolute.inset-0') : null;
+
+    function openModal() {
+      if (!modal) return;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      requestAnimationFrame(function () {
+        modal.classList.add('modal-open');
+      });
+    }
+
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove('modal-open');
+      setTimeout(function () {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+        document.body.style.overflow = 'auto';
+      }, 250);
+    }
+
+    if (showBtn) showBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+    if (backdrop) backdrop.addEventListener('click', closeModal);
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  });
+</script>
