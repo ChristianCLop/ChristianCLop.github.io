@@ -26,6 +26,7 @@ import '../css/education.css';
           class="font-mono font-black uppercase tracking-tight leading-none
           text-5xl sm:text-6xl md:text-7xl lg:text-8xl
           text-transparent select-none"
+          data-i18n="edu.title"
         >
           Education
         </h1>
@@ -39,7 +40,8 @@ import '../css/education.css';
         class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest"
       >
         <span class="text-[#4ade80]/50">▶</span>
-        {education.length} entries loaded
+        {education.length}
+        <span data-i18n="edu.entries_loaded">entries loaded</span>
       </p>
     </header>
 
@@ -50,7 +52,7 @@ import '../css/education.css';
       data-aos-duration="1600"
     >
       {
-        education.slice(0, 4).map((item, i) => (
+        education.slice(0, 2).map((item, i) => (
           <div
             data-aos="fade-up"
             data-aos-duration="1400"
@@ -65,7 +67,7 @@ import '../css/education.css';
 
     <!-- ── Show All button ── -->
     {
-      education.length > 4 && (
+      education.length > 2 && (
         <div data-aos="zoom-out-up" data-aos-duration="2000" class="mt-12">
           <button
             id="showAllEduBtn"
@@ -80,7 +82,7 @@ import '../css/education.css';
               >
                 ◈
               </span>
-              Show All
+              <span data-i18n="edu.show_all">Show All</span>
               <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
                 ({education.length})
               </span>
