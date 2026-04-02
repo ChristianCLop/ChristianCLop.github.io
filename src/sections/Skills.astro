@@ -23,14 +23,15 @@ import { skills } from '../constants/skills.ts';
       <div class="title-wrap relative">
         <h1 class="font-mono font-black uppercase tracking-tight leading-none
           text-5xl sm:text-6xl md:text-7xl lg:text-8xl
-          text-transparent select-none">
+          text-transparent select-none" data-i18n="skills.title">
           My Stack
         </h1>
         <div class="h-[3px] mt-3 bg-gradient-to-r from-transparent via-[#4ade80] to-transparent rounded-full opacity-60"></div>
       </div>
 
       <p class="font-mono text-xs sm:text-sm text-white/25 mt-4 tracking-widest">
-        <span class="text-[#4ade80]/50">▶</span> {skills.length} categories loaded
+        <span class="text-[#4ade80]/50">▶</span> {skills.length}
+        <span data-i18n="skills.entries_loaded">categories loaded</span>
       </p>
     </header>
 
@@ -51,7 +52,7 @@ import { skills } from '../constants/skills.ts';
             <!-- Card top bar -->
             <div class="card-topbar flex items-center gap-2 px-4 py-2.5 border-b border-white/10">
               <span class="font-mono text-[10px] text-[#4ade80]/50 tracking-widest">▸</span>
-              <span class="font-mono text-xs text-white/40 tracking-widest uppercase truncate">
+              <span class="font-mono text-xs text-white/40 tracking-widest uppercase truncate" data-i18n={category.titleKey}>
                 {category.title}
               </span>
               <span class="ml-auto font-mono text-[10px] text-white/20">
@@ -86,7 +87,7 @@ import { skills } from '../constants/skills.ts';
           <span class="btn-border"></span>
           <span class="relative z-10 flex items-center gap-2 text-white/70 group-hover:text-white transition-colors duration-300">
             <span class="text-[#4ade80] group-hover:animate-spin" style="display:inline-block">◈</span>
-            Show All
+            <span data-i18n="skills.show_all">Show All</span>
             <span class="text-white/30 group-hover:text-[#4ade80] transition-colors duration-300 font-normal">
               ({skills.length})
             </span>
@@ -130,7 +131,7 @@ import { skills } from '../constants/skills.ts';
           <div class="category-card group flex flex-col">
             <div class="card-topbar flex items-center gap-2 px-4 py-2.5 border-b border-white/10">
               <span class="font-mono text-[10px] text-[#4ade80]/50 tracking-widest">▸</span>
-              <span class="font-mono text-xs text-white/40 tracking-widest uppercase truncate">
+              <span class="font-mono text-xs text-white/40 tracking-widest uppercase truncate" data-i18n={category.titleKey}>
                 {category.title}
               </span>
               <span class="ml-auto font-mono text-[10px] text-white/20">
