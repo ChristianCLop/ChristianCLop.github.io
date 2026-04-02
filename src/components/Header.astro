@@ -20,8 +20,10 @@ const navLinks = [
   { href: '#contact', i18nKey: 'nav.contact', defaultLabel: 'Contact' },
 ];
 
-const cvLink =
-  'https://drive.google.com/file/d/1uOA9S4x3Y_4zhWt-UA9yD5vJd-HuGvjl/view?usp=drive_link';
+const cvLinkEn =
+  'https://drive.google.com/file/d/1XbBikzocVqpa5tyKPSLjxTXIEM8fUI6d/view?usp=sharing';
+const cvLinkEs =
+  'https://drive.google.com/file/d/1PnJsoBNg9QXnmodGqcg-eIS0SiP4o6hy/view?usp=sharing';
 ---
 
 <header class="nav-header fixed top-0 inset-x-0 z-50">
@@ -93,7 +95,10 @@ const cvLink =
 
         <!-- CV button -->
         <a
-          href={cvLink}
+          id="cv-link-desktop"
+          href={cvLinkEn}
+          data-href-en={cvLinkEn}
+          data-href-es={cvLinkEs}
           target="_blank"
           rel="noopener noreferrer"
           class="cv-btn group relative overflow-hidden font-mono text-xs uppercase tracking-widest
@@ -107,7 +112,7 @@ const cvLink =
             <span
               class="w-1.5 h-1.5 rounded-full bg-[#4ade80]/60 group-hover:bg-[#4ade80] group-hover:animate-pulse transition-colors duration-300"
             ></span>
-            <span data-i18n="nav.downloadCV">Download CV</span>
+            <span data-i18n="nav.downloadCV">Get my Resume</span>
           </span>
         </a>
       </div>
@@ -202,7 +207,10 @@ const cvLink =
       <!-- CV button mobile -->
       <div class="px-5 pb-5 pt-2 border-t border-white/5">
         <a
-          href={cvLink}
+          id="cv-link-mobile"
+          href={cvLinkEn}
+          data-href-en={cvLinkEn}
+          data-href-es={cvLinkEs}
           target="_blank"
           rel="noopener noreferrer"
           class="cv-btn group relative overflow-hidden font-mono text-xs uppercase tracking-widest
@@ -227,6 +235,28 @@ const cvLink =
 <div class="h-16 sm:h-18"></div>
 
 <script is:inline>
+  // ── CV link lang switcher ──
+  function updateCvLinks(lang) {
+    ['cv-link-desktop', 'cv-link-mobile'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var href =
+        el.getAttribute('data-href-' + lang) || el.getAttribute('data-href-en');
+      if (href) el.setAttribute('href', href);
+    });
+  }
+
+  // Patch window.applyLang to also update CV links
+  document.addEventListener('DOMContentLoaded', function () {
+    var _original = window.applyLang;
+    window.applyLang = function (lang) {
+      _original && _original(lang);
+      updateCvLinks(lang);
+    };
+    // Apply on load based on saved lang
+    updateCvLinks(localStorage.getItem('lang') || 'en');
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
     (function () {
       const btn = document.getElementById('mobile-menu-btn');

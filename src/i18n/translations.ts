@@ -9,7 +9,7 @@ export const translations = {
     "nav.projects": "Projects",
     "nav.achievements": "Achievements",
     "nav.contact": "Contact",
-    "nav.downloadCV": "Download CV",
+    "nav.downloadCV": "Get my Resume",
     "nav.navigation": "// navigation",
 
     // ── Hero ──
@@ -217,7 +217,7 @@ export const translations = {
     "nav.projects": "Proyectos",
     "nav.achievements": "Logros",
     "nav.contact": "Contacto",
-    "nav.downloadCV": "Descargar CV",
+    "nav.downloadCV": "Ver mi CV",
     "nav.navigation": "// navegación",
 
     // ── Hero ──
