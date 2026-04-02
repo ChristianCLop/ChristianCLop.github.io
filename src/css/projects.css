@@ -177,6 +177,12 @@
     overflow-y: auto;
   }
 
+  /* Prevent click-through on the hidden face */
+  .flip-inner .project-back  { pointer-events: none; }
+  .flip-inner .project-front { pointer-events: auto; }
+  .flip-inner.is-flipped .project-front { pointer-events: none; }
+  .flip-inner.is-flipped .project-back  { pointer-events: auto; }
+
   /* ── Problem / Solution blocks ── */
   .ps-block {
     position: relative;
@@ -301,6 +307,12 @@
 
   /* ── Flip button ── */
   .flip-btn { background: none; border: none; cursor: pointer; padding: 0; }
+  .action-btn--flip:hover .abg { background: rgba(255,255,255,0.03); }
+  .aborder--flip { border-color: rgba(255,255,255,0.06); }
+  .action-btn--flip:hover .aborder--flip {
+    border-color: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px rgba(255,255,255,0.03);
+  }
 
   /* ── Image ── */
   .project-front:hover .main-img { transform: scale(1.02); }

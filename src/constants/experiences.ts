@@ -2,16 +2,22 @@ export const experiences = [
   {
     img: "/img/experience/SanTIC Education.png",
     title: "Software Engineer",
+    titleKey: "exp.santic.title",
     company: "SanTIC Education",
     date: "December 2025 - January 2026",
-    item1:
-      "Design and implementation of Docker-based architecture (Nginx + PHP + Moodle + PostgreSQL).",
+    dateKey: "exp.santic.date",
+    item1: "Design and implementation of Docker-based architecture (Nginx + PHP + Moodle + PostgreSQL).",
     item2: "Server configuration and administration on AlmaLinux.",
     item3: "Docker and Docker Compose configuration and management.",
-    item4:
-      "Reverse proxy implementation with SSL certificates (Let’s Encrypt) for multiple instances.",
-    item5:
-      "Automation of cron jobs and background tasks for provisioning new instances and managing backups.",
+    item4: "Reverse proxy implementation with SSL certificates (Let's Encrypt) for multiple instances.",
+    item5: "Automation of cron jobs and background tasks for provisioning new instances and managing backups.",
+    itemKeys: [
+      "exp.santic.item_0",
+      "exp.santic.item_1",
+      "exp.santic.item_2",
+      "exp.santic.item_3",
+      "exp.santic.item_4",
+    ],
     skills: [
       { name: "PHP", img: "/icons/skills/php.svg" },
       { name: "Docker", img: "/icons/skills/docker.svg" },
@@ -23,40 +29,52 @@ export const experiences = [
     img: "/img/experience/UTA.webp",
     img2: "/img/experience/FISEI.png",
     title: "Laboratory Technician",
+    titleKey: "exp.uta_tech.title",
     company: "Universidad Técnica de Ambato - FISEI",
     date: "September 2025 - January 2026",
+    dateKey: "exp.uta_tech.date",
     item1: "Server administration and maintenance.",
-    item2:
-      "Management, support, and maintenance of internal faculty applications.",
+    item2: "Management, support, and maintenance of internal faculty applications.",
     item3: "Technical support and maintenance of academic IT infrastructure.",
-    item4:
-      "Development of web applications and internal tools to optimize processes.",
+    item4: "Development of web applications and internal tools to optimize processes.",
+    itemKeys: [
+      "exp.uta_tech.item_0",
+      "exp.uta_tech.item_1",
+      "exp.uta_tech.item_2",
+      "exp.uta_tech.item_3",
+    ],
     skills: [
       { name: "Rocky Linux", img: "/icons/skills/rocky_linux.svg" },
       { name: "Docker", img: "/icons/skills/docker.svg" },
+      { name: "Technical Support", img: "/icons/skills/technical_support.svg" },
     ],
   },
   {
     img: "/img/experience/UTA.webp",
     img2: "/img/experience/FISEI.png",
     title: "Laboratory Intern",
+    titleKey: "exp.uta_intern.title",
     company: "Universidad Técnica de Ambato - FISEI",
     date: "February 2024 - July 2024",
-    item1:
-      "Development of a web application to manage laboratory, subject and teacher schedules.",
+    dateKey: "exp.uta_intern.date",
+    item1: "Development of a web application to manage laboratory, subject and teacher schedules.",
     item2: "Development of a mobile application for ID card validator.",
     item3: "Maintenance of a web application for document management.",
     item4: "Machine maintenance and support.",
     item5: "Maintenance and restructuring of classrooms.",
+    itemKeys: [
+      "exp.uta_intern.item_0",
+      "exp.uta_intern.item_1",
+      "exp.uta_intern.item_2",
+      "exp.uta_intern.item_3",
+      "exp.uta_intern.item_4",
+    ],
     skills: [
       { name: "React Native", img: "/icons/skills/reactjs.svg" },
       { name: "Angular", img: "/icons/skills/angular.svg" },
       { name: "MySQL", img: "/icons/skills/mysql.svg" },
       { name: "JavaScript", img: "/icons/skills/javascript.svg" },
-      {
-        name: "Technical Support",
-        img: "/icons/skills/technical_support.svg",
-      },
+      { name: "Technical Support", img: "/icons/skills/technical_support.svg" },
     ],
   },
 ];

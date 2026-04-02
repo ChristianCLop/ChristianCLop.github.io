@@ -1,6 +1,7 @@
 export const skills = [
   {
     title: "Languages",
+    titleKey: "skills.languages_0",
     items: [
       {
         img: "/icons/skills/javascript.svg",
@@ -100,6 +101,7 @@ export const skills = [
   },
   {
     title: "Databases",
+    titleKey: "skills.databases_3",
     items: [
       {
         img: "/icons/skills/mysql.svg",
@@ -140,6 +142,7 @@ export const skills = [
   },
   {
     title: "Source Control",
+    titleKey: "skills.source_control_4",
     items: [
       {
         img: "/icons/skills/github.svg",
@@ -157,6 +160,7 @@ export const skills = [
   },
   {
     title: "Tools",
+    titleKey: "skills.tools_5",
     items: [
       {
         img: "/icons/skills/vsc.svg",

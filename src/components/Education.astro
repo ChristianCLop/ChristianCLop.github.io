@@ -7,10 +7,12 @@ interface Skill {
 }
 
 interface Certificate {
-  img?: string;   // local image path
-  link?: string;  // external link (Drive, etc.)
-  label?: string; // button label, default "Open Certificate"
-  title?: string; // label shown in lightbox top bar
+  img?: string;
+  link?: string;
+  label?: string;
+  labelKey?: string;  // ← i18n key for the button label
+  title?: string;
+  titleKey?: string;  // ← i18n key for the certificate title
 }
 
 interface Props {
@@ -21,20 +23,23 @@ interface Props {
 
   // Degree / course
   degree: string;
+  degreeKey?: string; // ← i18n key for degree title
   type?: "degree" | "course" | "bootcamp" | "certification";
 
   // Dates
   startDate: string;
-  endDate?: string; // omit = "Present"
+  endDate?: string;
 
   // Content
   description?: string;
+  descriptionKey?: string;    // ← i18n key for description
   achievements?: string[];
+  achievementKeys?: string[]; // ← i18n keys for each achievement item
 
   // Skills
   skills?: Skill[];
 
-  // Certificates — one or many
+  // Certificates
   certificates?: Certificate[];
 
   compact?: boolean;
@@ -45,11 +50,14 @@ const {
   institutionLogo2,
   institution,
   degree,
+  degreeKey,
   type = "degree",
   startDate,
   endDate,
   description,
+  descriptionKey,
   achievements,
+  achievementKeys,
   skills,
   certificates,
   compact = false,
@@ -66,7 +74,9 @@ const typeLabel: Record<string, string> = {
   certification: "cert",
 };
 
-const dateRange = `${startDate} → ${endDate ?? "Present"}`;
+// endDate label — "Present" will be swapped by i18n if data-i18n="edu.present"
+const showPresent = !endDate;
+const dateRange = `${startDate} → `;
 ---
 
 <li
@@ -91,15 +101,16 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
       {slug}.edu
     </span>
     <div class="ml-auto flex items-center gap-3 shrink-0">
-      <!-- Type badge -->
       <span class="type-badge font-mono text-[10px] uppercase tracking-widest
         px-2 py-0.5 rounded-sm border border-[#4ade80]/20 bg-[#4ade80]/[0.05]
         text-[#4ade80]/60">
         {typeLabel[type]}
       </span>
-      <!-- Date -->
       <span class="font-mono text-[10px] text-white/25 tracking-widest hidden sm:block">
-        {dateRange}
+        {dateRange}{showPresent
+          ? <span data-i18n="edu.present">Present</span>
+          : endDate
+        }
       </span>
     </div>
   </div>
@@ -109,7 +120,6 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
 
     <!-- Header: logos + institution + degree -->
     <div class="flex flex-col sm:flex-row sm:items-start gap-4">
-
       <!-- Logos -->
       <div class="flex items-center gap-3 shrink-0">
         <div class="logo-wrap">
@@ -130,11 +140,16 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
           <span class="text-[#4ade80]">▶</span> {institution}
         </span>
         <h2 class={`font-mono font-bold text-white uppercase tracking-tight leading-tight
-          ${compact ? "text-base" : "text-lg sm:text-xl md:text-2xl"}`}>
+          ${compact ? "text-base" : "text-lg sm:text-xl md:text-2xl"}`} data-i18n={degreeKey}>
           {degree}
         </h2>
-        <!-- Date (mobile) -->
-        <span class="font-mono text-xs text-white/30 sm:hidden mt-0.5">{dateRange}</span>
+        <!-- Date mobile -->
+        <span class="font-mono text-xs text-white/30 sm:hidden mt-0.5">
+          {dateRange}{showPresent
+            ? <span data-i18n="edu.present">Present</span>
+            : endDate
+          }
+        </span>
         <div class="h-px w-10 bg-gradient-to-r from-[#4ade80] to-transparent mt-1"></div>
       </div>
     </div>
@@ -142,10 +157,14 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
     <!-- Description -->
     {description && (
       <div>
-        <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">
-          // about
-        </span>
-        <p class="font-mono text-sm text-white/55 leading-relaxed mt-1.5">
+        <span
+          class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase"
+          data-i18n="edu.comment_about"
+        >// about</span>
+        <p
+          class="font-mono text-sm text-white/55 leading-relaxed mt-1.5"
+          data-i18n={descriptionKey}
+        >
           {description}
         </p>
       </div>
@@ -154,9 +173,10 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
     <!-- Achievements -->
     {achievements && achievements.length > 0 && (
       <div>
-        <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">
-          // achievements
-        </span>
+        <span
+          class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase"
+          data-i18n="edu.comment_achievements"
+        >// achievements</span>
         <ul class="flex flex-col gap-2 mt-2">
           {achievements.map((item, i) => (
             <li class="ach-item flex gap-3 items-start font-mono text-sm text-white/55 leading-relaxed">
@@ -164,7 +184,8 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
                 {String(i + 1).padStart(2, "0")}
               </span>
               <span class="text-white/20 shrink-0">→</span>
-              <span>{item}</span>
+              <!-- data-i18n swaps only this span's text -->
+              <span data-i18n={achievementKeys?.[i]}>{item}</span>
             </li>
           ))}
         </ul>
@@ -174,9 +195,10 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
     <!-- Skills -->
     {skills && skills.length > 0 && (
       <div class="border-t border-white/5 pt-4">
-        <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">
-          // skills_learned
-        </span>
+        <span
+          class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase"
+          data-i18n="edu.comment_skills"
+        >// skills_learned</span>
         <div class="flex flex-wrap gap-3 mt-3">
           {skills.map((skill) => (
             <div class="skill-chip group/chip flex flex-col items-center gap-1.5 px-3 py-2 cursor-default">
@@ -196,8 +218,11 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
     <!-- Certificates -->
     {certList.length > 0 && (
       <div class="border-t border-white/5 pt-4">
-        <span class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase">
-          // certificate{certList.length > 1 ? "s" : ""}
+        <span
+          class="font-mono text-[10px] text-white/20 tracking-[0.2em] uppercase"
+          data-i18n={certList.length > 1 ? "edu.comment_certs" : "edu.comment_cert"}
+        >
+          {certList.length > 1 ? "// certificates" : "// certificate"}
         </span>
 
         <div class={`grid gap-3 mt-3 ${certList.length > 1 ? "grid-cols-1 sm:grid-cols-2" : "grid-cols-1"}`}>
@@ -207,14 +232,12 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
               <div class="cert-item flex flex-col gap-2 p-3 rounded-md border border-white/5 bg-white/[0.015]
                 hover:border-[#4ade80]/15 hover:bg-[#4ade80]/[0.02] transition-all duration-300">
 
-                <!-- Optional cert title -->
                 {cert.title && (
-                  <span class="font-mono text-[10px] text-white/30 tracking-widest uppercase truncate">
+                  <span class="font-mono text-[10px] text-white/30 tracking-widest uppercase truncate" data-i18n={cert.titleKey}>
                     {cert.title}
                   </span>
                 )}
 
-                <!-- Thumbnail -->
                 {cert.img && (
                   <div
                     class="cert-thumb group/thumb relative overflow-hidden rounded-md cursor-zoom-in
@@ -242,7 +265,6 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
                   </div>
                 )}
 
-                <!-- Action buttons -->
                 <div class="flex gap-2">
                   {cert.img && (
                     <button
@@ -260,7 +282,8 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
                             d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
                           <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                         </svg>
-                        View
+                        <!-- data-i18n="edu.btn_view" for static label -->
+                        <span data-i18n="edu.btn_view">View</span>
                       </span>
                     </button>
                   )}
@@ -281,7 +304,10 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
                           <path stroke-linecap="round" stroke-linejoin="round"
                             d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
                         </svg>
-                        {cert.label ?? "Open"}
+                        <!-- cert.labelKey for entry-specific label, fallback to edu.btn_view -->
+                        <span data-i18n={cert.labelKey ?? "edu.btn_view"}>
+                          {cert.label ?? "View Certificate"}
+                        </span>
                       </span>
                     </a>
                   )}
@@ -301,7 +327,7 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
   </div>
 </li>
 
-<!-- Lightboxes — one per cert that has an image -->
+<!-- Lightboxes -->
 {certList.map((cert, ci) => cert.img && (
   <div id={`cert-lb-${slug}-${ci}`}
     class="cert-lightbox fixed inset-0 hidden items-center justify-center z-[100] p-4">
@@ -315,7 +341,7 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
         <span class="dot dot-red"></span>
         <span class="dot dot-yellow"></span>
         <span class="dot dot-green"></span>
-        <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate">
+        <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate" data-i18n={cert.titleKey}>
           {cert.title ?? `${slug}_${ci + 1}`}.cert
         </span>
         {certList.length > 1 && (
@@ -341,7 +367,7 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
       <!-- Footer -->
       {cert.link && (
         <div class="px-4 py-3 border-t border-white/10 flex items-center justify-between">
-          <span class="font-mono text-[10px] text-white/20 tracking-widest truncate">
+          <span class="font-mono text-[10px] text-white/20 tracking-widest truncate" data-i18n={cert.titleKey}>
             {cert.title ?? degree}
           </span>
           <a href={cert.link} target="_blank" rel="noopener noreferrer"
@@ -351,7 +377,7 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
               <path stroke-linecap="round" stroke-linejoin="round"
                 d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/>
             </svg>
-            Open external
+            <span data-i18n="edu.btn_open_external">Open external</span>
           </a>
         </div>
       )}
@@ -380,20 +406,17 @@ const dateRange = `${startDate} → ${endDate ?? "Present"}`;
       }, 220);
     }
 
-    // Wire all triggers for this card's certs
     for (var ci = 0; ci < certCount; ci++) {
       var lbId = "cert-lb-" + slug + "-" + ci;
       var lb   = document.getElementById(lbId);
       if (!lb) continue;
 
-      // Triggers: thumbnail + view button
       document.querySelectorAll("[data-cert-lb='" + lbId + "']").forEach(function (el) {
         el.addEventListener("click", (function (id) {
           return function () { openLb(id); };
         })(lbId));
       });
 
-      // Close button inside each lightbox
       var closeBtn = lb.querySelector(".lb-close");
       var lbBg     = lb.querySelector(".lb-bg");
       if (closeBtn) closeBtn.addEventListener("click", (function (l) { return function () { closeLb(l); }; })(lb));
