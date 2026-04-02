@@ -35,7 +35,7 @@ const i18nJSON = JSON.stringify(translations);
         localStorage.setItem('lang', lang);
         document.documentElement.lang = lang;
 
-        // ── Plain text swap ──
+        // ── Plain text ──
         document.querySelectorAll('[data-i18n]').forEach(function (el) {
           var key = el.getAttribute('data-i18n');
           if (key && dict[key] !== undefined) {
@@ -43,13 +43,23 @@ const i18nJSON = JSON.stringify(translations);
           }
         });
 
-        // ── HTML swap (for elements with inner <span> tags) ──
+        // ── HTML (inner spans / markup) ──
         document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
           var key = el.getAttribute('data-i18n-html');
           if (key && dict[key] !== undefined) {
             el.innerHTML = dict[key];
           }
         });
+
+        // ── Placeholder attribute (inputs / textareas) ──
+        document
+          .querySelectorAll('[data-i18n-placeholder]')
+          .forEach(function (el) {
+            var key = el.getAttribute('data-i18n-placeholder');
+            if (key && dict[key] !== undefined) {
+              el.setAttribute('placeholder', dict[key]);
+            }
+          });
 
         // ── Toggle button active state ──
         document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
