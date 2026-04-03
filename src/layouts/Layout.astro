@@ -1,18 +1,21 @@
 ---
-import { ViewTransitions } from "astro:transitions";
-import Footer from "../components/Footer.astro";
-import Header from "../components/Header.astro";
-import "aos/dist/aos.css";
+import { ViewTransitions } from 'astro:transitions';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { translations } from '../i18n/translations';
+import 'aos/dist/aos.css';
 
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
+const i18nJSON = JSON.stringify(translations);
 ---
 
 <!doctype html>
-<html lang="es">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -21,18 +24,81 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions />
+
+    <script is:inline define:vars={{ i18nJSON }}>
+      window.__i18n = JSON.parse(i18nJSON);
+
+      window.applyLang = function (lang) {
+        var dict = window.__i18n[lang];
+        if (!dict) return;
+
+        localStorage.setItem('lang', lang);
+        document.documentElement.lang = lang;
+
+        // ── Plain text ──
+        document.querySelectorAll('[data-i18n]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n');
+          if (key && dict[key] !== undefined) {
+            el.textContent = dict[key];
+          }
+        });
+
+        // ── HTML (inner spans / markup) ──
+        document.querySelectorAll('[data-i18n-html]').forEach(function (el) {
+          var key = el.getAttribute('data-i18n-html');
+          if (key && dict[key] !== undefined) {
+            el.innerHTML = dict[key];
+          }
+        });
+
+        // ── Placeholder attribute (inputs / textareas) ──
+        document
+          .querySelectorAll('[data-i18n-placeholder]')
+          .forEach(function (el) {
+            var key = el.getAttribute('data-i18n-placeholder');
+            if (key && dict[key] !== undefined) {
+              el.setAttribute('placeholder', dict[key]);
+            }
+          });
+
+        // ── Toggle button active state ──
+        document.querySelectorAll('[data-lang-btn]').forEach(function (btn) {
+          var btnLang = btn.getAttribute('data-lang-btn');
+          if (btnLang === lang) {
+            btn.classList.add('lang-active');
+          } else {
+            btn.classList.remove('lang-active');
+          }
+        });
+      };
+
+      function initLang() {
+        var saved = localStorage.getItem('lang') || 'en';
+        window.applyLang(saved);
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLang);
+      } else {
+        initLang();
+      }
+
+      document.addEventListener('astro:after-swap', initLang);
+    </script>
   </head>
+
   <body>
     <script>
-      import { aosInit } from "../js/aos";
+      import { aosInit } from '../js/aos';
       aosInit();
-      document.addEventListener("astro:after-swap", aosInit);
+      document.addEventListener('astro:after-swap', aosInit);
     </script>
     <Header />
     <slot />
-    <Footer />    
+    <Footer />
   </body>
 </html>
+
 <style is:global>
   :root {
     color-scheme: light dark;
@@ -46,5 +112,49 @@ const { title } = Astro.props;
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  /* ── Lang Toggle styles ── */
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0px;
+    font-family: monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .lang-toggle button {
+    padding: 5px 9px;
+    color: rgba(255, 255, 255, 0.25);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition:
+      color 0.2s,
+      background 0.2s;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .lang-toggle button:hover {
+    color: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .lang-toggle button.lang-active {
+    color: #4ade80;
+    background: rgba(74, 222, 128, 0.08);
+  }
+
+  .lang-toggle .lang-sep {
+    width: 1px;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
   }
 </style>

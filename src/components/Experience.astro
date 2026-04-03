@@ -5,13 +5,16 @@ interface Props {
   img: string;
   img2?: string;
   title: string;
+  titleKey?: string; // ← i18n key for the job title
   company: string;
   date: string;
+  dateKey?: string; // ← i18n key for the date range
   item1: string;
   item2: string;
   item3?: string;
   item4?: string;
   item5?: string;
+  itemKeys?: string[]; // ← i18n keys for each responsibility item
   skills?: {
     name: string;
     img: string;
@@ -23,24 +26,27 @@ const {
   img,
   img2,
   title,
+  titleKey,
   company,
   date,
+  dateKey,
   item1,
   item2,
   item3,
   item4,
   item5,
+  itemKeys,
   skills,
   compact = false,
 } = Astro.props;
 
-const items = [item1, item2, item3, item4, item5].filter(Boolean);
+const items = [item1, item2, item3, item4, item5].filter(Boolean) as string[];
 ---
 
 <li
   data-aos="fade-up"
   data-aos-duration="2000"
-  class={`exp-card group relative mb-6 overflow-hidden ${compact ? "w-[85vw] xl:w-[40vw]" : "w-[95vw] sm:w-[85vw] md:w-[72vw] lg:w-[62vw] xl:w-[55vw]"}`}
+  class={`exp-card group relative mb-6 overflow-hidden ${compact ? 'w-[85vw] xl:w-[40vw]' : 'w-[95vw] sm:w-[85vw] md:w-[72vw] lg:w-[62vw] xl:w-[55vw]'}`}
 >
   <!-- Corner decorations -->
   <span class="corner corner-tl"></span>
@@ -48,87 +54,123 @@ const items = [item1, item2, item3, item4, item5].filter(Boolean);
   <span class="corner corner-bl"></span>
   <span class="corner corner-br"></span>
 
-  <!-- Top bar: terminal style -->
-  <div class="top-bar flex items-center gap-2 px-4 py-2 border-b border-white/10">
+  <!-- Top bar -->
+  <div
+    class="top-bar flex items-center gap-2 px-4 py-2 border-b border-white/10"
+  >
     <span class="dot dot-red"></span>
     <span class="dot dot-yellow"></span>
     <span class="dot dot-green"></span>
-    <span class="bar-label font-mono text-xs text-white/30 ml-2 tracking-widest uppercase">
+    <span
+      class="bar-label font-mono text-xs text-white/30 ml-2 tracking-widest uppercase"
+    >
       experience.json
     </span>
-    <span class="ml-auto font-mono text-xs text-[#4ade80]/60">{date}</span>
+    <span
+      class="ml-auto font-mono text-xs text-[#4ade80]/60"
+      data-i18n={dateKey}
+    >
+      {date}
+    </span>
   </div>
 
   <!-- Main content -->
   <div class="inner p-5 sm:p-7 md:p-8 flex flex-col gap-5">
-
     <!-- Header row -->
     <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-
       <!-- Logos -->
       <div class="flex items-center gap-3 shrink-0">
         <div class="logo-wrap">
-          <img src={img} alt={company} class="w-14 h-14 sm:w-16 sm:h-16 object-cover" />
+          <img
+            src={img}
+            alt={company}
+            class="w-14 h-14 sm:w-16 sm:h-16 object-cover"
+          />
         </div>
-        {img2 && !compact && (
-          <div class="logo-wrap hidden sm:block">
-            <img src={img2} alt={company} class="w-14 h-14 sm:w-16 sm:h-16 object-cover" />
-          </div>
-        )}
+        {
+          img2 && !compact && (
+            <div class="logo-wrap hidden sm:block">
+              <img
+                src={img2}
+                alt={company}
+                class="w-14 h-14 sm:w-16 sm:h-16 object-cover"
+              />
+            </div>
+          )
+        }
       </div>
 
       <!-- Title block -->
       <div class="flex flex-col gap-1 min-w-0">
-        <span class="prompt-prefix font-mono text-xs sm:text-sm text-[#4ade80]/70 tracking-widest uppercase">
-          <span class="text-[#4ade80]">▶</span> {company}
+        <span
+          class="prompt-prefix font-mono text-xs sm:text-sm text-[#4ade80]/70 tracking-widest uppercase"
+        >
+          <span class="text-[#4ade80]">▶</span>
+          {company}
         </span>
-        <h2 class="font-mono font-bold text-white text-lg sm:text-xl md:text-2xl uppercase tracking-tight leading-none">
+        <h2
+          class="font-mono font-bold text-white text-lg sm:text-xl md:text-2xl uppercase tracking-tight leading-none"
+          data-i18n={titleKey}
+        >
           {title}
         </h2>
-        <div class="h-px w-12 bg-gradient-to-r from-[#4ade80] to-transparent mt-1"></div>
+        <div
+          class="h-px w-12 bg-gradient-to-r from-[#4ade80] to-transparent mt-1"
+        >
+        </div>
       </div>
     </div>
 
     <!-- Responsibilities -->
     <div class="responsibilities">
-      <span class="block font-mono text-[10px] sm:text-xs text-white/30 tracking-[0.2em] uppercase mb-2">
+      <span
+        class="block font-mono text-[10px] sm:text-xs text-white/30 tracking-[0.2em] uppercase mb-2"
+        data-i18n="exp.comment_responsibilities"
+      >
         // responsibilities
       </span>
       <ul class="flex flex-col gap-2">
-        {items.map((item, i) => (
-          <li class="item-line font-mono text-sm sm:text-base text-white/80 flex gap-3 items-start leading-relaxed">
-            <span class="line-num shrink-0 text-[#4ade80]/40 text-xs pt-0.5 w-5 text-right select-none">
-              {String(i + 1).padStart(2, "0")}
-            </span>
-            <span class="text-[#64748b] shrink-0">→</span>
-            <span>{item}</span>
-          </li>
-        ))}
+        {
+          items.map((item, i) => (
+            <li class="item-line font-mono text-sm sm:text-base text-white/80 flex gap-3 items-start leading-relaxed">
+              <span class="line-num shrink-0 text-[#4ade80]/40 text-xs pt-0.5 w-5 text-right select-none">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <span class="text-[#64748b] shrink-0">→</span>
+              <span data-i18n={itemKeys?.[i]}>{item}</span>
+            </li>
+          ))
+        }
       </ul>
     </div>
 
     <!-- Skills -->
-    {skills && (
-      <div class="skills-section border-t border-white/5 pt-5">
-        <span class="block font-mono text-[10px] sm:text-xs text-white/30 tracking-[0.2em] uppercase mb-3">
-          // stack
-        </span>
-        <div class="flex flex-wrap gap-3">
-          {skills.map((skill) => (
-            <div class="skill-chip group/chip flex flex-col items-center gap-1.5 px-3 py-2 cursor-default">
-              <img
-                src={skill.img}
-                alt={skill.name}
-                class={`object-contain transition-transform duration-300 group-hover/chip:scale-110 ${compact ? "w-7 h-7" : "w-8 h-8 sm:w-9 sm:h-9"}`}
-              />
-              <span class="font-mono text-[10px] sm:text-xs text-white/50 group-hover/chip:text-[#4ade80] transition-colors duration-300">
-                {skill.name}
-              </span>
-            </div>
-          ))}
+    {
+      skills && (
+        <div class="skills-section border-t border-white/5 pt-5">
+          <span
+            class="block font-mono text-[10px] sm:text-xs text-white/30 tracking-[0.2em] uppercase mb-3"
+            data-i18n="exp.comment_stack"
+          >
+            // stack
+          </span>
+          <div class="flex flex-wrap gap-3">
+            {skills.map((skill) => (
+              <div class="skill-chip group/chip flex flex-col items-center gap-1.5 px-3 py-2 cursor-default">
+                <img
+                  src={skill.img}
+                  alt={skill.name}
+                  class={`object-contain transition-transform duration-300 group-hover/chip:scale-110 ${compact ? 'w-7 h-7' : 'w-8 h-8 sm:w-9 sm:h-9'}`}
+                />
+                <span class="font-mono text-[10px] sm:text-xs text-white/50 group-hover/chip:text-[#4ade80] transition-colors duration-300">
+                  {skill.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-    )}
+      )
+    }
   </div>
 
   <!-- Glow line bottom -->
