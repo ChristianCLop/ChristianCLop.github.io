@@ -1,54 +1,130 @@
-# Astro Starter Kit: Basics
+# Christian Chico — Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Personal portfolio website built with Astro, showcasing my experience, projects, and skills as a Full-Stack Developer and Software Engineer based in Ecuador.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+**Live site:** [christianclop.github.io](https://christianclop.github.io)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## About
 
-## 🚀 Project Structure
+I'm a Full-Stack Developer and Software Engineer with hands-on experience in backend, frontend, database development, and DevOps. I hold a Bachelor's Degree in Software Engineering from Universidad Técnica de Ambato (2019–2025). Currently open to work and expanding into DevOps and Cybersecurity.
 
-Inside of your Astro project, you'll see the following folders and files:
+**Resume:**
+- [English CV](https://drive.google.com/file/d/1XbBikzocVqpa5tyKPSLjxTXIEM8fUI6d/view?usp=sharing)
+- [CV en Español](https://drive.google.com/file/d/1PnJsoBNg9QXnmodGqcg-eIS0SiP4o6hy/view?usp=sharing)
+
+---
+
+## Tech Stack
+
+| Category        | Technologies                                              |
+| :-------------- | :-------------------------------------------------------- |
+| **Languages**   | JavaScript, TypeScript, Python, PHP, Java                 |
+| **Backend**     | NestJS, Node.js, Express                                  |
+| **Frontend**    | Next.js, React, Angular, HTML, CSS, TailwindCSS           |
+| **Databases**   | MySQL, PostgreSQL, MongoDB                                |
+| **DevOps**      | Docker, Linux (AlmaLinux, Rocky Linux, Arch Linux)        |
+| **Tools**       | Git, GitHub, Postman, Figma, VS Code                      |
+| **Built with**  | Astro, React, TailwindCSS, TypeScript                     |
+
+---
+
+## Featured Projects
+
+| Project | Stack | Description |
+| :------ | :---- | :---------- |
+| [Horarios FISEI](https://github.com/ChristianCLop/HorariosFISEI) | Next.js, NestJS, Docker, MySQL | Academic schedule manager with AI-powered creation |
+| [Estena Campus](https://campus.estenasalus.com) | AlmaLinux, Docker, PostgreSQL, Moodle | Multi-instance Moodle deployment on a single production server |
+| [Pharma Dicris](https://pharmadicris.com/inicio/) | WordPress, CSS, Figma | Corporate website for a pharmaceutical company |
+| [GourmetGO](https://github.com/PSW-GourtmetGO) | Next.js, Node.js, MySQL | Online restaurant management platform |
+| [SimDrive](https://github.com/ChristianCLop/simdrive-frontend) | Next.js, Node.js, MySQL | Didactic immersive learning experience for traffic rules |
+| [DealDash](https://github.com/ChristianCLop/DealDash-Ecommerce-Frontend) | React Native, Express, PostgreSQL | Full-featured e-commerce mobile application |
+| [CrediPlan](https://github.com/ChristianCLop/frontend-simulador) | Next.js, NestJS, PostgreSQL | Credit simulator application |
+
+---
+
+## Experience
+
+**Software Engineer** — SanTIC Education *(Dec 2025 – Jan 2026)*
+Docker-based architecture (Nginx + PHP + Moodle + PostgreSQL), server administration on AlmaLinux, SSL with Let's Encrypt, and automated cron jobs for multi-instance provisioning.
+
+**Laboratory Technician** — Universidad Técnica de Ambato – FISEI *(Sep 2025 – Jan 2026)*
+Server administration, maintenance of internal faculty applications, technical support, and development of internal web tools.
+
+**Laboratory Intern** — Universidad Técnica de Ambato – FISEI *(Feb 2024 – Jul 2024)*
+Built a web app for lab/subject/teacher scheduling (Horarios FISEI), a React Native ID-card validator, and maintained a document management system.
+
+---
+
+## Education
+
+**Bachelor's Degree in Software Engineering** — Universidad Técnica de Ambato *(2019 – 2025)*
+
+Comprehensive program covering software development, systems design, and software engineering principles with hands-on projects and real-world applications.
+
+- [Degree Certificate – Senescyt](https://drive.google.com/file/d/1PGRLylAy_NldSCfa7qfeUqEumQSlSCBC/view?usp=sharing)
+- [Degree Certificate – University](https://drive.google.com/file/d/1o11E5Pqd-OB5ZA-44w7M4YRzDOc7ZFdl/view?usp=sharing)
+
+---
+
+## Achievements & Certifications
+
+| Certificate | Issuer | Date |
+| :---------- | :----- | :--- |
+| Python Essentials 1 | Cisco Networking Academy | Feb 2026 |
+| Introduction to Cybersecurity | Cisco Networking Academy | Nov 2024 |
+| AI Fundamentals | — | Nov 2024 |
+| CSEI 24 – Research Paper Presentation | — | Oct 2024 |
+| Java Basics | — | Mar 2024 |
+| PHP Basics | — | Apr 2024 |
+| Ethical Hacking \| Red Team 2nd Edition | Hacker Mentor | Oct 2022 |
+
+---
+
+## Project Structure
 
 ```text
 /
 ├── public/
-│   └── favicon.svg
+│   ├── icons/skills/
+│   ├── img/
+│   └── logos/
 ├── src/
-│   ├── components/
-│   │   └── Card.astro
+│   ├── components/       # Reusable UI components (Header, Footer, cards…)
+│   ├── constants/        # Data: experiences, education, projects, skills, achievements
+│   ├── css/              # Per-section stylesheets
+│   ├── i18n/             # EN / ES translations
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── pages/
+│   └── sections/         # Page sections (Home, About, Experience, Projects…)
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Getting Started
 
-Any static assets, like images, can be placed in the `public/` directory.
+> Requires [Node.js](https://nodejs.org) and [pnpm](https://pnpm.io).
 
-## 🧞 Commands
+```sh
+# Install dependencies
+pnpm install
 
-All commands are run from the root of the project, from a terminal:
+# Start development server at localhost:4321
+pnpm dev
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+# Build for production
+pnpm build
 
-## 👀 Want to learn more?
+# Preview production build
+pnpm preview
+```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## Contact
+
+- GitHub: [@ChristianCLop](https://github.com/ChristianCLop)
+- LinkedIn: [linkedin.com/in/christian-chico](https://www.linkedin.com/in/christian-chico)
+- Location: Ecuador
