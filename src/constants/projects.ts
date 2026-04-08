@@ -4,11 +4,11 @@ export const projects = [
     img2: "https://github.com/ChristianCLop/HorariosFISEI/blob/main/images/Banner-01.png?raw=true",
     title: "Horarios FISEI",
     tool1: "Next.js",
-    tool2: "TailwindCSS",
+    tool2: "Docker",
     tool3: "Nest.js",
     tool4: "MySQL",
     toolImg1: "/icons/skills/nextjs.svg",
-    toolImg2: "/icons/skills/tailwindcss.svg",
+    toolImg2: "/icons/skills/docker.svg",
     toolImg3: "/icons/skills/nestjs.svg",
     toolImg4: "/icons/skills/mysql.svg",
     body: "Horarios FISEI this is an application where you can create your academic schedule with IA, and then manage and search it using many parameters.",
@@ -22,7 +22,47 @@ export const projects = [
     backStatus: "Completed",
     backYear: "2025",
     problem: "Faculty often struggle to create and manage their academic schedules effectively, leading to conflicts and inefficiencies.",
-    solution: "Horarios FISEI provides an intuitive platform for users to create timetables with the help of AI, manage, and search their academic schedules, ensuring optimal organization and conflict resolution."
+    solution: "Horarios FISEI provides an intuitive platform for users to create timetables with the help of AI, manage, and search their academic schedules, ensuring optimal organization and conflict resolution.",
+    techSections: [
+      {
+        title: "Next.js",
+        img: "/icons/skills/nextjs.svg",
+        items: [
+          "Implemented authentication using NextAuth.js for secure user management",
+          "Built a modular architecture to improve scalability and maintainability",
+          "Developed reusable components following a component-based design approach",
+        ],
+      },
+      {
+        title: "Docker",
+        img: "/icons/skills/docker.svg",
+        items: [
+          "Containerized the application using Docker to ensure consistent environments across development and production",
+          "Implemented Docker Compose for orchestrating multi-container applications, simplifying deployment and scaling",
+          "Utilized Docker volumes for persistent data storage and efficient management of application state",
+        ],
+      },
+      {
+        title: "Nest.js",
+        img: "/icons/skills/nestjs.svg",
+        items: [
+          "JWT for stateless authentication with access and refresh tokens",
+          "TypeORM for entity modeling and relations with MySQL",
+          "Middleware for request validation and transformation",
+          "Guards and decorators for role-based authorization",
+        ],
+      },
+      {
+        title: "MySQL",
+        img: "/icons/skills/mysql.svg",
+        items: [
+          "Designed and implemented a MySQL database with encrypted sensitive fields to enhance data security",
+          "Eliminated data redundancy by applying proper normalization techniques (up to 3NF)",
+          "Structured the database to be scalable and efficient for future growth",
+          "Applied best practices to ensure data integrity, performance optimization, and maintainability",
+        ],
+      },
+    ],
   },
   {
     img1: "https://grupoestena.com/wp-content/uploads/2022/04/Recurso-14-1.png",
@@ -38,6 +78,45 @@ export const projects = [
     toolImg4: "/icons/skills/moodle.svg",
     body: "Deployment and configuration of multiple Moodle platforms on a single AlmaLinux production server using Docker-based architecture with GitHub.",
     projectLink: "https://campus.estenasalus.com/login/index.php",
+    backTitle: "Estena Campus",
+    backDetails: [
+      "Deployment of multiple Moodle platforms",
+      "Docker-based architecture for efficient resource management",
+      "GitHub for version control and CI/CD",
+    ],
+    backStatus: "Completed",
+    backYear: "2026",
+    problem: "Educational institutions often face challenges in deploying and managing multiple Moodle platforms efficiently, leading to resource constraints and maintenance issues.",
+    solution: "Estena Campus provides a streamlined solution for deploying and configuring multiple Moodle platforms on a single AlmaLinux production server using Docker-based architecture, ensuring efficient resource management and simplified maintenance.",
+    techSections: [
+      {
+        title: "AlmaLinux",
+        img: "/icons/skills/almalinux.svg",
+        items: [
+          "Utilized AlmaLinux as the operating system for the production server, providing a stable and secure environment for hosting Moodle platforms.",
+          "Implemented best practices for server hardening and security to protect sensitive educational data.",
+          "Developed automation scripts on AlmaLinux servers to manage Moodle infrastructure and operations.",
+          "Built Docker-based scripts to create and remove isolated testing environments.",
+          "Automated version control and deployment by pushing validated updates to GitHub."
+        ],
+      },
+      {
+        title: "Docker",
+        img: "/icons/skills/docker.svg",
+        items: [
+          "Containerized Moodle instances using Docker to ensure consistent environments and efficient resource utilization.",
+          "Implemented Docker Compose for orchestrating multiple containers, simplifying deployment and management of Moodle platforms.",
+        ],
+      },
+      {
+        title: "PostgreSQL",
+        img: "/icons/skills/postgresql.svg",
+        items: [
+          "Configured PostgreSQL as the database backend for Moodle, ensuring reliable data storage and performance.",
+          "Implemented backup and recovery strategies to safeguard against data loss.",
+        ],
+      },
+    ]
   },
   {
     img1: "https://yt3.googleusercontent.com/4-3yYpDFSuBiw2GzEPivUI7E3vaRDVkez52AomEF8M2_yNakzVKYsOyPLIBF-OTuymALNXcQVg=s160-c-k-c0x00ffffff-no-rj",

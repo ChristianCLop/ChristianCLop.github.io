@@ -5,12 +5,13 @@ interface Props {
   img: string;
   title: string;
   body: string;
+  bodyKey?: string; // ← i18n key for the body description
   date: string;
   link: string;
   compact?: boolean;
 }
 
-const { img, title, body, date, link, compact = false } = Astro.props;
+const { img, title, body, bodyKey, date, link, compact = false } = Astro.props;
 ---
 
 <li
@@ -19,7 +20,7 @@ const { img, title, body, date, link, compact = false } = Astro.props;
   class="achievement-card group relative overflow-hidden
     w-[92vw] sm:w-auto
     flex flex-col"
-  style={compact ? "--card-w: 340px" : "--card-w: 480px"}
+  style={compact ? '--card-w: 340px' : '--card-w: 480px'}
 >
   <!-- Corner accents -->
   <span class="corner corner-tl"></span>
@@ -28,18 +29,26 @@ const { img, title, body, date, link, compact = false } = Astro.props;
   <span class="corner corner-br"></span>
 
   <!-- Top bar -->
-  <div class="card-topbar flex items-center gap-2 px-4 py-2 border-b border-white/10 shrink-0">
+  <div
+    class="card-topbar flex items-center gap-2 px-4 py-2 border-b border-white/10 shrink-0"
+  >
     <span class="dot dot-red"></span>
     <span class="dot dot-yellow"></span>
     <span class="dot dot-green"></span>
-    <span class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate">
-      {title.toLowerCase().replace(/\s+/g, "_")}.cert
+    <span
+      class="font-mono text-[10px] text-white/25 ml-2 tracking-widest truncate"
+    >
+      {title.toLowerCase().replace(/\s+/g, '_')}.cert
     </span>
-    <span class="ml-auto font-mono text-[10px] text-[#4ade80]/40 shrink-0">{date}</span>
+    <span class="ml-auto font-mono text-[10px] text-[#4ade80]/40 shrink-0"
+      >{date}</span
+    >
   </div>
 
   <!-- Image area -->
-  <div class={`image-wrap relative overflow-hidden ${compact ? "h-44" : "h-64 sm:h-72"}`}>
+  <div
+    class={`image-wrap relative overflow-hidden ${compact ? 'h-44' : 'h-64 sm:h-72'}`}
+  >
     <img
       src={img}
       alt={title}
@@ -47,48 +56,76 @@ const { img, title, body, date, link, compact = false } = Astro.props;
     />
 
     <!-- Overlay on hover -->
-    <div class="img-overlay absolute inset-0 bg-[#0d1117]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+    <div
+      class="img-overlay absolute inset-0 bg-[#0d1117]/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+    >
       <a href={link} target="_blank" rel="noopener noreferrer">
-        <button class="view-btn flex items-center gap-2 font-mono text-xs sm:text-sm
-          uppercase tracking-widest px-4 py-2.5
-          text-[#4ade80] border border-[#4ade80]/40 bg-[#0d1117]/80
-          rounded-md hover:bg-[#4ade80]/10 hover:border-[#4ade80]/70
-          transition-all duration-200
-          translate-y-2 group-hover:translate-y-0
-          opacity-0 group-hover:opacity-100"
+        <button
+          class="view-btn flex items-center gap-2 font-mono text-xs sm:text-sm
+            uppercase tracking-widest px-4 py-2.5
+            text-[#4ade80] border border-[#4ade80]/40 bg-[#0d1117]/80
+            rounded-md hover:bg-[#4ade80]/10 hover:border-[#4ade80]/70
+            transition-all duration-200
+            translate-y-2 group-hover:translate-y-0
+            opacity-0 group-hover:opacity-100"
           style="transition: opacity 0.3s ease 0.05s, transform 0.3s ease 0.05s, background 0.2s, border-color 0.2s;"
         >
-          View Certificate
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 1 0 0 0-1.5a.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5" />
+          <span data-i18n="ach.btn_view_cert">View Certificate</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-4 h-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4.26 10.147a60.436 60.436 0 0 0-.491 6.347A48.627 48.627 0 0 1 12 20.904a48.627 48.627 0 0 1 8.232-4.41a60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.57 50.57 0 0 0-2.658-.813A59.905 59.905 0 0 1 12 3.493a59.902 59.902 0 0 1 10.399 5.84a51.39 51.39 0 0 0-2.658.814m-15.482 0A50.697 50.697 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"
+            ></path>
           </svg>
         </button>
       </a>
     </div>
 
-    <!-- Scan line on hover -->
-    <div class="scan-line absolute inset-x-0 h-px bg-[#4ade80]/30 opacity-0 group-hover:opacity-100 pointer-events-none"></div>
+    <!-- Scan line -->
+    <div
+      class="scan-line absolute inset-x-0 h-px bg-[#4ade80]/30 opacity-0 group-hover:opacity-100 pointer-events-none"
+    >
+    </div>
   </div>
 
   <!-- Info area -->
-  <div class="card-body flex flex-col gap-1.5 p-4 sm:p-5 border-t border-white/10">
-    <!-- Line number decoration -->
-    <span class="font-mono text-[10px] text-white/15 tracking-widest">// achievement</span>
+  <div
+    class="card-body flex flex-col gap-1.5 p-4 sm:p-5 border-t border-white/10"
+  >
+    <span
+      class="font-mono text-[10px] text-white/15 tracking-widest"
+      data-i18n="ach.comment_card">// achievement</span
+    >
 
-    <h2 class={`font-mono font-bold text-white uppercase tracking-tight leading-tight
-      ${compact ? "text-sm" : "text-base sm:text-lg"}`}>
+    <h2
+      class={`font-mono font-bold text-white uppercase tracking-tight leading-tight
+      ${compact ? 'text-sm' : 'text-base sm:text-lg'}`}
+    >
       {title}
     </h2>
 
-    <p class={`font-mono text-white/50 leading-snug
-      ${compact ? "text-xs" : "text-sm"}`}>
+    <!-- bodyKey → translated; no bodyKey → static text (proper name) -->
+    <p
+      class={`font-mono text-white/50 leading-snug ${compact ? 'text-xs' : 'text-sm'}`}
+      data-i18n={bodyKey}
+    >
       {body}
     </p>
   </div>
 
   <!-- Bottom glow line -->
-  <div class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
+  <div
+    class="glow-line absolute bottom-0 left-[10%] right-[10%] h-px
     bg-gradient-to-r from-transparent via-[#4ade80]/40 to-transparent
-    opacity-0 group-hover:opacity-100 transition-opacity duration-400">
+    opacity-0 group-hover:opacity-100 transition-opacity duration-400"
+  >
   </div>
 </li>
