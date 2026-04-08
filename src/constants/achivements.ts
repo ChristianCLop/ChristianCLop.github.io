@@ -1,5 +1,19 @@
 export const achivements = [
   {
+    img: "/img/archivements/Introduction to DevOps.png",
+    title: "DevOps Fundamentals",
+    body: "Introduction to DevOps",
+    date: "February 19, 2026",
+    link: "https://drive.google.com/file/d/1DLOhZ0pSe8v3e_EsVVh6A9Qa4tGLzsWk/view?usp=sharing",
+  },
+  {
+    img: "/img/archivements/Python Essentials 2.png",
+    title: "Python Essentials",
+    body: "Python Essentials 2",
+    date: "April 07, 2026",
+    link: "https://drive.google.com/file/d/1-Hzq-UAiDhkUdZ7LspKDIN5HsStEc0l2/view?usp=sharing",
+  },
+  {
     img: "/img/archivements/Python Essentials 1.png",
     title: "Python Essentials",
     body: "Python Essentials 1",
