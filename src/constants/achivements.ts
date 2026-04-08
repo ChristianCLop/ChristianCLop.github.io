@@ -3,7 +3,7 @@ export const achivements = [
     img: "/img/archivements/Introduction to DevOps.png",
     title: "DevOps Fundamentals",
     body: "Introduction to DevOps",
-    date: "February 19, 2026",
+    date: "April 06, 2026",
     link: "https://drive.google.com/file/d/1DLOhZ0pSe8v3e_EsVVh6A9Qa4tGLzsWk/view?usp=sharing",
   },
   {
