@@ -1,8 +1,17 @@
 export const achivements = [
   {
+    img: "/img/archivements/Introduction to Cloud Computing.png",
+    title: "DevOps Fundamentals",
+    body: "Introduction to Cloud Computing",
+    bodyKey: "ach.cloud.body",
+    date: "April 20, 2026",
+    link: "https://drive.google.com/file/d/19yILg3ds3Af5E9h2_UkGr7qKHFweoWjT/view?usp=sharing",
+  },
+  {
     img: "/img/archivements/Introduction to DevOps.png",
     title: "DevOps Fundamentals",
     body: "Introduction to DevOps",
+    bodyKey: "ach.devops.body",
     date: "April 06, 2026",
     link: "https://drive.google.com/file/d/1DLOhZ0pSe8v3e_EsVVh6A9Qa4tGLzsWk/view?usp=sharing",
   },
