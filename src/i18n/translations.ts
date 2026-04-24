@@ -161,6 +161,30 @@ export const translations = {
     // ── Projects — Pharma Dicris ──
     "proj.pharma_dicris.body": "Development of a corporate website for a pharmaceutical company, including UI/UX design, front-end implementation, SEO optimization, and ongoing maintenance.",
 
+    // ── Projects — PostPlace ──
+    "proj.postplace.body": "Full-stack news manager with bilingual support (ES/EN). Features complete CRUD, automatic content translation via DeepL API, and a clean editorial interface deployed on Vercel and Render.",
+    "proj.postplace.backDetail_0": "Full CRUD for news and blog posts",
+    "proj.postplace.backDetail_1": "Bilingual UI with next-intl + automatic content translation via DeepL API",
+    "proj.postplace.backDetail_2": "Deployed on Vercel (frontend) and Render (backend + PostgreSQL)",
+    "proj.postplace.problem": "Most content platforms store posts in a single language, forcing users who speak a different language to either miss the content or rely on external tools to translate it manually.",
+    "proj.postplace.solution": "PostPlace implements two translation layers: next-intl handles the UI in Spanish and English, while the DeepL API automatically translates post titles and content to the active language at request time — no matter what language the post was originally written in.",
+    "proj.postplace.tech_0_item_0": "App Router with dynamic [locale] and [id] segments for bilingual routing (/es/... and /en/...)",
+    "proj.postplace.tech_0_item_1": "Container/Presentational pattern: pages manage state and API calls, components only render props",
+    "proj.postplace.tech_0_item_2": "Reusable PostForm component shared between create and edit flows via an initialData prop",
+    "proj.postplace.tech_0_item_3": "Skeleton loaders and error states on every page for a consistent loading experience",
+    "proj.postplace.tech_1_item_0": "RESTful API with 6 endpoints covering full CRUD plus slug-based post lookup",
+    "proj.postplace.tech_1_item_1": "Middleware chain: CORS → JSON parser → Zod validation → route → global error handler",
+    "proj.postplace.tech_1_item_2": "Service Layer separates business logic (slug generation, existence checks) from HTTP controllers",
+    "proj.postplace.tech_1_item_3": "Custom AppError class maps domain errors to HTTP status codes consistently",
+    "proj.postplace.tech_2_item_0": "Prisma 5 ORM with a typed schema deployed on Render's managed PostgreSQL service",
+    "proj.postplace.tech_2_item_1": "Singleton PrismaClient instance shared across the app to avoid multiple connections on hot-reload",
+    "proj.postplace.tech_2_item_2": "Zod DTOs (CreatePostDTO / UpdatePostDTO) validate all incoming data before it reaches the database",
+    "proj.postplace.tech_2_item_3": "Auto-generated slugs from the post title with a timestamp suffix to guarantee uniqueness",
+    "proj.postplace.tech_3_item_0": "Automatic source language detection — posts can be written in any language",
+    "proj.postplace.tech_3_item_1": "All posts in the feed are translated in a single API call using a flat text array (title + content interleaved)",
+    "proj.postplace.tech_3_item_2": "Graceful fallback to original text if the API key is missing or the request fails",
+    "proj.postplace.tech_3_item_3": "Translation is applied at request time on the backend, keeping the database language-agnostic",
+
     // ── Projects — GourmetGO ──
     "proj.gourmetgo.body": "GourtmetGO is an online restaurant management platform, which aims to streamline the purchasing process and provide facilities for small businesses to emerge in the digital market.",
 
@@ -368,6 +392,30 @@ export const translations = {
 
     // ── Projects — Pharma Dicris ──
     "proj.pharma_dicris.body": "Desarrollo de un sitio web corporativo para una empresa farmacéutica, incluyendo diseño UI/UX, implementación frontend, optimización SEO y mantenimiento continuo.",
+
+    // ── Projects — PostPlace ──
+    "proj.postplace.body": "Gestor de noticias full-stack con soporte bilingüe (ES/EN). Incluye CRUD completo, traducción automática de contenido vía API de DeepL e interfaz editorial desplegada en Vercel y Render.",
+    "proj.postplace.backDetail_0": "CRUD completo para noticias y publicaciones de blog",
+    "proj.postplace.backDetail_1": "UI bilingüe con next-intl + traducción automática de contenido vía API de DeepL",
+    "proj.postplace.backDetail_2": "Desplegado en Vercel (frontend) y Render (backend + PostgreSQL)",
+    "proj.postplace.problem": "La mayoría de plataformas de contenido almacenan las publicaciones en un solo idioma, obligando a los usuarios que hablan otro idioma a perderse el contenido o a depender de herramientas externas para traducirlo manualmente.",
+    "proj.postplace.solution": "PostPlace implementa dos capas de traducción: next-intl gestiona la UI en español e inglés, mientras que la API de DeepL traduce automáticamente el título y el contenido de cada publicación al idioma activo en tiempo de solicitud, sin importar el idioma en que fue escrita originalmente.",
+    "proj.postplace.tech_0_item_0": "App Router con segmentos dinámicos [locale] e [id] para enrutamiento bilingüe (/es/... y /en/...)",
+    "proj.postplace.tech_0_item_1": "Patrón Container/Presentacional: las páginas gestionan el estado y las llamadas a la API, los componentes solo renderizan props",
+    "proj.postplace.tech_0_item_2": "Componente PostForm reutilizable compartido entre los flujos de creación y edición mediante una prop de datos iniciales",
+    "proj.postplace.tech_0_item_3": "Skeleton loaders y estados de error en todas las páginas para una experiencia de carga consistente",
+    "proj.postplace.tech_1_item_0": "API RESTful con 6 endpoints que cubren CRUD completo más búsqueda de publicaciones por slug",
+    "proj.postplace.tech_1_item_1": "Cadena de middlewares: CORS → JSON parser → validación Zod → ruta → manejador global de errores",
+    "proj.postplace.tech_1_item_2": "Service Layer separa la lógica de negocio (generación de slug, verificación de existencia) de los controladores HTTP",
+    "proj.postplace.tech_1_item_3": "Clase AppError personalizada que mapea errores de dominio a códigos de estado HTTP de forma consistente",
+    "proj.postplace.tech_2_item_0": "Prisma 5 ORM con esquema tipado desplegado en el servicio PostgreSQL administrado de Render",
+    "proj.postplace.tech_2_item_1": "Instancia Singleton de PrismaClient compartida en toda la aplicación para evitar múltiples conexiones en hot-reload",
+    "proj.postplace.tech_2_item_2": "DTOs con Zod (CreatePostDTO / UpdatePostDTO) validan todos los datos entrantes antes de llegar a la base de datos",
+    "proj.postplace.tech_2_item_3": "Slugs generados automáticamente a partir del título con sufijo de marca de tiempo para garantizar unicidad",
+    "proj.postplace.tech_3_item_0": "Detección automática del idioma de origen — las publicaciones pueden escribirse en cualquier idioma",
+    "proj.postplace.tech_3_item_1": "Todas las publicaciones del feed se traducen en una sola llamada a la API usando un array plano de textos (título y contenido intercalados)",
+    "proj.postplace.tech_3_item_2": "Fallback al texto original si la clave de API no está configurada o la solicitud falla",
+    "proj.postplace.tech_3_item_3": "La traducción se aplica en tiempo de solicitud en el backend, manteniendo la base de datos agnóstica al idioma",
 
     // ── Projects — GourmetGO ──
     "proj.gourmetgo.body": "GourtmetGO es una plataforma de gestión de restaurantes en línea, que busca agilizar el proceso de compra y brindar facilidades para que las pequeñas empresas emerjan en el mercado digital.",
