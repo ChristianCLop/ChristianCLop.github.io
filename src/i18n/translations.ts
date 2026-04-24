@@ -208,6 +208,8 @@ export const translations = {
     "ach.btn_view_cert": "View Certificate",
 
     // ── Achievements — entry bodies (only those with translatable descriptions) ──
+    "ach.cloud.body": "Introduction to Cloud Computing",
+    "ach.devops.body": "Introduction to DevOps",
     "ach.cybersecurity.body": "Introduction to Cybersecurity",
     "ach.java.body": "Java Basics",
     "ach.php.body": "PHP Basics",
@@ -440,6 +442,8 @@ export const translations = {
     "ach.btn_view_cert": "Ver Certificado",
 
     // ── Achievements — entry bodies ──
+    "ach.cloud.body": "Introducción a Computación en la nube",
+    "ach.devops.body": "Introducción a DevOps",
     "ach.cybersecurity.body": "Introducción a Ciberseguridad",
     "ach.java.body": "Fundamentos de Java",
     "ach.php.body": "Fundamentos de PHP",
