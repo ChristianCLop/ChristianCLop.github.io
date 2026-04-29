@@ -1,5 +1,13 @@
 export const achivements = [
   {
+    img: "/img/archivements/Introduction to Agile Development and Scrum.png",
+    title: "DevOps Fundamentals",
+    body: "Introduction to Agile Development and Scrum",
+    bodyKey: "ach.agile.body",
+    date: "April 29, 2026",
+    link: "https://drive.google.com/file/d/1q_jxO0LvRY-uThyPDyGCslCihLiY_UlT/view?usp=sharing",
+  },
+  {
     img: "/img/archivements/Introduction to Cloud Computing.png",
     title: "DevOps Fundamentals",
     body: "Introduction to Cloud Computing",
