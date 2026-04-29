@@ -144,7 +144,6 @@ export const projects = [
     toolImg4: "/icons/skills/prismaorm.svg",
     body: "Full-stack news manager with bilingual support (ES/EN). Features complete CRUD, automatic content translation via DeepL API, and a clean editorial interface deployed on Vercel and Render.",
     github: "https://github.com/ChristianCLop/PostPlace",
-    projectLink: "https://postp.vercel.app",
     backTitle: "PostPlace",
     backDetails: [
       "Full CRUD for news and blog posts",
