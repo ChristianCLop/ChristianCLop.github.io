@@ -46,6 +46,9 @@ I'm a Full-Stack Developer and Software Engineer with hands-on experience in bac
 
 ## Experience
 
+**Software Engineer** — Vigitrack Latam *(May 2026 – Present)*
+Design and implementation of RESTful APIs for a multi-tenant fleet management system, with dynamic database connections per company.
+
 **Software Engineer** — SanTIC Education *(Dec 2025 – Jan 2026)*
 Docker-based architecture (Nginx + PHP + Moodle + PostgreSQL), server administration on AlmaLinux, SSL with Let's Encrypt, and automated cron jobs for multi-instance provisioning.
 
