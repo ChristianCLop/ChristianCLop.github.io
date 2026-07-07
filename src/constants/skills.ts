@@ -100,8 +100,32 @@ export const skills = [
     ],
   },
   {
+    title: "Mobile",
+    titleKey: "skills.mobile_3",
+    items: [
+      {
+        img: "/icons/skills/reactjs.svg",
+        color: "#00d8ff",
+        name: "React Native",
+        level: 58,
+      },
+      {
+        img: "/icons/skills/flutter.svg",
+        color: "#51BEF0",
+        name: "Flutter",
+        level: 50,
+      },
+      {
+        img: "/icons/skills/dart.svg",
+        color: "#23B7E6",
+        name: "Dart",
+        level: 50,
+      },
+    ],
+  },
+  {
     title: "Databases",
-    titleKey: "skills.databases_3",
+    titleKey: "skills.databases_4",
     items: [
       {
         img: "/icons/skills/mysql.svg",
@@ -142,7 +166,7 @@ export const skills = [
   },
   {
     title: "Source Control",
-    titleKey: "skills.source_control_4",
+    titleKey: "skills.source_control_6",
     items: [
       {
         img: "/icons/skills/github.svg",
@@ -160,7 +184,7 @@ export const skills = [
   },
   {
     title: "Tools",
-    titleKey: "skills.tools_5",
+    titleKey: "skills.tools_7",
     items: [
       {
         img: "/icons/skills/vsc.svg",
