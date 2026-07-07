@@ -75,6 +75,15 @@ export const translations = {
     "exp.comment_responsibilities": "// responsibilities",
     "exp.comment_stack": "// stack",
 
+    // ── Experience — VigitrackLatam ──
+    "exp.vigitrack.title":"Software Engineer",
+    "exp.vigitrack.date":"May 2026 - Present",
+    "exp.vigitrack.item_0":"Design and implementation of RESTful APIs for a multi-tenant fleet management system, with dynamic database connections per company.",
+    "exp.vigitrack.item_1":"Development of a mobile app for drivers with secure authentication and a layered architecture.",
+    "exp.vigitrack.item_2":"Writing complex queries with multiple joins and subqueries for operational dispatch reports.",
+    "exp.vigitrack.item_3":"Generating PDF reports with dynamic tables and automatic layout adjustment based on data volume.",
+    "exp.vigitrack.item_4":"Implementation of an authentication flow using secure tokens, including device verification and registration.",
+
     // ── Experience — SanTIC ──
     "exp.santic.title": "Software Engineer",
     "exp.santic.date": "December 2025 - January 2026",
@@ -309,6 +318,15 @@ export const translations = {
     "exp.show_all": "Ver Todo",
     "exp.comment_responsibilities": "// responsabilidades",
     "exp.comment_stack": "// stack",
+
+    // ── Experience — VigitrackLatam ──
+    "exp.vigitrack.title":"Ingeniero de Software",
+    "exp.vigitrack.date":"Mayo 2026 - Actualidad",
+    "exp.vigitrack.item_0":"Diseño e implementación de APIs RESTful para un sistema multi-tenant de gestión de flotas, con conexión dinámica a bases de datos por empresa.",
+    "exp.vigitrack.item_1":"Desarrollo de aplicación móvil para conductores con autenticación segura y arquitectura en capas.",
+    "exp.vigitrack.item_2":"Escritura de consultas complejas con múltiples joins y subconsultas para reportes operativos de despacho.",
+    "exp.vigitrack.item_3":"Generación de reportes en PDF con tablas dinámicas y ajuste automático de layout según volumen de datos.",
+    "exp.vigitrack.item_4":"Implementación de flujo de autenticación con tokens seguros, incluyendo verificación y registro de dispositivos.",
 
     // ── Experience — SanTIC ──
     "exp.santic.title": "Ingeniero de Software",

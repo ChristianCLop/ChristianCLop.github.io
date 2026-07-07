@@ -1,5 +1,33 @@
 export const experiences = [
   {
+    img: "/img/experience/VigitrackLatam.png",
+    title: "Software Engineer",
+    titleKey: "exp.vigitrack.title",
+    company: "VigitrackLatam",
+    date: "May 2026 - Present",
+    dateKey: "exp.vigitrack.date",
+    item1: "Design and implementation of RESTful APIs for a multi-tenant fleet management system, with dynamic database connections per company.",
+    item2: "Development of a mobile app for drivers with secure authentication and a layered architecture.",
+    item3: "Writing complex queries with multiple joins and subqueries for operational dispatch reports.",
+    item4: "Generating PDF reports with dynamic tables and automatic layout adjustment based on data volume.",
+    item5: "Implementation of an authentication flow using secure tokens, including device verification and registration.",
+    itemKeys: [
+      "exp.vigitrack.item_0",
+      "exp.vigitrack.item_1",
+      "exp.vigitrack.item_2",
+      "exp.vigitrack.item_3",
+      "exp.vigitrack.item_4",
+    ],
+    skills: [
+      { name: "Node", img: "/icons/skills/nodejs.svg" },
+      { name: "Vue", img: "/icons/skills/vue.svg" },
+      { name: "Flutter", img: "/icons/skills/flutter.svg" },
+      { name: "Dart", img: "/icons/skills/dart.svg" },
+      { name: "Firebase", img: "/icons/skills/firebase.svg" },
+      { name: "MySQL", img: "/icons/skills/mysql.svg" },
+    ],
+  },
+  {
     img: "/img/experience/SanTIC Education.png",
     title: "Software Engineer",
     titleKey: "exp.santic.title",
