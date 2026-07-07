@@ -64,9 +64,10 @@ export const translations = {
     "skills.entries_loaded": "entries loaded",
     "skills.show_all": "Show All",
     "skills.languages_0": "Languages",
-    "skills.databases_3": "Databases",
-    "skills.source_control_4": "Source Control",
-    "skills.tools_5": "Tools",
+    "skills.mobile_3": "Mobile",
+    "skills.databases_4": "Databases",
+    "skills.source_control_6": "Source Control",
+    "skills.tools_7": "Tools",
 
     // ── Experience — UI labels ──
     "exp.section_title": "Experience",
@@ -308,9 +309,10 @@ export const translations = {
     "skills.entries_loaded": "entradas cargadas",
     "skills.show_all": "Ver Todo",
     "skills.languages_0": "Lenguajes",
-    "skills.databases_3": "Bases de datos",
-    "skills.source_control_4": "Control de versiones",
-    "skills.tools_5": "Herramientas",
+    "skills.mobile_3": "Móvil",
+    "skills.databases_4": "Bases de datos",
+    "skills.source_control_6": "Control de versiones",
+    "skills.tools_7": "Herramientas",
 
     // ── Experience — UI labels ──
     "exp.section_title": "Experiencia",
